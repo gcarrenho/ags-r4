@@ -1,0 +1,42 @@
+package com.ags_r4;
+
+
+
+import java.util.Locale;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
+import android.widget.Toast;
+
+public class Opciones extends Activity implements OnInitListener{
+	
+	//private SintetizadorDeVoz sint=new SintetizadorDeVoz();
+	private TextToSpeech tts;
+	
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.opciones);
+		tts = new TextToSpeech(this, this);
+		//sint.dictarMenu();
+	}
+	
+	@Override
+	public void onInit(int code) {
+		if (code==TextToSpeech.SUCCESS) {
+
+			tts.setLanguage(Locale.getDefault());
+
+		} else {
+			tts = null;
+			Toast.makeText(this, "Failed to initialize TTS engine.",
+
+					Toast.LENGTH_SHORT).show();
+
+		}
+		
+	}
+	
+
+}

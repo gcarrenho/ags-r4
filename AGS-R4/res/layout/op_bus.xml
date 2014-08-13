@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    android:orientation="vertical" >
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TableRow
+            android:id="@+id/tableRow1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"  android:layout_marginTop="15dp" >
+
+            <LinearLayout android:background="@drawable/box_free_simple" android:orientation="vertical" 
+	 			android:layout_weight="3" android:layout_height="175dp" >
+
+                <Button
+                    android:id="@+id/lugarButtom"
+                    android:layout_width="300dp"
+                    android:layout_height="175dp"
+                    android:text="@string/lugares" />
+
+            </LinearLayout>
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/editarButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"  android:layout_marginTop="15dp">
+
+            <LinearLayout
+                android:background="@drawable/box_free_simple" android:orientation="vertical" 
+	 			android:layout_weight="3" android:layout_height="175dp" >
+
+                <Button
+                    android:id="@+id/lineasButtom"
+                    android:layout_width="300dp"
+                    android:layout_height="175dp"
+                    android:text="@string/lineas" />
+
+            </LinearLayout>
+
+        </TableRow>
+    </TableLayout>
+
+</LinearLayout>

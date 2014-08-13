@@ -1,0 +1,22 @@
+package com.ags_r4;
+
+
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
+
+public class Opciones extends Activity{
+	
+	//private SintetizadorDeVoz sint=new SintetizadorDeVoz();
+	private TextToSpeech tts;
+	
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.opciones);
+		//sint.dictarMenu();
+	}
+	
+
+}

@@ -1,0 +1,99 @@
+package com.tesis.ags_r4;
+
+import com.tesis.ags_r4.R;
+
+import android.app.Activity;
+import android.content.ContentValues;
+import android.content.Context;
+import android.content.Intent;
+import android.database.Cursor;
+import android.database.SQLException;
+import android.database.sqlite.SQLiteDatabase;
+import android.os.Bundle;
+import android.preference.Preference;
+import android.util.Log;
+import android.view.View;
+import android.view.Window;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import android.widget.TextView.BufferType;
+
+public class CargarActivity extends Activity{
+	
+	//private Lugar lugar, lugar1;
+	//private LugaresDb lugarDb= new  LugaresDbHelper(this,"lugares",null,1);
+	public static final String APP_EXIT_KEY = "APP_EXIT_KEY";
+	private static final BufferType EDITABLE = null;
+	private Lugar lugarBd;
+	private Preference about;
+	
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		boolean exit = false;
+		if(getIntent() != null){
+			Intent intent = getIntent();
+			if(intent.getExtras() != null && intent.getExtras().containsKey(APP_EXIT_KEY)){
+				exit = true;
+			}
+		}
+		lugarBd= new Lugar(this);
+		lugarBd.open();
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
+		setContentView(R.layout.cargar_lugar);
+		Window window = getWindow();
+		//requestWindowFeature(Window.FEATURE_NO_TITLE);
+		
+		
+		//Aceptar dar de alta en la base de datos
+		//cancelar, salir volver ?atras?
+		View aceptarButton = window.findViewById(R.id.aceptarButtom);
+		aceptarButton.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				
+				//Falta obtener las coordenadas y setearlas..
+				EditText nombre=(EditText)findViewById(R.id.textNomLugar);
+				lugarBd.setNombre(nombre.getText().toString());
+				EditText cat=(EditText)findViewById(R.id.textTipoLugar);
+				lugarBd.setCategoria(cat.getText().toString());
+				EditText tel=(EditText)findViewById(R.id.textTelLugar);
+				String telefono = tel.getText().toString();
+			    final int telInt = Integer.parseInt(telefono);
+				lugarBd.setTel(telInt);
+				
+				
+				try
+			    {
+					lugarBd.createLugar(lugarBd);
+					fillData();
+					 	
+				 }
+				 catch(Throwable t)
+				 {
+				            Log.e("ERROOOOOOOR", "Mensaje de error", t);
+				 }
+			}
+		});
+		
+		
+		View cancelarButton = window.findViewById(R.id.cancelarButtom);
+		cancelarButton.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				finish();
+			}
+		});
+		
+	}	
+	
+	private void fillData(){
+		          Cursor remindersCursor=lugarBd.ferchAllReminders();
+		          startManagingCursor(remindersCursor);
+		          
+		          int columnas=remindersCursor.getColumnIndex(Lugar.KEY_LAT);
+		          EditText cat=(EditText)findViewById(R.id.textNomLugar);
+		          cat.setText(remindersCursor.getColumnName(columnas), EDITABLE);
+		    } 
+	
+}

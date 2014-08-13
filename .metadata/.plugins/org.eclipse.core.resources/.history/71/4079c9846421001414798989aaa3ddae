@@ -1,0 +1,33 @@
+package com.tesis.ags_r4;
+
+public class AgsIntents {
+
+	public static Class<AbmActivity> getAbmActivity(){
+		return AbmActivity.class;
+	}
+	
+	public static Class<FavoritosActivity> getFavoritosActivity(){
+		return FavoritosActivity.class;
+	}
+	
+	public static Class<InfActivity> getInfActivity(){
+		return InfActivity.class;
+	}
+	
+	public static Class<CargarActivity> getCargarActivity(){
+		return CargarActivity.class;
+	}
+	
+	public static Class<ELiminarActivity> getEliminarActivity(){
+		return ELiminarActivity.class;
+	}
+	
+	public static Class<EditarActivity> getEditarActivity(){
+		return EditarActivity.class;
+	}
+	
+	public static Class<SelectCatActivity> getSelecCatActivity(){
+		return SelectCatActivity.class;
+	}
+	
+}

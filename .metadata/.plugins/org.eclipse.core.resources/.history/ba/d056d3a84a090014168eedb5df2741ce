@@ -1,0 +1,34 @@
+package com.ags_r4;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+
+
+public class LugaresDbHelper {
+	private static final int DATABASE_VERSION = 2;
+	//private static final org.apache.commons.logging.Log log = PlatformUtil.getLog(LugaresDbHelper.class);
+	public static final String LUGAR_DB_NAME = "lugares"; //$NON-NLS-1$
+	private static final String LUGAR_TABLE_NAME = "lugares"; //$NON-NLS-1$
+	private static final String LUGAR_COL_NAME = "nombre"; //$NON-NLS-1$
+	private static final String LUGAR_COL_CATEGORY = "categoria"; //$NON-NLS-1$
+	private static final String LUGAR_COL_TEL = "telefono"; //$NON-NLS-1$
+	private static final String LUGAR_COL_LAT = "latitud"; //$NON-NLS-1$
+	private static final String LUGAR_COL_LON = "longitud"; //$NON-NLS-1$
+	private static final String LUGAR_TABLE_CREATE = "CREATE TABLE " + LUGAR_TABLE_NAME + " (" + //$NON-NLS-1$ //$NON-NLS-2$
+			LUGAR_COL_NAME + " TEXT, " + LUGAR_COL_CATEGORY + " TEXT, " + //$NON-NLS-1$ //$NON-NLS-2$  
+			LUGAR_COL_TEL +"double" + LUGAR_COL_LAT + " double, " + LUGAR_COL_LON + " double);"; //$NON-NLS-1$ //$NON-NLS-2$
+	
+	public static final String FILE_TO_SAVE = "lugares.gpx"; //$NON-NLS-1$
+	public static final String FILE_TO_BACKUP = "lugares_bak.gpx"; //$NON-NLS-1$
+	
+	// externalize ?
+		private static final String GPX_GROUP = "Gpx";
+		
+		private List<Lugares> favoritePointsFromGPXFile = null;
+		private List<Lugares> cachedFavoritePoints = new ArrayList<Lugares>();
+		private Map<String, List<Lugares>> favoriteGroups = null;
+		private final ClientContext context;
+		private SQLiteConnection conn;
+}

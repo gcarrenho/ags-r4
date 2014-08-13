@@ -1,0 +1,114 @@
+package com.tesis.ags_r4;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+
+import com.tesis.ags_r4.R;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.Window;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ExpandableListView;
+import android.widget.Toast;
+import android.view.View;
+
+public class SelectCatActivity extends Activity{
+
+	//private LugaresDbHelper lugarDb=new LugaresDbHelper(this,"lugares",null,1);
+	private Map<String, List<String>> collLugares;
+	List<String> listCat;
+    List<String> listLugares;
+    Map<String, List<String>> laptopCollection;
+	private ExpandableListAdapter listAdapter;
+	private ExpandableListView expListView;
+	private Lugar lugarBd;
+
+	public static final String APP_EXIT_KEY = "APP_EXIT_KEY";
+	//private HashMap<String, List<Lugar>> listCatChild;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		boolean exit = false;
+		Intent intent = getIntent();
+		if(intent != null){
+			
+			if(intent.getExtras() != null && intent.getExtras().containsKey(APP_EXIT_KEY)){
+				exit = true;
+			}
+		}
+		Window window = getWindow();
+
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
+		lugarBd= new Lugar(this);
+		lugarBd.open();
+		List<Lugar> l=lugarBd.getAllLugares();
+		
+		/*while (!l.isEmpty()){
+			parentItems.add(l.get(0).getCategoria());
+			l.remove(0);
+		}*/
+		
+		setContentView(R.layout.list_cat);
+		createGroupList();
+		createCollection();
+		// get the listview
+		expListView = (ExpandableListView) findViewById(R.id.expandableListViewCat);
+		
+		expListView.setDividerHeight(2);
+		expListView.setGroupIndicator(null);
+		expListView.setClickable(true);
+
+		//preparing list data
+		//cargarListView();
+		cargarParents();
+		cargarChild();
+		//listAdapter = new ExpandableListAdapter(parentItems,childItems);
+		// setting list adapter
+		expListView.setAdapter(listAdapter);//aca esta fallando.
+		String boton=intent.getStringExtra("boton");
+		if(boton.equalsIgnoreCase("eliminar")){//apreto boton eliminar
+			//eliminar el lugar de la base de datos..
+		}else{//apreto boton editar
+			//abrir el evento para editar el lugar
+		}
+		//agregar los eventos de cuando escuchamos el click en el padre y en los ninos..
+		//CUANDO CLIK YO TENGO QUE LLAMAR A OTR VENTA, USE LOS DATOS DE ESTE ITEM Y LOS CARGUE PARA PERMITIR 
+		//EDITAROLO.
+		/*expListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+ 
+            @Override
+            public boolean onChildClick(ExpandableListView parent, View v,
+                    int groupPosition, int childPosition, long id) {
+                Toast.makeText(
+                        getApplicationContext(),
+                        listCat.get(groupPosition)
+                                + " : "
+                                + lugaresGroups.get(
+                                        listCat.get(groupPosition)).get(
+                                        childPosition), Toast.LENGTH_SHORT)
+                        .show();
+                return false;
+            }
+        });*/
+
+	}
+	
+	  private void createGroupList() {
+		  listCat = new ArrayList<String>();
+		  listCat.add("HP");
+		  listCat.add("Dell");
+		  listCat.add("Lenovo");
+		  listCat.add("Sony");
+		  listCat.add("HCL");
+		  listCat.add("Samsung");
+	    }
+
+
+}

@@ -1,0 +1,20 @@
+package com.ags_r4;
+
+
+
+import android.app.Activity;
+import android.os.Bundle;
+
+public class Opciones extends Activity{
+	
+	//private SintetizadorDeVoz sint=new SintetizadorDeVoz();
+	
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.opciones);
+		//sint.dictarMenu();
+	}
+	
+
+}

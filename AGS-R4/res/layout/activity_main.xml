@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<net.AccessibleLayout xmlns:android="http://schemas.android.com/apk/res/android"
+class="net.AccessibleLayout"
+android:layout_width="fill_parent" android:layout_height="fill_parent" android:background="@drawable/background">
+        <LinearLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:orientation="vertical">
+                <LinearLayout android:layout_height="wrap_content" android:layout_width="fill_parent" android:gravity="center_horizontal">
+                        <LinearLayout android:layout_height="wrap_content" android:layout_width="fill_parent" android:background="@drawable/status_bar"
+                        android:orientation="horizontal"  android:id="@+id/Headliner" android:layout_marginLeft="8dp" android:layout_marginRight="8dp">
+
+                                <TextView
+                                    android:id="@+id/AppName"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="110dp"
+                                    android:layout_marginTop="5dp"
+                                    android:text="@string/app_name"
+                                    android:textColor="#000000"
+                                    android:textSize="20sp"
+                                    android:typeface="serif" />
+
+                        
+                
+                        </LinearLayout>
+                </LinearLayout>
+                <TableLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+                        <TableRow android:layout_height = "wrap_content" android:layout_marginTop="15dp">
+                                <LinearLayout android:id="@+id/guiaButton" android:background="@drawable/bg_leftr" android:orientation="vertical" android:clickable="true"
+                                android:layout_weight="3" android:layout_height="175dp" android:focusable="true">
+
+                                    <ImageView
+                                        android:src="@drawable/guia_t" android:scaleType="center" android:layout_gravity="center"
+                                        android:layout_weight="1" android:layout_width="wrap_content" android:layout_height="0dp"/>
+
+                                        <LinearLayout  android:layout_height="wrap_content" android:layout_width="fill_parent" android:gravity="center">
+                                                <TextView android:layout_height="wrap_content" android:layout_width="wrap_content"
+                                                android:layout_gravity="center_horizontal|top" android:textSize="18sp"
+                                                android:text="@string/guiar_Button" android:typeface="serif" android:textColor="#000000"/>
+                                        </LinearLayout>
+                                </LinearLayout>
+                                <LinearLayout android:layout_weight="2" android:layout_height="fill_parent"/>
+
+                                <LinearLayout
+                                    android:id="@+id/abmButton"
+                                    android:layout_height="175dp"
+                                    android:layout_weight="3"
+                                    android:background="@drawable/bg_rightr"
+                                    android:clickable="true"
+                                    android:focusable="true"
+                                    android:orientation="vertical" >
+
+                                        <ImageView
+                                        android:src="@drawable/lugar1" android:scaleType="center" android:layout_gravity="center"
+                                        android:layout_weight="1" android:layout_width="wrap_content" android:layout_height="0dp"/>
+                                        <LinearLayout  android:layout_height="wrap_content" android:layout_width="fill_parent" android:gravity="center">
+                                                <TextView android:layout_height="wrap_content" android:layout_width="wrap_content"
+                                                android:layout_gravity="center_horizontal|top" android:textSize="18sp"          
+                                                android:text="@string/abm_button" android:typeface="serif" android:textColor="#000000"/>
+                                        </LinearLayout>
+                                </LinearLayout>
+                        </TableRow>
+                        <TableRow android:layout_height = "wrap_content" android:layout_marginTop="15dp">
+
+                                <LinearLayout
+                                    android:id="@+id/favoritosButton"
+                                    android:layout_height="175dp"
+                                    android:layout_weight="3"
+                                    android:background="@drawable/bg_leftr"
+                                    android:clickable="true"
+                                    android:focusable="true"
+                                    android:orientation="vertical" >
+
+                                        <ImageView
+                                        android:src="@drawable/favorite" android:scaleType="center" android:layout_gravity="center"
+                                        android:layout_weight="1" android:layout_width="wrap_content" android:layout_height="0dp"/>
+                                        <LinearLayout  android:layout_height="wrap_content" android:layout_width="fill_parent" android:gravity="center">
+                                                <TextView android:layout_height="wrap_content" android:layout_width="wrap_content"
+                                                android:layout_gravity="center_horizontal|top" android:textSize="18sp"
+                                                android:text="@string/favoritos_Button" android:typeface="serif" android:textColor="#000000"/>
+                                        </LinearLayout>
+                                </LinearLayout>
+                                <LinearLayout android:layout_weight="2" android:layout_height="fill_parent"/>
+
+                                <LinearLayout
+                                    android:id="@+id/informButton"
+                                    android:layout_height="175dp"
+                                    android:layout_weight="3"
+                                    android:background="@drawable/bg_rightr"
+                                    android:clickable="true"
+                                    android:focusable="true"
+                                    android:orientation="vertical" >
+
+                                        <ImageView
+                                        android:src="@drawable/information" android:scaleType="center" android:layout_gravity="center"
+                                        android:layout_weight="1" android:layout_width="wrap_content" android:layout_height="0dp"/>
+                                        <LinearLayout  android:layout_height="wrap_content" android:layout_width="fill_parent" android:gravity="center">
+                                                <TextView android:layout_height="wrap_content" android:layout_width="wrap_content"
+                                                android:layout_gravity="center_horizontal|top" android:textSize="18sp"
+                                                android:text="@string/information_Button" android:typeface="serif" android:textColor="#000000"/>
+                                        </LinearLayout>
+                                </LinearLayout>
+                        </TableRow>
+                </TableLayout>
+        </LinearLayout>  
+</net.AccessibleLayout>
+

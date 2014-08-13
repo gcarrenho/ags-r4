@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;appcompat_v7_2/res/drawable-hdpi/guiarTransp.png&apos; to &apos;guiar_transp.png&apos;" description="Rename resource &apos;guiarTransp.png&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="res/drawable-hdpi/guiarTransp.png" name="guiar_transp.png" stamp="1404527853391" updateReferences="true"/>
+</session>

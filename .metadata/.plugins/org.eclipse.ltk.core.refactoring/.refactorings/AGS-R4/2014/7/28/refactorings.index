@@ -1,0 +1,15 @@
+1404766184038	Delete element
+1404774123705	Rename field 'SearchButton'
+1404774157052	Rename field 'FavoritesButton'
+1404774177973	Rename field 'SettingsButton'
+1404774240523	Rename field 'button_lugar'
+1404774254273	Rename field 'lugarButton'
+1404774269855	Rename field 'button_lineas'
+1404774342548	Rename field 'editText1'
+1404774362627	Rename field 'editText2'
+1404774378337	Rename field 'editText3'
+1404774392529	Rename field 'button1'
+1404774406792	Rename field 'button2'
+1405114135429	Delete element
+1405117442027	Encapsulate field 'tel'
+1405135888415	Rename compilation unit 'Lugares.java'
