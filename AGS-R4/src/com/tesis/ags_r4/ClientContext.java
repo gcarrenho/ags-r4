@@ -2,6 +2,8 @@ package com.tesis.ags_r4;
 
 import java.io.File;
 
+import com.tesis.ags_r4.bd.SQLiteAPI;
+
 public interface ClientContext {
 	
 	public String getString(int resId, Object... args);

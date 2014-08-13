@@ -42,4 +42,6 @@
 <fullyQualifiedTypeName name="android.graphics.Typeface"/>
 <fullyQualifiedTypeName name="java.util.LinkedHashMap"/>
 <fullyQualifiedTypeName name="android.widget.ExpandableListView.OnChildClickListener"/>
+<fullyQualifiedTypeName name="android.widget.ExpandableListView.OnGroupClickListener"/>
+<fullyQualifiedTypeName name="com.tesis.ags_r4.R.string"/>
 </qualifiedTypeNameHistroy>
