@@ -7,6 +7,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.tesis.ags_r4.AgsIntents;
 import com.tesis.ags_r4.ExpandableListAdapter;
 import com.tesis.ags_r4.Lugar;
 import com.tesis.ags_r4.R;
@@ -16,6 +17,7 @@ import com.tesis.ags_r4.R.layout;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -34,6 +36,9 @@ public class SelectCatActivity extends Activity{
 	private ExpandableListAdapter listAdapter;
 	private ExpandableListView expListView;
 	private Lugar lugarBd;
+	private List<Lugar> l;
+	private static final int ELIMINAR_REQUEST_CODE = 0;
+	private static final int EDITAR_REQUEST_CODE = 1;
 
 	public static final String APP_EXIT_KEY = "APP_EXIT_KEY";
 	//private HashMap<String, List<Lugar>> listCatChild;
@@ -50,21 +55,17 @@ public class SelectCatActivity extends Activity{
 			}
 		}
 		Window window = getWindow();
-
+		final Activity activity = this;
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		
 		lugarBd= new Lugar(this);
 		lugarBd.open();
-		List<Lugar> l=lugarBd.getAllLugares();
-		
-		/*while (!l.isEmpty()){
-			parentItems.add(l.get(0).getCategoria());
-			l.remove(0);
-		}*/
+		l=lugarBd.getAllLugares();
 		
 		setContentView(R.layout.list_cat);
-		createGroupList();
-		createCollection();
+		createListCat();
+		createCollecctionLugares();
+		//
 		// get the listview
 		expListView = (ExpandableListView) findViewById(R.id.expandableListViewCat);
 		
@@ -108,14 +109,21 @@ public class SelectCatActivity extends Activity{
 			    	  
 			    	 int itemType = ExpandableListView.getPackedPositionType(id);
 
+			    	 //El item presionado pertenece a un hijo
 			          if ( itemType == ExpandableListView.PACKED_POSITION_TYPE_CHILD) {
 			              int childPosition = ExpandableListView.getPackedPositionChild(id);
 			              int groupPosition = ExpandableListView.getPackedPositionGroup(id);
-			              // expListView.expandGroup(groupPosition);
-			              //do your per-item callback here
+			              //Eliminar de la base de datos dicho lugar
+			              String nombre=(String) expListAdapter.getChild(groupPosition, childPosition);
+			              
+			              lugarBd.deleteLugar(nombre);
+			              Toast.makeText(getBaseContext(),"Lugar "+nombre+" Eliminado Correctamente", Toast.LENGTH_LONG)
+	                        .show();
+			              actualizarLista();
+			              lugarBd.close();//Faltaria Actualizar la lista de lugares.
 			              return true; //true if we consumed the click, false if not
 
-			          } else if(itemType == ExpandableListView.PACKED_POSITION_TYPE_GROUP) {
+			          } else if(itemType == ExpandableListView.PACKED_POSITION_TYPE_GROUP) {//sino pertenece al padre
 			              int groupPosition = ExpandableListView.getPackedPositionGroup(id);
 			              expListView.expandGroup(groupPosition);
 			              //do your per-group callback here
@@ -163,8 +171,22 @@ public class SelectCatActivity extends Activity{
 			          if ( itemType == ExpandableListView.PACKED_POSITION_TYPE_CHILD) {
 			              int childPosition = ExpandableListView.getPackedPositionChild(id);
 			              int groupPosition = ExpandableListView.getPackedPositionGroup(id);
-			              // expListView.expandGroup(groupPosition);
-			              //do your per-item callback here
+			              //Abrir pantalla para editar dicho lugar..
+			              String nombre=(String) expListAdapter.getChild(groupPosition, childPosition);
+			              Lugar l=lugarBd.getLugar(nombre);
+			              //voy a tener q diferenciar que vas desde aca, sino cuando de a aceptar me va
+			              //a decir que con ese nombre ya existe.
+			              final Intent cl = new Intent(activity, AgsIntents.getCargarActivity());
+			              cl.putExtra("accion", "editar");
+			              cl.putExtra("nombre", l.getNombre());
+			              cl.putExtra("tipo", l.getCategoria());
+			              cl.putExtra("tel", l.getTel());
+			              cl.putExtra("lat", l.getLatitud());
+			              cl.putExtra("long", l.getLongitud());
+			              //Cargar con estos datos, y buscar luego en la base de dato y solo
+			              //modificar el valor deseado.
+			              activity.startActivityForResult(cl, EDITAR_REQUEST_CODE);
+	                
 			              return true; //true if we consumed the click, false if not
 
 			          } else if(itemType == ExpandableListView.PACKED_POSITION_TYPE_GROUP) {
@@ -206,53 +228,64 @@ public class SelectCatActivity extends Activity{
         });*/
 
 	}
-	
-	  private void createGroupList() {
-		  listCat = new ArrayList<String>();
-		  listCat.add("HP");
-		  listCat.add("Dell");
-		  listCat.add("Lenovo");
-		  listCat.add("Sony");
-		  listCat.add("HCL");
-		  listCat.add("Samsung");
-	    }
 
-	    private void createCollection() {
-	        // preparing laptops collection(child)
-	        String[] hpModels = { "HP Pavilion G6-2014TX", "ProBook HP 4540",
-	                "HP Envy 4-1025TX" };
-	        String[] hclModels = { "HCL S2101", "HCL L2102", "HCL V2002" };
-	        String[] lenovoModels = { "IdeaPad Z Series", "Essential G Series",
-	                "ThinkPad X Series", "Ideapad Z Series" };
-	        String[] sonyModels = { "VAIO E Series", "VAIO Z Series",
-	                "VAIO S Series", "VAIO YB Series" };
-	        String[] dellModels = { "Inspiron", "Vostro", "XPS" };
-	        String[] samsungModels = { "NP Series", "Series 5", "SF Series" };
-	 
-	        collLugares = new LinkedHashMap<String, List<String>>();
-	 
-	        for (String cat : listCat) {
-	            if (cat.equals("HP")) {
-	                loadChild(hpModels);
-	            } else if (cat.equals("Dell"))
-	                loadChild(dellModels);
-	            else if (cat.equals("Sony"))
-	                loadChild(sonyModels);
-	            else if (cat.equals("HCL"))
-	                loadChild(hclModels);
-	            else if (cat.equals("Samsung"))
-	                loadChild(samsungModels);
-	            else
-	                loadChild(lenovoModels);
-	 
-	            collLugares.put(cat, listLugares);
-	        }
-	    }
-	    
-	    private void loadChild(String[] laptopModels) {
-	    	listLugares = new ArrayList<String>();
-	        for (String model : laptopModels)
-	        	listLugares.add(model);
-	    }
-
+	//Metodo que crea la lista de las categorias existentes.
+	  private void createListCat(){
+		  listCat= new ArrayList<String>();
+		  int i=0;
+		  while (i<l.size()){
+			  if(!listCat.contains(l.get(i).getCategoria())){
+				  listCat.add(l.get(i).getCategoria());
+			  }
+			i++;
+		  }
+	  }
+	  
+	  //Metodo que hace un mapeo entre las categorias y los lugares que estan el esa misma categoria.
+	  private void createCollecctionLugares(){
+		  List<String> nomLugar;
+		  collLugares = new LinkedHashMap<String, List<String>>();
+		  int i=0,j;
+		  while (i<listCat.size()){
+			  j=0;
+			  nomLugar=new ArrayList<String>();
+				  while (j<l.size()){
+					  if (listCat.get(i).equals(l.get(j).getCategoria())){
+						nomLugar.add(l.get(j).getNombre());
+						
+					  }
+					  j++;
+				  }
+				  collLugares.put(listCat.get(i),nomLugar);
+			i++;
+		  }
+	  }
+	  
+	//  if(requestCode == VOICE_RECOGNITION_REQUEST_CODE && resultCode == RESULT_OK){
+	  @Override
+	  protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+	      super.onActivityResult(requestCode, resultCode, data);
+	      // Comprobamos si el resultado de la segunda actividad es "RESULT_CANCELED".
+	      if (resultCode == RESULT_CANCELED) {
+	          // Si es así mostramos mensaje de cancelado por pantalla.
+	          Toast.makeText(this, "Accion Cancelada", Toast.LENGTH_SHORT)
+	                  .show();
+	      } else {
+	          // De lo contrario, recogemos el resultado de la segunda actividad.
+	          //String resultado = data.getExtras().getString("RESULTADO");
+	          // Y tratamos el resultado en función de si se lanzó para rellenar el
+	          // nombre o el apellido.
+	    	   	lugarBd.open();
+	   			this.actualizarLista();
+	           lugarBd.close();
+	      }
+	  }
+	  
+	  public void actualizarLista(){
+		  l=lugarBd.getAllLugares();
+ 			createListCat();
+ 			createCollecctionLugares();
+  	   final ExpandableListAdapter expListAdapter = new ExpandableListAdapter(this, listCat, collLugares);
+         expListView.setAdapter(expListAdapter);
+	  }
 }

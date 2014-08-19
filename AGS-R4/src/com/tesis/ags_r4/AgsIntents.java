@@ -8,6 +8,7 @@ import com.tesis.ags_r4.activity.FavoritosActivity;
 import com.tesis.ags_r4.activity.InfActivity;
 import com.tesis.ags_r4.activity.SelectCatActivity;
 
+
 public class AgsIntents {
 
 	public static Class<AbmActivity> getAbmActivity(){

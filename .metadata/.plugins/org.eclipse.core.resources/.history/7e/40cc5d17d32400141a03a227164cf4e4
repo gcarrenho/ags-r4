@@ -1,0 +1,297 @@
+package com.tesis.ags_r4.activity;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+
+import com.tesis.ags_r4.Lugar;
+import com.tesis.ags_r4.R;
+import com.tesis.ags_r4.R.id;
+import com.tesis.ags_r4.R.layout;
+import com.tesis.ags_r4.R.string;
+
+import android.app.ActionBar.LayoutParams;
+import android.app.Activity;
+import android.content.ContentValues;
+import android.content.Context;
+import android.content.Intent;
+import android.database.Cursor;
+import android.database.SQLException;
+import android.database.sqlite.SQLiteDatabase;
+import android.os.Bundle;
+import android.preference.Preference;
+import android.speech.RecognizerIntent;
+import android.speech.tts.TextToSpeech;
+import android.speech.tts.TextToSpeech.OnInitListener;
+import android.util.Log;
+import android.view.View;
+import android.view.Window;
+import android.view.View.OnClickListener;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import android.widget.Toast;
+import android.widget.TextView.BufferType;
+
+public class CargarActivity extends Activity implements OnInitListener{
+
+	public static final String APP_EXIT_KEY = "APP_EXIT_KEY";
+	private static final BufferType EDITABLE = null;
+	private Lugar lugarBd;
+	private TextToSpeech tts;
+	private static final int VOICE_RECOGNITION_REQUEST_CODE = 1;
+	private Preference about;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		boolean exit = false;
+		if(getIntent() != null){
+			Intent intent = getIntent();
+			if(intent.getExtras() != null && intent.getExtras().containsKey(APP_EXIT_KEY)){
+				exit = true;
+			}
+		}
+		lugarBd= new Lugar(this);
+		lugarBd.open();
+		tts = new TextToSpeech(this, this);
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
+		setContentView(R.layout.cargar_lugar);
+		Window window = getWindow();
+		//requestWindowFeature(Window.FEATURE_NO_TITLE);
+		final List<Lugar> listaLugares=lugarBd.getAllLugares();
+		window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+		//Eventos sobre los campos de texto.
+		//----------------------------------
+		//Evento sobre campo de texto nombre del lugar
+		final View lugarTexNom = window.findViewById(R.id.textNomLugar);
+		//Se sobreescribe el evento de cuando se cambia el foco para que
+		//no figure el teclado virtual en pantalla
+		lugarTexNom.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+			@Override
+			public void onFocusChange(View v, boolean hasFocus) {
+				lugarTexNom.post(new Runnable() {
+					@Override
+					public void run() {
+						InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+						imm.hideSoftInputFromWindow(lugarTexNom.getWindowToken(), 0);
+					}
+				});
+			}
+		});
+		
+		//Evento que escucha el click sobre el campo
+		lugarTexNom.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {				
+				Toast.makeText(getBaseContext(), R.string.nombre_lugar, Toast.LENGTH_LONG)
+				.show();
+
+				InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+				imm.hideSoftInputFromWindow(lugarTexNom.getWindowToken(), 0);
+			}
+		});
+		
+		
+		//Evento que escucha un click prolongado sobre el campo de texto
+		lugarTexNom.setOnLongClickListener(new View.OnLongClickListener(){
+			public boolean onLongClick(View v) {
+				//Abrir el reconocedor de vos
+				startVoiceRecognitionActivity(lugarTexNom.toString());			   
+				return true;
+			}
+
+		});
+
+		//Evento sobre el campo de texto Tipo de Lugar
+		final View tipoLugarText = window.findViewById(R.id.textTipoLugar);
+
+		//Se sobreescribe el evento de cuando se cambia el foco para que
+		//no figure el teclado virtual en pantalla
+		tipoLugarText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+			@Override
+			public void onFocusChange(View v, boolean hasFocus) {
+				tipoLugarText.post(new Runnable() {
+					@Override
+					public void run() {
+						InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+						imm.hideSoftInputFromWindow(tipoLugarText.getWindowToken(), 0);
+					}
+				});
+			}
+		});
+		
+		//Evento que escucha el click sobre el campo
+		tipoLugarText.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {				
+				Toast.makeText(getBaseContext(), R.string.cat_lugar, Toast.LENGTH_LONG)
+				.show();
+				InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+				imm.hideSoftInputFromWindow(tipoLugarText.getWindowToken(), 0);
+			}
+		});
+		
+		//Evento que escucha un click prolongado sobre el campo de texto
+		tipoLugarText.setOnLongClickListener(new View.OnLongClickListener(){
+			public boolean onLongClick(View v) {
+				//Abrir el reconocedor de vos
+				//startVoiceRecognitionActivity();
+				return true;
+			}
+
+		});
+
+		//Evento sobre el campo de texto Telefono del lugar
+		final View telLugarText = window.findViewById(R.id.textTelLugar);
+
+		//Se sobreescribe el evento de cuando se cambia el foco para que
+		//no figure el teclado virtual en pantalla
+		telLugarText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+			@Override
+			public void onFocusChange(View v, boolean hasFocus) {
+				telLugarText.post(new Runnable() {
+					@Override
+					public void run() {
+						InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+						imm.hideSoftInputFromWindow(telLugarText.getWindowToken(), 0);
+					}
+				});
+			}
+		});
+
+		//Evento que escucha el click sobre el campo
+		telLugarText.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {				
+				Toast.makeText(getBaseContext(), R.string.tel_lugar, Toast.LENGTH_LONG)
+				.show();
+				InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+				imm.hideSoftInputFromWindow(telLugarText.getWindowToken(), 0);
+			}
+		});
+		
+		//Evento que escucha un click prolongado sobre el campo de texto
+		telLugarText.setOnLongClickListener(new View.OnLongClickListener(){
+			public boolean onLongClick(View v) {
+				//Abrir el reconocedor de vos
+				//startVoiceRecognitionActivity();
+				return true;
+			}
+
+		});
+
+
+		//Aceptar dar de alta en la base de datos
+		//cancelar, salir volver ?atras?
+		View aceptarButton = window.findViewById(R.id.aceptarButtom);
+		
+		//Evento que escucha el click sobre el boton aceptar
+		aceptarButton.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {				
+				Toast.makeText(getBaseContext(), R.string.aceptar, Toast.LENGTH_LONG)
+				.show();
+			}
+		});
+		
+		//Evento que escucha un click prolongado sobre el boto aceptar
+		aceptarButton.setOnLongClickListener(new View.OnLongClickListener(){
+			public boolean onLongClick(View v) {
+				//Falta obtener las coordenadas y setearlas..
+				EditText nombre=(EditText)findViewById(R.id.textNomLugar);
+				lugarBd.setNombre(nombre.getText().toString());
+				EditText cat=(EditText)findViewById(R.id.textTipoLugar);
+				lugarBd.setCategoria(cat.getText().toString());
+				EditText tel=(EditText)findViewById(R.id.textTelLugar);
+				String telefono = tel.getText().toString();
+				final int telInt = Integer.parseInt(telefono);
+				lugarBd.setTel(telInt);
+
+				if(lugarBd.ExisteLugar(nombre.getText().toString())){//true si tiene algo
+					//lanzar un cartel diciendo que ya existe cargado un lugar con dicho nombre poner otro
+					//identificador , y poner  el foco en el campo nombre
+				}else{
+					try
+					{
+						lugarBd.createLugar(lugarBd);
+						lugarBd.close();
+						finish();
+					}
+					catch(Throwable t)
+					{
+						Log.e("ERROOOOOOOR", "Mensaje de error", t);
+					}
+
+				}
+				return true;
+			}
+
+		});
+
+		View cancelarButton = window.findViewById(R.id.cancelarButtom);
+		
+		//Evento que escucha el click sobre el boton cancelar
+		cancelarButton.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Toast.makeText(getBaseContext(), R.string.cancelar, Toast.LENGTH_LONG)
+				.show();
+			}
+		});
+		
+		//Evento que escucha un click prolongado sobre el boton cancelar
+		cancelarButton.setOnLongClickListener(new View.OnLongClickListener(){
+			public boolean onLongClick(View v) {
+				// Perform action on click
+				lugarBd.close();
+				finish();
+				return true;
+			}
+
+		});
+		lugarBd.close();
+	}	
+	
+	
+	@Override
+	public void onInit(int code) {
+		if (code==TextToSpeech.SUCCESS) {
+			tts.setLanguage(Locale.getDefault());
+		} else {
+			tts = null;
+			Toast.makeText(this, "Failed to initialize TTS engine.",
+
+					Toast.LENGTH_SHORT).show();
+
+		}
+		
+	}
+	
+	 private void startVoiceRecognitionActivity(String  campo) {
+		  // Definición del intent para realizar en análisis del mensaje
+		  Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+		  // Indicamos el modelo de lenguaje para el intent
+		  intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+		  // Definimos el mensaje que aparecerá 
+		  intent.putExtra("campo", campo);
+		 // intent.putExtra(RecognizerIntent.EXTRA_PROMPT,"Diga, Llamar a ...");
+		  // Lanzamos la actividad esperando resultados
+		  startActivityForResult(intent, VOICE_RECOGNITION_REQUEST_CODE);
+		 }
+	 
+	 //Recogemos los resultados del reconocimiento de voz
+		@Override
+		protected void onActivityResult(int requestCode, int resultCode, Intent data){	
+			Intent intent = getIntent();
+			if(requestCode == VOICE_RECOGNITION_REQUEST_CODE && resultCode == RESULT_OK){
+				  //El intent nos envia un ArrayList aunque en este caso solo 
+				   //utilizaremos la pos.0
+					//if (data.getStringExtra("campo").equalsIgnoreCase("nombre_lugar")){
+				    ArrayList<String> matches = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+				    EditText nombre=(EditText)findViewById(R.id.textNomLugar);
+				    nombre.setText(matches.get(0));	   
+			}
+		}
+
+}
