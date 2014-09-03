@@ -1,14 +1,27 @@
 package com.tesis.ags_r4.activity;
 
+import java.io.IOException;
+import java.util.List;
+import java.util.Locale;
+
 import com.tesis.ags_r4.AgsIntents;
 import com.tesis.ags_r4.R;
 import com.tesis.ags_r4.R.id;
 import com.tesis.ags_r4.R.layout;
 import com.tesis.ags_r4.R.string;
+import com.tesis.ags_r4.location.MyLocationListener;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.location.Address;
+import android.location.Criteria;
+import android.location.Geocoder;
+import android.location.GpsSatellite;
+import android.location.Location;
+import android.location.LocationListener;
 import android.location.LocationManager;
+import android.location.LocationProvider;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -20,7 +33,8 @@ public class MainMenuActivity extends Activity {
 
 	public static final int APP_EXIT_CODE = 4;
 	public static final String APP_EXIT_KEY = "APP_EXIT_KEY";
-	
+	private int satellitesInFix=0;
+	private int satellites=0;
 	/*@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
@@ -95,16 +109,36 @@ public class MainMenuActivity extends Activity {
 			}
 		}
 		//Aca vamos a tener que activar gps y encontrar satelites...
+		//Tirar un cartel diciendo espere hasta que se localice su ubicacion.
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_main);
-		LocationManager locManager = (LocationManager)getSystemService(LOCATION_SERVICE);
+		
+		LocationManager locManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+		locManager.getGpsStatus(null).getTimeToFirstFix();
+		 
+		MyLocationListener locListener = new MyLocationListener();
+		//locListener.setMainActivity(this); 
+		locManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0,(LocationListener) locListener);
+		/*for (GpsSatellite sat : locManager.getGpsStatus(null).getSatellites()) {
+		        if(sat.usedInFix()) {
+		            satellitesInFix++;              
+		        }
+		        satellites++;
+		    }*/
+		
+	//localizacion solo si psaron cinco segundo de la localizacion o se a movido mas de 10 metros de la ultima localizacion.
 		// Comprobamos si está disponible el proveedor GPS.
+		//Lo unico que necesito en este activity es que el gps este activado y se conecte con los satelites.
 		if (!locManager.isProviderEnabled(LocationManager.GPS_PROVIDER))
 		{
-			Toast.makeText(getBaseContext(), "GPS APAGADO", Toast.LENGTH_LONG)
+			Toast.makeText(getBaseContext(), "GPS DESACTIVADO", Toast.LENGTH_LONG)
             .show(); 
-		//mostrarAvisoGpsDeshabilitado();
+			Intent settingsIntent = new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+			settingsIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
+			this.startActivityForResult(settingsIntent, 0);
+		//mostrarAvisoGpsDeshabilitado(); Abrir ventana para que active gps
 		}
+
 		onCreateMainMenu(getWindow(), this);
 
 		Window window = getWindow();
@@ -129,8 +163,15 @@ public class MainMenuActivity extends Activity {
 		
 		guiarButton.setOnLongClickListener(new View.OnLongClickListener(){
 			public boolean onLongClick(View v) {
-	            //Abrir seleccionar entre Caminar o Bus
-	            return true;
+				//Ventana para seleccionar el lugar
+				//una vez seleccionado, calcular la distancia desde mi ubicacion.
+				// si la distancia no supera tantos metros(determinar cuantos) guiar caminando
+				//sino identificar que garita de colectivo frena cerca yendo desde mi ubicacion. 
+				//final Intent guiar = new Intent(activity, AgsIntents.getSelecCatActivity());
+				final Intent guiar = new Intent(activity, AgsIntents.getGuiarMapa());
+				guiar.putExtra("boton", "guiar");
+				activity.startActivity(guiar);
+				return true;
 	         }
 			
 		});
@@ -204,6 +245,7 @@ public class MainMenuActivity extends Activity {
 	         }
 			
 		});
+		
 		/*
 		if(exit){
 			getMyApplication().closeApplication(activity);
@@ -257,7 +299,24 @@ public class MainMenuActivity extends Activity {
 		checkPreviousRunsForExceptions(firstTime);*/
 	}
 
+	
+	public void setLocation(Location loc) {
+		//Obtener la direccin de la calle a partir de la latitud y la longitud 
+		if (loc.getLatitude() != 0.0 && loc.getLongitude() != 0.0) {
+			try {
+				Geocoder geocoder = new Geocoder(this, Locale.getDefault());
+				List<Address> list = geocoder.getFromLocation(loc.getLatitude(), loc.getLongitude(), 1);
+				if (!list.isEmpty()) {
+					Address address = list.get(0);
+				/*	messageTextView2.setText("Mi direccin es: \n"
+							+ address.getAddressLine(0));*/
+					Toast.makeText(getBaseContext(), "Mi Direccion es: "+address.getAddressLine(0), Toast.LENGTH_LONG)
+					.show();
+				}
 
-	
-	
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}	
 }

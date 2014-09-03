@@ -1,5 +1,6 @@
 package com.tesis.ags_r4.activity;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -9,6 +10,7 @@ import com.tesis.ags_r4.R;
 import com.tesis.ags_r4.R.id;
 import com.tesis.ags_r4.R.layout;
 import com.tesis.ags_r4.R.string;
+import com.tesis.ags_r4.location.MyLocationListener;
 
 import android.annotation.SuppressLint;
 import android.app.ActionBar.LayoutParams;
@@ -23,6 +25,12 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.location.Criteria;
+import android.location.Geocoder;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
+import android.location.LocationProvider;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.speech.RecognizerIntent;
@@ -37,6 +45,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.Toast;
 import android.widget.TextView.BufferType;
+import android.location.Address;
 
 
 @SuppressLint("NewApi")
@@ -60,6 +69,29 @@ public class CargarActivity extends Activity implements OnInitListener{
 				exit = true;
 			}
 		}
+		LocationManager locManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+		MyLocationListener locListener = new MyLocationListener();
+		locListener.setCargarActivity(this);
+		locManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0,(LocationListener) locListener);
+	    
+		
+		/*LocationManager locManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+		MyLocationListener locListener = new MyLocationListener();
+		locListener.setMainActivity(this);
+		locManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0,(LocationListener) locListener);
+		
+		Criteria criterio = new Criteria();
+	    criterio.setCostAllowed(false);
+	    criterio.setAltitudeRequired(false);
+	    criterio.setAccuracy(Criteria.ACCURACY_FINE);
+	    
+	    
+	    String proveedor = locManager.getBestProvider(criterio, true);*/
+	   // log.("Mejor proveedor: " + proveedor + "\n");
+	    //log("Comenzamos con la última localización conocida:");
+	   // Location localizacion = locManager.getLastKnownLocation(proveedor);
+	    //LocationProvider info = locManager.getProvider(proveedor);
+
 		lugarBd= new Lugar(this);
 		lugarBd.open();
 		tts = new TextToSpeech(this, this);
@@ -402,4 +434,28 @@ public class CargarActivity extends Activity implements OnInitListener{
 
 		});
 	}
+	
+	public void setLocation(Location loc) {
+		//Obtener la direccin de la calle a partir de la latitud y la longitud 
+		if (loc.getLatitude() != 0.0 && loc.getLongitude() != 0.0) {
+			try {
+				Geocoder geocoder = new Geocoder(this, Locale.getDefault());
+				List<Address> list = geocoder.getFromLocation(loc.getLatitude(), loc.getLongitude(), 1);
+				if (!list.isEmpty()) {
+					Address address = list.get(0);
+				/*	messageTextView2.setText("Mi direccin es: \n"
+							+ address.getAddressLine(0));*/
+					Toast.makeText(getBaseContext(), "Mi Direccion es: "+address.getAddressLine(0), Toast.LENGTH_LONG)
+					.show();
+				}
+
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	
+	
+
 }

@@ -1,13 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="com.ags_r4.R.drawable"/>
-<fullyQualifiedTypeName name="android.annotation.SuppressLint"/>
-<fullyQualifiedTypeName name="android.R.menu"/>
-<fullyQualifiedTypeName name="android.R"/>
-<fullyQualifiedTypeName name="android.R.layout"/>
-<fullyQualifiedTypeName name="android.os.Handler"/>
-<fullyQualifiedTypeName name="android.database.sqlite.SQLiteDatabase.CursorFactory"/>
-<fullyQualifiedTypeName name="java.io.File"/>
 <fullyQualifiedTypeName name="java.text.Collator"/>
 <fullyQualifiedTypeName name="android.database.sqlite.SQLiteCursor"/>
 <fullyQualifiedTypeName name="android.view.Window"/>
@@ -52,4 +44,20 @@
 <fullyQualifiedTypeName name="android.app.Dialog"/>
 <fullyQualifiedTypeName name="android.app.AlertDialog"/>
 <fullyQualifiedTypeName name="android.content.DialogInterface"/>
+<fullyQualifiedTypeName name="android.location.Criteria"/>
+<fullyQualifiedTypeName name="android.location.Location"/>
+<fullyQualifiedTypeName name="android.location.LocationProvider"/>
+<fullyQualifiedTypeName name="android.location.Geocoder"/>
+<fullyQualifiedTypeName name="java.io.IOException"/>
+<fullyQualifiedTypeName name="com.tesis.ags_r4.location.MyLocationListener"/>
+<fullyQualifiedTypeName name="com.tesis.ags_r4.activity.CargarActivity"/>
+<fullyQualifiedTypeName name="android.app.Service"/>
+<fullyQualifiedTypeName name="android.location.LocationListener"/>
+<fullyQualifiedTypeName name="android.location.LocationManager"/>
+<fullyQualifiedTypeName name="android.os.Binder"/>
+<fullyQualifiedTypeName name="android.os.PowerManager.WakeLock"/>
+<fullyQualifiedTypeName name="android.os.Handler"/>
+<fullyQualifiedTypeName name="android.app.PendingIntent"/>
+<fullyQualifiedTypeName name="android.content.BroadcastReceiver"/>
+<fullyQualifiedTypeName name="java.lang.reflect.Method"/>
 </qualifiedTypeNameHistroy>

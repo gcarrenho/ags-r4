@@ -1,0 +1,72 @@
+package com.tesis.ags_r4.location;
+
+import android.location.Location;
+import android.location.LocationListener;
+import android.os.Bundle;
+import android.widget.Toast;
+
+
+import com.tesis.ags_r4.activity.CargarActivity;
+import com.tesis.ags_r4.activity.MainMenuActivity;
+
+public class MyLocationListener implements LocationListener {
+	MainMenuActivity menuActivity;
+	CargarActivity cargarActivity;
+
+	public MainMenuActivity getmenuActivity() {
+		return menuActivity;
+	}
+	
+	public CargarActivity getCargarActivity() {
+		return cargarActivity;
+	}
+
+	public void setMainActivity(MainMenuActivity menuActivity) {
+		this.menuActivity = menuActivity;
+	}
+
+	public void setCargarActivity(CargarActivity cargarActivity) {
+		this.cargarActivity = cargarActivity;
+	}
+	
+	@Override
+	public void onLocationChanged(Location loc) {
+		// Este metodo se ejecuta cada vez que el GPS recibe nuevas coordenadas
+		// debido a la deteccin de un cambio de ubicacion
+		loc.getLatitude();
+		loc.getLongitude();
+		String Text = "Mi ubicacion actual es: " + "\n Lat = "
+				+ loc.getLatitude() + "\n Long = " + loc.getLongitude();
+		//messageTextView.setText(Text);
+		//Toast.makeText(getBaseContext(), "Ubicacion Actual "+Text, Toast.LENGTH_LONG).show();
+		this.menuActivity.setLocation(loc);
+		//this.cargarActivity.setLocation(loc);
+	}
+
+	@Override
+	public void onProviderDisabled(String provider) {
+		// Este mtodo se ejecuta cuando el GPS es desactivado
+		//messageTextView.setText("GPS Desactivado");
+		//Toast.makeText(getBaseContext(),"GPS Desactivado", Toast.LENGTH_LONG).show();
+	}
+
+	@Override
+	public void onProviderEnabled(String provider) {
+		// Este mtodo se ejecuta cuando el GPS es activado
+		//messageTextView.setText("GPS Activado");
+		//Toast.makeText(getBaseContext(), "GPS Activado", Toast.LENGTH_LONG).show();
+	}
+
+	@Override
+	public void onStatusChanged(String provider, int status, Bundle extras) {
+		// Este mtodo se ejecuta cada vez que se detecta un cambio en el
+		// status del proveedor de localizacin (GPS)
+		// Los diferentes Status son:
+		// OUT_OF_SERVICE -> Si el proveedor esta fuera de servicio
+		// TEMPORARILY_UNAVAILABLE -> Tempralmente no disponible pero se
+		// espera que este disponible en breve
+		// AVAILABLE -> Disponible
+	}
+
+
+}/* End of Class MyLocationListener */
