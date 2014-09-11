@@ -7,7 +7,6 @@ import com.tesis.ags_r4.activity.EliminarActivity;
 import com.tesis.ags_r4.activity.FavoritosActivity;
 import com.tesis.ags_r4.activity.InfActivity;
 import com.tesis.ags_r4.activity.SelectCatActivity;
-import com.tesis.ags_r4.maps.GuiarMapa;
 
 
 public class AgsIntents {
