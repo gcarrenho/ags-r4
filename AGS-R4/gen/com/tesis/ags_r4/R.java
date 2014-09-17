@@ -2059,6 +2059,7 @@ containing a value of this type.
         public static final int common_signin_button_text_long=0x7f0a0020;
         public static final int editar=0x7f0a003d;
         public static final int eliminar=0x7f0a003c;
+        public static final int error_when_retrieving_data=0x7f0a0047;
         public static final int favoritos_Button=0x7f0a0030;
         public static final int guiar_Button=0x7f0a002e;
         public static final int help=0x7f0a002c;

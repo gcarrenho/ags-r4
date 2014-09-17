@@ -33,21 +33,16 @@ import android.view.View;
 
 public class SelectCatActivity extends Activity{
 
-	//private LugaresDbHelper lugarDb=new LugaresDbHelper(this,"lugares",null,1);
 	private Map<String, List<String>> collLugares;
 	List<String> listCat;
     List<String> listLugares;
-    //Map<String, List<String>> laptopCollection;
-	private ExpandableListAdapter listAdapter;
 	private ExpandableListView expListView;
 	private Lugar lugarBd;
 	private List<Lugar> l;
-	private ProgressDialog pd=null;
 	private static final int ELIMINAR_REQUEST_CODE = 0;
 	private static final int EDITAR_REQUEST_CODE = 1;
 
 	public static final String APP_EXIT_KEY = "APP_EXIT_KEY";
-	//private HashMap<String, List<Lugar>> listCatChild;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -74,10 +69,6 @@ public class SelectCatActivity extends Activity{
 		//
 		// get the listview
 		expListView = (ExpandableListView) findViewById(R.id.expandableListViewCat);
-		
-		//expListView.setDividerHeight(2);
-		//expListView.setGroupIndicator(null);
-		//expListView.setClickable(true);
         
         final ExpandableListAdapter expListAdapter = new ExpandableListAdapter(
                 this, listCat, collLugares);
@@ -89,44 +80,34 @@ public class SelectCatActivity extends Activity{
 			 expListView.setOnChildClickListener(new OnChildClickListener() {
 				 
 		            public boolean onChildClick(ExpandableListView parent, View v,
-		                    int groupPosition, int childPosition, long id) {
-		                final String selected = (String) expListAdapter.getChild(
-		                        groupPosition, childPosition);
-		                Toast.makeText(getBaseContext(), selected, Toast.LENGTH_LONG)
-		                        .show();
-		 
-		                return true;
-		            }
-		        });
-			 
-			 expListView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
-			        public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
-			        	  final String selected = (String) expListAdapter.getGroup(
-			                        groupPosition);
-			                Toast.makeText(getBaseContext(), selected, Toast.LENGTH_LONG)
-			                        .show();
-			                expListView.collapseGroup(groupPosition);
-			                return true;
-			        }
-			    });
-	
-			 expListView.setOnItemLongClickListener(new ExpandableListView.OnItemLongClickListener() {
-			     public boolean onItemLongClick(AdapterView<?> arg0, View arg1, int position, long id) {
-			    	  
-			    	 int itemType = ExpandableListView.getPackedPositionType(id);
-
-			    	 //El item presionado pertenece a un hijo
-			          if ( itemType == ExpandableListView.PACKED_POSITION_TYPE_CHILD) {
-			              int childPosition = ExpandableListView.getPackedPositionChild(id);
-			              int groupPosition = ExpandableListView.getPackedPositionGroup(id);
-			              //Eliminar de la base de datos dicho lugar
-			              String nombre=(String) expListAdapter.getChild(groupPosition, childPosition);
+		                int groupPosition, int childPosition, long id) {
+		                String nombre=(String) expListAdapter.getChild(groupPosition, childPosition);
 			              
 			              lugarBd.deleteLugar(nombre);
 			              Toast.makeText(getBaseContext(),"Lugar "+nombre+" Eliminado Correctamente", Toast.LENGTH_LONG)
 	                        .show();
 			              actualizarLista();
 			              lugarBd.close();
+		                return true;
+		            }
+		        });
+			 
+			 //Presiono el Padre
+			 /*expListView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
+			        public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
+			        			                return true;
+			        }
+			    });*/
+	
+			 //Click Prolongado en el item
+			 /*expListView.setOnItemLongClickListener(new ExpandableListView.OnItemLongClickListener() {
+			     public boolean onItemLongClick(AdapterView<?> arg0, View arg1, int position, long id) {
+			    	  
+			    	 int itemType = ExpandableListView.getPackedPositionType(id);
+
+			    	 //El item presionado pertenece a un hijo
+			          if ( itemType == ExpandableListView.PACKED_POSITION_TYPE_CHILD) {
+			              
 			              return true; //true if we consumed the click, false if not
 
 			          } else if(itemType == ExpandableListView.PACKED_POSITION_TYPE_GROUP) {//sino pertenece al padre
@@ -141,7 +122,7 @@ public class SelectCatActivity extends Activity{
 			          }			    	
 		    }
 			     
-		}); 
+		}); */
 			 
 		}else if (boton.equalsIgnoreCase("editar")){//apreto boton editar
 			//abrir el evento para editar el lugar
@@ -151,34 +132,7 @@ public class SelectCatActivity extends Activity{
 		                    int groupPosition, int childPosition, long id) {
 		                final String selected = (String) expListAdapter.getChild(
 		                        groupPosition, childPosition);
-		                Toast.makeText(getBaseContext(), selected, Toast.LENGTH_LONG)
-		                        .show();
-		 
-		                return true;
-		            }
-		        });
-			 
-			 expListView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
-			        public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
-			        	  final String selected = (String) expListAdapter.getGroup(
-			                        groupPosition);
-			                Toast.makeText(getBaseContext(), selected, Toast.LENGTH_LONG)
-			                        .show();
-			                expListView.collapseGroup(groupPosition);
-			                return true;
-			        }
-			    });
-	
-			 expListView.setOnItemLongClickListener(new ExpandableListView.OnItemLongClickListener() {
-			     public boolean onItemLongClick(AdapterView<?> arg0, View arg1, int position, long id) {
-			    	  
-			    	 int itemType = ExpandableListView.getPackedPositionType(id);
-
-			          if ( itemType == ExpandableListView.PACKED_POSITION_TYPE_CHILD) {
-			              int childPosition = ExpandableListView.getPackedPositionChild(id);
-			              int groupPosition = ExpandableListView.getPackedPositionGroup(id);
-			              //Abrir pantalla para editar dicho lugar..
-			              String nombre=(String) expListAdapter.getChild(groupPosition, childPosition);
+		                String nombre=(String) expListAdapter.getChild(groupPosition, childPosition);
 			              Lugar l=lugarBd.getLugar(nombre);
 			              //voy a tener q diferenciar que vas desde aca, sino cuando de a aceptar me va
 			              //a decir que con ese nombre ya existe.
@@ -192,111 +146,35 @@ public class SelectCatActivity extends Activity{
 			              //Cargar con estos datos, y buscar luego en la base de dato y solo
 			              //modificar el valor deseado.
 			              activity.startActivityForResult(cl, EDITAR_REQUEST_CODE);
-	                
-			              return true; //true if we consumed the click, false if not
-
-			          } else if(itemType == ExpandableListView.PACKED_POSITION_TYPE_GROUP) {
-			              int groupPosition = ExpandableListView.getPackedPositionGroup(id);
-			              expListView.expandGroup(groupPosition);
-			              //do your per-group callback here
-			              return true; //true if we consumed the click, false if not
-
-			          } else {
-			              // null item; we don't consume the click
-			              return false;
-			          }			    	
-		    }
-			     
-		}); 
-			 		
+		 
+		                return true;
+		            }
+		        });
+			 			 		
 		}else{//el boton es para guiar
 			expListView.setOnChildClickListener(new OnChildClickListener() {
 				 
 	            public boolean onChildClick(ExpandableListView parent, View v,
 	                    int groupPosition, int childPosition, long id) {
-	                final String selected = (String) expListAdapter.getChild(
-	                        groupPosition, childPosition);
-	                Toast.makeText(getBaseContext(), selected, Toast.LENGTH_LONG)
-	                        .show();
+	            	 LocationManager locManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+			      		locManager.getGpsStatus(null).getTimeToFirstFix();
+			      		 
+			      		MyLocationListener locListener = new MyLocationListener();
+			      		//locListener.setMainActivity(this); 
+			      		locManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0,(LocationListener) locListener);
+			              String nombre=(String) expListAdapter.getChild(groupPosition, childPosition);
+			              //Buscarlo en la base de datos y traer todos los datos.
+			              //lugarBd.deleteLugar(nombre);
+			              final Intent guiar = new Intent(activity, AgsIntents.getGuiarMapa());
+			              //cargar.putExtra("accion", "cargar");
+			              activity.startActivity(guiar);
+			              lugarBd.close();
 	 
 	                return true;
 	            }
 	        });
-		 
-		 expListView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
-		        public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
-		        	  final String selected = (String) expListAdapter.getGroup(
-		                        groupPosition);
-		                Toast.makeText(getBaseContext(), selected, Toast.LENGTH_LONG)
-		                        .show();
-		                expListView.collapseGroup(groupPosition);
-		                return true;
-		        }
-		    });
-
-		 expListView.setOnItemLongClickListener(new ExpandableListView.OnItemLongClickListener() {
-		     public boolean onItemLongClick(AdapterView<?> arg0, View arg1, int position, long id) {
-		    	  
-		    	 int itemType = ExpandableListView.getPackedPositionType(id);
-
-		    	 //El item presionado pertenece a un hijo ubicar el lugar y calcular la distancia
-		    	 //desde mi ubicacion hasta el lugar.
-		          if ( itemType == ExpandableListView.PACKED_POSITION_TYPE_CHILD) {
-		              int childPosition = ExpandableListView.getPackedPositionChild(id);
-		              int groupPosition = ExpandableListView.getPackedPositionGroup(id);
-		              //llamar a la accion que abre el mapa y en el oncreate hacer lo de la localizacion..
-		              //y lo del progressdialog.
-		             // pd=ProgressDialog.show(this,"Location", "Esperando por la localizacion gps");
-		            LocationManager locManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-		      		locManager.getGpsStatus(null).getTimeToFirstFix();
-		      		 
-		      		MyLocationListener locListener = new MyLocationListener();
-		      		//locListener.setMainActivity(this); 
-		      		locManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0,(LocationListener) locListener);
-		              String nombre=(String) expListAdapter.getChild(groupPosition, childPosition);
-		              //Buscarlo en la base de datos y traer todos los datos.
-		              //lugarBd.deleteLugar(nombre);
-		              
-		              lugarBd.close();
-		              //ubicar el lugar en el Mapa, calc dist, ver lineas disponibles
-		              // a mi alrededor q llegan cerca de ese lugar.
-		              return true; //true if we consumed the click, false if not
-
-		          } else if(itemType == ExpandableListView.PACKED_POSITION_TYPE_GROUP) {//sino, pertenece al padre
-		              int groupPosition = ExpandableListView.getPackedPositionGroup(id);
-		              expListView.expandGroup(groupPosition);
-		              //do your per-group callback here
-		              return true; //true if we consumed the click, false if not
-
-		          } else {
-		              // null item; we don't consume the click
-		              return false;
-		          }			    	
-	    }
-		     
-	}); 
-		}
 		
-		//agregar los eventos de cuando escuchamos el click en el padre y en los ninos..
-		//CUANDO CLIK YO TENGO QUE LLAMAR A OTR VENTA, USE LOS DATOS DE ESTE ITEM Y LOS CARGUE PARA PERMITIR 
-		//EDITAROLO.
-		/*expListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
- 
-            @Override
-            public boolean onChildClick(ExpandableListView parent, View v,
-                    int groupPosition, int childPosition, long id) {
-                Toast.makeText(
-                        getApplicationContext(),
-                        listCat.get(groupPosition)
-                                + " : "
-                                + lugaresGroups.get(
-                                        listCat.get(groupPosition)).get(
-                                        childPosition), Toast.LENGTH_SHORT)
-                        .show();
-                return false;
-            }
-        });*/
-
+		}
 	}
 
 	//Metodo que crea la lista de las categorias existentes.
@@ -331,7 +209,6 @@ public class SelectCatActivity extends Activity{
 		  }
 	  }
 	  
-	//  if(requestCode == VOICE_RECOGNITION_REQUEST_CODE && resultCode == RESULT_OK){
 	  @Override
 	  protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 	      super.onActivityResult(requestCode, resultCode, data);

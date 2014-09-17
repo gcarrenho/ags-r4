@@ -117,16 +117,10 @@ public class MainMenuActivity extends Activity {
 		locManager.getGpsStatus(null).getTimeToFirstFix();
 		 
 		MyLocationListener locListener = new MyLocationListener();
-		//locListener.setMainActivity(this); 
-		locManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0,(LocationListener) locListener);
-		/*for (GpsSatellite sat : locManager.getGpsStatus(null).getSatellites()) {
-		        if(sat.usedInFix()) {
-		            satellitesInFix++;              
-		        }
-		        satellites++;
-		    }*/
-		
-	//localizacion solo si psaron cinco segundo de la localizacion o se a movido mas de 10 metros de la ultima localizacion.
+
+		//locManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0,(LocationListener) locListener);
+
+		//localizacion solo si psaron cinco segundo de la localizacion o se a movido mas de 10 metros de la ultima localizacion.
 		// Comprobamos si está disponible el proveedor GPS.
 		//Lo unico que necesito en este activity es que el gps este activado y se conecte con los satelites.
 		if (!locManager.isProviderEnabled(LocationManager.GPS_PROVIDER))
@@ -156,21 +150,20 @@ public class MainMenuActivity extends Activity {
 		guiarButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Toast.makeText(getBaseContext(), R.string.guiar_Button, Toast.LENGTH_LONG)
-	            .show(); 
-			}
-		});
-		
-		guiarButton.setOnLongClickListener(new View.OnLongClickListener(){
-			public boolean onLongClick(View v) {
 				//Ventana para seleccionar el lugar
 				//una vez seleccionado, calcular la distancia desde mi ubicacion.
 				// si la distancia no supera tantos metros(determinar cuantos) guiar caminando
 				//sino identificar que garita de colectivo frena cerca yendo desde mi ubicacion. 
 				//final Intent guiar = new Intent(activity, AgsIntents.getSelecCatActivity());
-				final Intent guiar = new Intent(activity, AgsIntents.getGuiarMapa());
+				final Intent guiar = new Intent(activity, AgsIntents.getSelecCatActivity());
 				guiar.putExtra("boton", "guiar");
 				activity.startActivity(guiar);
+			}
+		});
+		
+		//Evento si se realiza una pulzacion prolongada en el boton
+		guiarButton.setOnLongClickListener(new View.OnLongClickListener(){
+			public boolean onLongClick(View v) {
 				return true;
 	         }
 			
@@ -181,19 +174,15 @@ public class MainMenuActivity extends Activity {
 		abmButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				//final Intent abm = new Intent(activity, AgsIntents.getAbmActivity());
-				//activity.startActivity(abm);
-				Toast.makeText(getBaseContext(), R.string.abm_button, Toast.LENGTH_LONG)
-	            .show();
+				final Intent abm = new Intent(activity, AgsIntents.getAbmActivity());
+				activity.startActivity(abm);
 			}
 		});
 		
+		//Evento que se ejecuta si se realiza un click prolongado sobre el boton.
 		abmButton.setOnLongClickListener(new View.OnLongClickListener(){
 			public boolean onLongClick(View v) {
-	             // Perform action on click
-				final Intent abm = new Intent(activity, AgsIntents.getAbmActivity());
-				activity.startActivity(abm);
-	            return true;
+	             return true;
 	         }
 			
 		});
@@ -203,100 +192,38 @@ public class MainMenuActivity extends Activity {
 		favoritosButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Toast.makeText(getBaseContext(), R.string.favoritos_Button, Toast.LENGTH_LONG)
-	            .show();
-			}
-		});
-
-		favoritosButton.setOnLongClickListener(new View.OnLongClickListener(){
-			public boolean onLongClick(View v) {
-	             // Perform action on click
 				final Intent favoritos = new Intent(activity, AgsIntents.getFavoritosActivity());
 				favoritos.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
 				activity.startActivity(favoritos);
+			}
+		});
+
+		//Evento que se ejecuta si se realiza un click prolongado sobre el boton
+		favoritosButton.setOnLongClickListener(new View.OnLongClickListener(){
+			public boolean onLongClick(View v) {
 	            return true;
 	         }
 			
 		});
-		//final View closeButton = window.findViewById(R.id.CloseButton);
-		/*closeButton.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				//cerrar la aplicacion si hace click pero dos click al primero no hacer nada
-				//getMyApplication().closeApplication(activity);
-			}
-		});*/
+		
+		
 		View infButton = window.findViewById(R.id.informButton);
 		infButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Toast.makeText(getBaseContext(), R.string.information_Button, Toast.LENGTH_LONG)
-	            .show();
-			}
-		});
-		
-		infButton.setOnLongClickListener(new View.OnLongClickListener(){
-			public boolean onLongClick(View v) {
-	             // Perform action on click
 				final Intent inf = new Intent(activity, AgsIntents.getInfActivity());
 				inf.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
 				activity.startActivity(inf);
+			}
+		});
+		
+		//Evento que se ejecuta si se realiza un click prolongado sobre el boton
+		infButton.setOnLongClickListener(new View.OnLongClickListener(){
+			public boolean onLongClick(View v) {
 	            return true;
 	         }
 			
 		});
-		
-		/*
-		if(exit){
-			getMyApplication().closeApplication(activity);
-			return;
-		}
-		OsmandApplication app = getMyApplication();
-		// restore follow route mode
-		if(app.getSettings().FOLLOW_THE_ROUTE.get() && !app.getRoutingHelper().isRouteCalculated()){
-			final Intent mapIndent = new Intent(this, OsmandIntents.getMapActivity());
-			startActivityForResult(mapIndent, 0);
-			return;
-		}
-		startProgressDialog = new ProgressDialog(this);
-		getMyApplication().checkApplicationIsBeingInitialized(this, startProgressDialog);
-		SharedPreferences pref = getPreferences(MODE_WORLD_WRITEABLE);
-		boolean firstTime = false;
-		if(!pref.contains(FIRST_TIME_APP_RUN)){
-			firstTime = true;
-			pref.edit().putBoolean(FIRST_TIME_APP_RUN, true).commit();
-			pref.edit().putString(VERSION_INSTALLED, Version.getFullVersion(app)).commit();
-			
-			applicationInstalledFirstTime();
-		} else {
-			int i = pref.getInt(TIPS_SHOW, 0);
-			if (i < 7){
-				pref.edit().putInt(TIPS_SHOW, ++i).commit();
-			}
-			boolean appVersionChanged = false;
-			if(!Version.getFullVersion(app).equals(pref.getString(VERSION_INSTALLED, ""))){
-				pref.edit().putString(VERSION_INSTALLED, Version.getFullVersion(app)).commit();
-				appVersionChanged = true;
-			}
-						
-			if (i == 1 || i == 5 || appVersionChanged) {
-				TipsAndTricksActivity tipsActivity = new TipsAndTricksActivity(this);
-				Dialog dlg = tipsActivity.getDialogToShowTips(!appVersionChanged, false);
-				dlg.show();
-			} else {
-				if (startProgressDialog.isShowing()) {
-					startProgressDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
-						@Override
-						public void onDismiss(DialogInterface dialog) {
-							checkVectorIndexesDownloaded();
-						}
-					});
-				} else {
-					checkVectorIndexesDownloaded();
-				}
-			}
-		}
-		checkPreviousRunsForExceptions(firstTime);*/
 	}
 
 	

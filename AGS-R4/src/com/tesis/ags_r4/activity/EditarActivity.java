@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.View.OnClickListener;
 
+//ME PARECE QUE ESTA CLASE NO SE USA.
 public class EditarActivity extends Activity {
 	
 	private Lugar lugarBd;

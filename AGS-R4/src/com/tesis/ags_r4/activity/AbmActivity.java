@@ -47,17 +47,16 @@ public class AbmActivity extends Activity implements OnPreferenceClickListener{
 		cargarButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {//cuando vaya a cargar en oncreater obtener los puntos lat y lon
-				Toast.makeText(getBaseContext(), R.string.cargar, Toast.LENGTH_LONG)
-	            .show();
-			}
-		});
-		
-		cargarButton.setOnLongClickListener(new View.OnLongClickListener(){
-			public boolean onLongClick(View v) {
-	             // Perform action on click
+				// Perform action on click
 				final Intent cargar = new Intent(activity, AgsIntents.getCargarActivity());
 				cargar.putExtra("accion", "cargar");
 				activity.startActivity(cargar);
+			}
+		});
+		
+		//Evento que se ejecuta si se realiza un click prolongado sobre el boton.
+		cargarButton.setOnLongClickListener(new View.OnLongClickListener(){
+			public boolean onLongClick(View v) {
 	            return true;
 	         }
 			
@@ -67,17 +66,17 @@ public class AbmActivity extends Activity implements OnPreferenceClickListener{
 		eliminarButton.setOnClickListener(new OnClickListener() {//deberia abrir otra para la busqueda(y listar categorias, y los lugares que contiene)
 			@Override
 			public void onClick(View v) {
-				Toast.makeText(getBaseContext(), R.string.eliminar, Toast.LENGTH_LONG)
-	            .show();
-			}
-		});
-		eliminarButton.setOnLongClickListener(new View.OnLongClickListener(){
-			public boolean onLongClick(View v) {
-	             // Perform action on click
+				 // Perform action on click
 				final Intent eliminar = new Intent(activity, AgsIntents.getSelecCatActivity());
 				eliminar.putExtra("boton", "eliminar");
 				activity.startActivity(eliminar);
-	            return true;
+	            
+			}
+		});
+		//Evento que se ejecuta si se realiza un click prolongado sobre el boton.
+		eliminarButton.setOnLongClickListener(new View.OnLongClickListener(){
+			public boolean onLongClick(View v) {
+				return true;
 	         }
 			
 		});
@@ -86,18 +85,16 @@ public class AbmActivity extends Activity implements OnPreferenceClickListener{
 		View editarButton = window.findViewById(R.id.editarButton);
 		editarButton.setOnClickListener(new OnClickListener() {
 			@Override
-			public void onClick(View v) {//deberia abrir otra para la busqueda
-				Toast.makeText(getBaseContext(), R.string.editar, Toast.LENGTH_LONG)
-	            .show();
-			}
-		});
-		
-		editarButton.setOnLongClickListener(new View.OnLongClickListener(){
-			public boolean onLongClick(View v) {
-	             // Perform action on click
+			public void onClick(View v) {
 				final Intent editar = new Intent(activity, AgsIntents.getSelecCatActivity());
 				editar.putExtra("boton", "editar");
 				activity.startActivity(editar);
+			}
+		});
+		
+		//Evento que se ejecuta si se realiza un click prolongado sobre el boton.
+		editarButton.setOnLongClickListener(new View.OnLongClickListener(){
+			public boolean onLongClick(View v) {	             
 	            return true;
 	         }
 			

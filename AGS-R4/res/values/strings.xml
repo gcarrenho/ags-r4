@@ -33,5 +33,5 @@
     <string name="tipo_lugar">Tipo de Lugar (Ejemplo: Salud)</string>
     
     <string name="modoDeUso">Al iniciar se tiene un menu de opciones, en donde usted debe elegir entre \"Cargar\", \"Visitar\", \"Llamar\", \"Ayuda\", si elige cargar, usted podra cargar en el mapa un lugar nuevo, se le pedira, nombre del lugar, telefono y el tipo de lugar. Si elije Visitar, se le pedira que tipo de lugar desea visitar, se les nombrara todos los lugares que se corresponden con dicho tipo, debera elegir el que usted desea de los nombrados, o indicar que quiere ir al mas cercano.Si elige llamar, usted debera elegir el tipo y se le nombraran los existentes, elige el que desea y se efectuara la llamada.Si elige ayuda, se le explicara el uso de la aplicacion.Repetir, Volver a opciones.</string>
-
+	<string name="error_when_retrieving_data">Problemas</string>
 </resources>

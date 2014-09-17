@@ -121,18 +121,15 @@ public class CargarActivity extends Activity implements OnInitListener{
 		cancelarButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Toast.makeText(getBaseContext(), R.string.cancelar, Toast.LENGTH_LONG)
-				.show();
+				lugarBd.close();
+				setResult(RESULT_CANCELED);
+				finish();
 			}
 		});
 
 		//Evento que escucha un click prolongado sobre el boton cancelar
 		cancelarButton.setOnLongClickListener(new View.OnLongClickListener(){
 			public boolean onLongClick(View v) {
-				// Perform action on click
-				lugarBd.close();
-				setResult(RESULT_CANCELED);
-				finish();
 				return true;
 			}
 
@@ -155,7 +152,7 @@ public class CargarActivity extends Activity implements OnInitListener{
 
 	}
 
-	private void startVoiceRecognitionActivity() {
+	private void startVoiceRecognitionActivity(){
 		// Definición del intent para realizar en análisis del mensaje
 		Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
 		// Indicamos el modelo de lenguaje para el intent
@@ -163,6 +160,8 @@ public class CargarActivity extends Activity implements OnInitListener{
 		// Definimos el mensaje que aparecerá 
 		// intent.putExtra(RecognizerIntent.EXTRA_PROMPT,"Diga, Llamar a ...");
 		// Lanzamos la actividad esperando resultados
+		
+		//HAY UN PROBLEMA LA MINA DEL TALKBACK DICE "BUSQUDA DE GOOGLE", CUANDO ESTA RECONOCIENDO.
 		startActivityForResult(intent, VOICE_RECOGNITION_REQUEST_CODE);
 	}
 
@@ -175,7 +174,9 @@ public class CargarActivity extends Activity implements OnInitListener{
 			if (campo==1){
 				ArrayList<String> matches = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
 				EditText nombre=(EditText)findViewById(R.id.textNomLugar);
-				nombre.setText(matches.get(0));	   
+				nombre.setText(matches.get(0));
+				
+					   
 			}else if (campo==2){
 				ArrayList<String> matches = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
 				EditText tipo=(EditText)findViewById(R.id.textTipoLugar);
@@ -201,14 +202,6 @@ public class CargarActivity extends Activity implements OnInitListener{
 		aceptarButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {				
-				Toast.makeText(getBaseContext(), R.string.aceptar, Toast.LENGTH_LONG)
-				.show();
-			}
-		});
-
-		//Evento que escucha un click prolongado sobre el boto aceptar
-		aceptarButton.setOnLongClickListener(new View.OnLongClickListener(){
-			public boolean onLongClick(View v) {
 				//Falta obtener las coordenadas y setearlas..
 				EditText nombre=(EditText)findViewById(R.id.textNomLugar);
 				lugarBd.setNombre(nombre.getText().toString().toLowerCase());
@@ -241,6 +234,12 @@ public class CargarActivity extends Activity implements OnInitListener{
 					}
 
 				}
+			}
+		});
+
+		//Evento que escucha un click prolongado sobre el boto aceptar
+		aceptarButton.setOnLongClickListener(new View.OnLongClickListener(){
+			public boolean onLongClick(View v) {
 				return true;
 			}
 
@@ -260,14 +259,6 @@ public class CargarActivity extends Activity implements OnInitListener{
 		aceptarButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {				
-				Toast.makeText(getBaseContext(), R.string.aceptar, Toast.LENGTH_LONG)
-				.show();
-			}
-		});
-
-		//Evento que escucha un click prolongado sobre el boto aceptar
-		aceptarButton.setOnLongClickListener(new View.OnLongClickListener(){
-			public boolean onLongClick(View v) {
 				EditText nom=(EditText)findViewById(R.id.textNomLugar);
 				lugarBd.setNombre(nom.getText().toString().toLowerCase());
 				EditText cat=(EditText)findViewById(R.id.textTipoLugar);
@@ -290,18 +281,15 @@ public class CargarActivity extends Activity implements OnInitListener{
 					finish();
 
 				}else{//si no existe lanzar un cartel
-					/*try
-					{
-						lugarBd.createLugar(lugarBd);
-						lugarBd.close();
-						finish();
-					}
-					catch(Throwable t)
-					{
-						Log.e("ERROOOOOOOR", "Mensaje de error", t);
-					}*/
 
 				}
+
+			}
+		});
+
+		//Evento que escucha un click prolongado sobre el boto aceptar
+		aceptarButton.setOnLongClickListener(new View.OnLongClickListener(){
+			public boolean onLongClick(View v) {
 				return true;
 			}
 
@@ -336,9 +324,8 @@ public class CargarActivity extends Activity implements OnInitListener{
 		lugarTexNom.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {				
-				Toast.makeText(getBaseContext(), R.string.nombre_lugar, Toast.LENGTH_LONG)
-				.show();
-
+				campo=1;
+				startVoiceRecognitionActivity();
 				InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
 				imm.hideSoftInputFromWindow(lugarTexNom.getWindowToken(), 0);
 			}
@@ -349,8 +336,6 @@ public class CargarActivity extends Activity implements OnInitListener{
 		lugarTexNom.setOnLongClickListener(new View.OnLongClickListener(){
 			public boolean onLongClick(View v) {
 				//Abrir el reconocedor de vos
-				campo=1;
-				startVoiceRecognitionActivity();			   
 				return true;
 			}
 
@@ -378,8 +363,9 @@ public class CargarActivity extends Activity implements OnInitListener{
 		tipoLugarText.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {				
-				Toast.makeText(getBaseContext(), R.string.cat_lugar, Toast.LENGTH_LONG)
-				.show();
+				//Abrir el reconocedor de vos
+				campo=2;
+				startVoiceRecognitionActivity();
 				InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
 				imm.hideSoftInputFromWindow(tipoLugarText.getWindowToken(), 0);
 			}
@@ -388,9 +374,6 @@ public class CargarActivity extends Activity implements OnInitListener{
 		//Evento que escucha un click prolongado sobre el campo de texto
 		tipoLugarText.setOnLongClickListener(new View.OnLongClickListener(){
 			public boolean onLongClick(View v) {
-				//Abrir el reconocedor de vos
-				campo=2;
-				startVoiceRecognitionActivity();
 				return true;
 			}
 
@@ -416,8 +399,9 @@ public class CargarActivity extends Activity implements OnInitListener{
 		telLugarText.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {				
-				Toast.makeText(getBaseContext(), R.string.tel_lugar, Toast.LENGTH_LONG)
-				.show();
+				campo=3;
+				//Abrir el reconocedor de vos
+				startVoiceRecognitionActivity();
 				InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
 				imm.hideSoftInputFromWindow(telLugarText.getWindowToken(), 0);
 			}
@@ -426,16 +410,13 @@ public class CargarActivity extends Activity implements OnInitListener{
 		//Evento que escucha un click prolongado sobre el campo de texto
 		telLugarText.setOnLongClickListener(new View.OnLongClickListener(){
 			public boolean onLongClick(View v) {
-				campo=3;
-				//Abrir el reconocedor de vos
-				startVoiceRecognitionActivity();
 				return true;
 			}
 
 		});
 	}
 	
-	public void setLocation(Location loc) {
+	/*public void setLocation(Location loc) {
 		//Obtener la direccin de la calle a partir de la latitud y la longitud 
 		if (loc.getLatitude() != 0.0 && loc.getLongitude() != 0.0) {
 			try {
@@ -443,8 +424,8 @@ public class CargarActivity extends Activity implements OnInitListener{
 				List<Address> list = geocoder.getFromLocation(loc.getLatitude(), loc.getLongitude(), 1);
 				if (!list.isEmpty()) {
 					Address address = list.get(0);
-				/*	messageTextView2.setText("Mi direccin es: \n"
-							+ address.getAddressLine(0));*/
+					messageTextView2.setText("Mi direccin es: \n"
+							+ address.getAddressLine(0));
 					Toast.makeText(getBaseContext(), "Mi Direccion es: "+address.getAddressLine(0), Toast.LENGTH_LONG)
 					.show();
 				}
@@ -453,7 +434,7 @@ public class CargarActivity extends Activity implements OnInitListener{
 				e.printStackTrace();
 			}
 		}
-	}
+	}*/
 
 	
 	

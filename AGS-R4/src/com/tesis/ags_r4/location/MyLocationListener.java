@@ -5,14 +5,14 @@ import android.location.LocationListener;
 import android.os.Bundle;
 import android.widget.Toast;
 
-
+import com.tesis.ags_r4.GuiarMapa;
 import com.tesis.ags_r4.activity.CargarActivity;
 import com.tesis.ags_r4.activity.MainMenuActivity;
 
 public class MyLocationListener implements LocationListener {
 	MainMenuActivity menuActivity;
 	CargarActivity cargarActivity;
-
+	GuiarMapa guiarActivity;
 	public MainMenuActivity getmenuActivity() {
 		return menuActivity;
 	}
@@ -21,8 +21,8 @@ public class MyLocationListener implements LocationListener {
 		return cargarActivity;
 	}
 
-	public void setMainActivity(MainMenuActivity menuActivity) {
-		this.menuActivity = menuActivity;
+	public void setGuiarActivity(GuiarMapa guiarActivity) {
+		this.guiarActivity = guiarActivity;
 	}
 
 	public void setCargarActivity(CargarActivity cargarActivity) {
@@ -39,7 +39,7 @@ public class MyLocationListener implements LocationListener {
 				+ loc.getLatitude() + "\n Long = " + loc.getLongitude();
 		//messageTextView.setText(Text);
 		//Toast.makeText(getBaseContext(), "Ubicacion Actual "+Text, Toast.LENGTH_LONG).show();
-		this.menuActivity.setLocation(loc);
+		//this.guiarActivity.setLocation(loc);//poner otro nombre
 		//this.cargarActivity.setLocation(loc);
 	}
 
@@ -55,6 +55,7 @@ public class MyLocationListener implements LocationListener {
 		// Este mtodo se ejecuta cuando el GPS es activado
 		//messageTextView.setText("GPS Activado");
 		//Toast.makeText(getBaseContext(), "GPS Activado", Toast.LENGTH_LONG).show();
+		
 	}
 
 	@Override
