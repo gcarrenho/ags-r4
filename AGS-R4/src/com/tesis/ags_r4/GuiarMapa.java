@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -16,7 +15,9 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
 import com.tesis.ags_r4.R;
-import com.tesis.ags_r4.location.Location;
+import com.tesis.ags_r4.R.id;
+import com.tesis.ags_r4.R.layout;
+//import com.tesis.ags_r4.location.Location;
 import com.tesis.ags_r4.location.MyLocationListener;
 import com.tesis.ags_r4.navigation.GMapV2Direction;
 import com.tesis.ags_r4.navigation.GetDirectionsAsyncTask;
@@ -25,11 +26,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.location.Address;
+import android.location.Criteria;
 import android.location.Geocoder;
+import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.widget.Toast;
 
 
@@ -38,51 +42,70 @@ public class GuiarMapa extends FragmentActivity {
     /**
      * Note that this may be null if the Google Play services APK is not available.
      */
+	/** Referencia al TAG de log. */
+	private static final String TAG = "[DirectoAndroidV2_EJ2]";
+	
     private GoogleMap mMap;
-    private Location loc=new Location("GPS");
-    public static final PolylineOptions POLILINEA = new PolylineOptions()
-	.add(new LatLng(-33.123873,-64.348993))
-	.add(new LatLng(-33.112731,-64.309854));
+    private LocationManager locManager;
+    private MyLocationListener locListener;
+    private double lat, mlat;
+    private double lng, mlng;
+    
+    /** Nombre del proveedor de localización. */
+	private transient String proveedor;
 
+  //EL PROBLEMA CON EL GPS SE DEBE A QUE ESTA CLASE EXTIENDE DE UN FRAMEACTIVITY, EN LAS ACTIVITYS
+    //FUNCIONA PERFECTAMENTE.   
     //Conectar con el gps y obtener ubicacion.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Intent intent = getIntent();
         setContentView(R.layout.guiar);
-        LocationManager locManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-		locManager.getGpsStatus(null).getTimeToFirstFix();
-		 
-		MyLocationListener locListener = new MyLocationListener(); 
-		locListener.setGuiarActivity(this);
-		locManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0,(LocationListener) locListener);
+        lat=intent.getDoubleExtra("lat", 0.0);
+		lng=intent.getDoubleExtra("lng", 0.0);
+        locManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+		locListener = new MyLocationListener(){
+			@Override
+			public void onLocationChanged(Location loc) {
+				if (loc.getLatitude() != 0.0 && loc.getLongitude() != 0.0) {
+					mlat=loc.getLatitude();
+					mlng=loc.getLongitude();
+					setLocation(loc);
+				}
+			}
+		};
+        //setUpMapIfNeeded();
+        //this.configGps();
+       // locManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+ 		/*locListener = new MyLocationListener();
+ 		locListener.setGuiarActivity(this);	*/
+	
+    }
+    
+    
 
-		if (!locManager.isProviderEnabled(LocationManager.GPS_PROVIDER))
+    @Override
+    protected void onResume() {
+        super.onResume();
+        configGps();
+        setUpMapIfNeeded();
+    }
+    
+    private void configGps(){
+ 		locManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0,(LocationListener) locListener);
+ 	  
+		/*if (!locManager.isProviderEnabled(LocationManager.GPS_PROVIDER))
 		{
 			Toast.makeText(getBaseContext(), "GPS DESACTIVADO", Toast.LENGTH_LONG)
             .show(); 
 			Intent settingsIntent = new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS);
 			settingsIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
 			this.startActivityForResult(settingsIntent, 0);
-		}
+		}*/
 		
 		//Obtengo mi ubicacion y el punto destino que ya lo tengo, calculo la distancia 
         //para saber si guio hastta parada de colectivo o caminando
-		 
-		 if(loc.getDistance(-33.123873, -64.348993,-33.112731,-64.309854)<1000){
-			 //Distancia corta, guiar hasta el lugar deseado;
-		 }else{
-			/**Distancia larga, Hacer:
-			 *Encontrar paradas cercanas al destino
-			 *Encontrar paradas cercanas a mi ubicacion, guiar hasta dicha parada.
-			 *Luego al descender del colectivo guiar hasta el destino.*/
-			 setUpMapIfNeeded();
-		 }
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        setUpMapIfNeeded();
     }
 
     /**
@@ -106,10 +129,12 @@ public class GuiarMapa extends FragmentActivity {
             // Try to obtain the map from the SupportMapFragment.
             mMap = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map))
                     .getMap();
+           // mMap.setMyLocationEnabled(true);
             // Check if we were successful in obtaining the map.
             if (mMap != null) {
                 setUpMap();
             }
+            
         }
     }
 
@@ -131,18 +156,18 @@ public class GuiarMapa extends FragmentActivity {
         //Construye la ruta, desde una latitud-longitud hasta otra latitud-longitud
         //tengo que construir desde mi ubicacion actual hasta la parada de colectivo si se 
         //superan ciertos metros, y sino hasta el lugar si esta cerca.
-        findDirections(-33.123873,-64.348993,-33.112731, -64.309854, GMapV2Direction.MODE_WALKING );
+        findDirections(mlat,mlng,lat, lng, GMapV2Direction.MODE_WALKING );
         Toast.makeText(getBaseContext(), String.valueOf("Calculando Recorrido"), Toast.LENGTH_LONG)
         .show();
     }
     
-    public void findDirections(double fromPositionDoubleLat, double fromPositionDoubleLong, double toPositionDoubleLat, double toPositionDoubleLong, String mode)
+    public void findDirections(double fromPositionLat, double fromPositionLong, double toPositionLat, double toPositionLong, String mode)
     {
         Map<String, String> map = new HashMap<String, String>();
-        map.put(GetDirectionsAsyncTask.USER_CURRENT_LAT, String.valueOf(fromPositionDoubleLat));
-        map.put(GetDirectionsAsyncTask.USER_CURRENT_LONG, String.valueOf(fromPositionDoubleLong));
-        map.put(GetDirectionsAsyncTask.DESTINATION_LAT, String.valueOf(toPositionDoubleLat));
-        map.put(GetDirectionsAsyncTask.DESTINATION_LONG, String.valueOf(toPositionDoubleLong));
+        map.put(GetDirectionsAsyncTask.USER_CURRENT_LAT, String.valueOf(fromPositionLat));
+        map.put(GetDirectionsAsyncTask.USER_CURRENT_LONG, String.valueOf(fromPositionLong));
+        map.put(GetDirectionsAsyncTask.DESTINATION_LAT, String.valueOf(toPositionLat));
+        map.put(GetDirectionsAsyncTask.DESTINATION_LONG, String.valueOf(toPositionLong));
         map.put(GetDirectionsAsyncTask.DIRECTIONS_MODE, mode);
      
         GetDirectionsAsyncTask asyncTask = new GetDirectionsAsyncTask(this);
@@ -162,24 +187,72 @@ public class GuiarMapa extends FragmentActivity {
     }
     
     
+    //Habria que hacer dos, uno que guie caminando y el otro en el colectivo
+    //y diferenciar en en que actualiza la direccion.
     public void setLocation(Location loc) {
+    	Toast.makeText(getBaseContext(), "Mi Direccion es: "+loc.getLatitude(), Toast.LENGTH_LONG)
+		.show();
+    	posicionInicial();
+    	/*int latitud = (int) (loc.getLatitude() * 1E6);
+		int longitud = (int) (loc.getLongitude() * 1E6);
+
+		LatLng latLng = new LatLng(latitud, longitud);
+		mMap.addMarker(new MarkerOptions().position(latLng).title(
+				"Madrid, España"));
 		//Obtener la direccin de la calle a partir de la latitud y la longitud 
-		if (loc.getLatitude() != 0.0 && loc.getLongitude() != 0.0) {
-			try {
+		/*if (loc.getLatitude() != 0.0 && loc.getLongitude() != 0.0) {
+			/*try {
 				Geocoder geocoder = new Geocoder(this, Locale.getDefault());
 				List<Address> list = geocoder.getFromLocation(loc.getLatitude(), loc.getLongitude(), 1);
 				if (!list.isEmpty()) {
 					Address address = list.get(0);
 				/*	messageTextView2.setText("Mi direccin es: \n"
 							+ address.getAddressLine(0));*/
-					Toast.makeText(getBaseContext(), "Mi Direccion es: "+address.getAddressLine(0), Toast.LENGTH_LONG)
-					.show();
-				}
+					
+				//}
 
-			} catch (IOException e) {
+			/*} catch (IOException e) {
 				e.printStackTrace();
-			}
-		}
-	}
+			}*/
+		//}
+	}	
+    /*
+    public List getAddress(){
+    	 Geocoder geocoder = new Geocoder(this);
+         List<Address> addresses = null;
+         //addresses.
+         try {
+             addresses = geocoder.getFromLocationName("COLOMBIA", 3);
+         } catch (IOException e) {
+             e.printStackTrace();
+         }
+         return addresses;
+    }*/
     
+    //Recorre la lista de direcciones y obtiene la lat y long
+    /*for(int i=0;i<addresses.size();i++){
+    	 
+        Address address = (Address) addresses.get(i);
+
+        LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
+    }*/       
+    
+    private void posicionInicial() {
+
+		Criteria criteria = new Criteria();
+		proveedor = locManager.getBestProvider(criteria, true);
+		Location location = locManager.getLastKnownLocation(proveedor);
+		if (null != location) {
+
+			LatLng latLng = new LatLng(location.getLatitude(),
+					location.getLongitude());
+			mMap.addMarker(new MarkerOptions().position(latLng).title(
+					"latitud=" + location.getLatitude() + " longitud="
+							+ location.getLongitude()));
+			Log.d(TAG, "Cargada la localización.");
+		} else {
+			Log.d(TAG, "Localizacion nula");
+		}
+
+	}
 }

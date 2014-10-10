@@ -113,17 +113,17 @@ public class MainMenuActivity extends Activity {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_main);
 		
-		LocationManager locManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-		locManager.getGpsStatus(null).getTimeToFirstFix();
+		/*LocationManager locManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+		
 		 
 		MyLocationListener locListener = new MyLocationListener();
-
-		//locManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0,(LocationListener) locListener);
+		locListener.setMenuActivity(this);
+		locManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0,(LocationListener) locListener);*/
 
 		//localizacion solo si psaron cinco segundo de la localizacion o se a movido mas de 10 metros de la ultima localizacion.
 		// Comprobamos si está disponible el proveedor GPS.
 		//Lo unico que necesito en este activity es que el gps este activado y se conecte con los satelites.
-		if (!locManager.isProviderEnabled(LocationManager.GPS_PROVIDER))
+		/*if (!locManager.isProviderEnabled(LocationManager.GPS_PROVIDER))
 		{
 			Toast.makeText(getBaseContext(), "GPS DESACTIVADO", Toast.LENGTH_LONG)
             .show(); 
@@ -131,7 +131,7 @@ public class MainMenuActivity extends Activity {
 			settingsIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
 			this.startActivityForResult(settingsIntent, 0);
 		//mostrarAvisoGpsDeshabilitado(); Abrir ventana para que active gps
-		}
+		}*/
 
 		onCreateMainMenu(getWindow(), this);
 
@@ -154,7 +154,7 @@ public class MainMenuActivity extends Activity {
 				//una vez seleccionado, calcular la distancia desde mi ubicacion.
 				// si la distancia no supera tantos metros(determinar cuantos) guiar caminando
 				//sino identificar que garita de colectivo frena cerca yendo desde mi ubicacion. 
-				//final Intent guiar = new Intent(activity, AgsIntents.getSelecCatActivity());
+				//final Intent guiar = new Intent(activity, AgsIntents.getGuiarMapa());
 				final Intent guiar = new Intent(activity, AgsIntents.getSelecCatActivity());
 				guiar.putExtra("boton", "guiar");
 				activity.startActivity(guiar);

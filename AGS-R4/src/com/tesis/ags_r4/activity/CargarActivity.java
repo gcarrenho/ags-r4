@@ -56,8 +56,13 @@ public class CargarActivity extends Activity implements OnInitListener{
 	private Lugar lugarBd;
 	private TextToSpeech tts;
 	private  int campo;
+	private double latitud=0.0, longitud=0.0;
 	private static final int VOICE_RECOGNITION_REQUEST_CODE = 1;
 	private Preference about;
+	private LocationManager locManager;
+	private MyLocationListener locListener;
+
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -69,32 +74,20 @@ public class CargarActivity extends Activity implements OnInitListener{
 				exit = true;
 			}
 		}
-		LocationManager locManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-		MyLocationListener locListener = new MyLocationListener();
-		locListener.setCargarActivity(this);
-		locManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0,(LocationListener) locListener);
-	    
-		
-		/*LocationManager locManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-		MyLocationListener locListener = new MyLocationListener();
-		locListener.setMainActivity(this);
-		locManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0,(LocationListener) locListener);
-		
-		Criteria criterio = new Criteria();
-	    criterio.setCostAllowed(false);
-	    criterio.setAltitudeRequired(false);
-	    criterio.setAccuracy(Criteria.ACCURACY_FINE);
-	    
-	    
-	    String proveedor = locManager.getBestProvider(criterio, true);*/
-	   // log.("Mejor proveedor: " + proveedor + "\n");
-	    //log("Comenzamos con la última localización conocida:");
-	   // Location localizacion = locManager.getLastKnownLocation(proveedor);
-	    //LocationProvider info = locManager.getProvider(proveedor);
-
 		lugarBd= new Lugar(this);
 		lugarBd.open();
 		tts = new TextToSpeech(this, this);
+		//this.configGps();
+		locManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+		locListener = new MyLocationListener(){
+			@Override
+			public void onLocationChanged(Location loc) {
+				if (loc.getLatitude() != 0.0 && loc.getLongitude() != 0.0) {
+					latitud=loc.getLatitude();
+					longitud=loc.getLongitude();
+				}
+			}
+		};
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.cargar_lugar);
 		Window window = getWindow();
@@ -115,6 +108,7 @@ public class CargarActivity extends Activity implements OnInitListener{
 			this.editar(nombre,lat, lon);
 		}else{
 			this.cargar();
+			locManager.removeUpdates(locListener);
 		}
 		View cancelarButton = window.findViewById(R.id.cancelarButtom);
 		//Evento que escucha el click sobre el boton cancelar
@@ -123,6 +117,7 @@ public class CargarActivity extends Activity implements OnInitListener{
 			public void onClick(View v) {
 				lugarBd.close();
 				setResult(RESULT_CANCELED);
+				locManager.removeUpdates(locListener);
 				finish();
 			}
 		});
@@ -134,8 +129,40 @@ public class CargarActivity extends Activity implements OnInitListener{
 			}
 
 		});
-		//lugarBd.close();
-	}	
+	}
+
+
+	/*
+	 * (non-Javadoc)
+	 * @see android.app.Activity#onResume()
+	 * Llamada cuando la actividad va a empezar a
+	 * interactuar con el usuario, en este punto es 
+	 * el último punto antes de que el usuario ya vea la actividad
+	 * y pueda empezar a interactuar con ella. Siempre despues de un 
+	 * onResume() viene un onPause().
+	 */
+	@Override
+	protected void onResume() {
+		super.onResume();
+		this.configGps();
+	}
+
+
+	/*
+	 *  LLamada cuando el sistema va a empezar una nueva actividad.
+	 *  Ésta necesita parar animaciones, y parar todo lo que esté haciendo.
+	 *  Hay que intentar que esta llamada dure poco tiempo, porque hasta que no 
+	 *  se ejecute este método no arranca la siguiente actividad. Después de esta 
+	 *  llamada puede venir un onResume() si la actividad vuelve a primer plano o
+	 *  un onStop() si se hace invisible para el usuario.
+	 *   
+	 */
+	/*
+	   @Override    protected void onPause() {
+           super.onPause();
+           locManager.removeUpdates(locListener);
+     }*/
+
 
 
 	@Override
@@ -144,9 +171,7 @@ public class CargarActivity extends Activity implements OnInitListener{
 			tts.setLanguage(Locale.getDefault());
 		} else {
 			tts = null;
-			Toast.makeText(this, "Failed to initialize TTS engine.",
-
-					Toast.LENGTH_SHORT).show();
+			Toast.makeText(this, "Failed to initialize TTS engine.",Toast.LENGTH_SHORT).show();
 
 		}
 
@@ -160,7 +185,7 @@ public class CargarActivity extends Activity implements OnInitListener{
 		// Definimos el mensaje que aparecerá 
 		// intent.putExtra(RecognizerIntent.EXTRA_PROMPT,"Diga, Llamar a ...");
 		// Lanzamos la actividad esperando resultados
-		
+
 		//HAY UN PROBLEMA LA MINA DEL TALKBACK DICE "BUSQUDA DE GOOGLE", CUANDO ESTA RECONOCIENDO.
 		startActivityForResult(intent, VOICE_RECOGNITION_REQUEST_CODE);
 	}
@@ -175,8 +200,8 @@ public class CargarActivity extends Activity implements OnInitListener{
 				ArrayList<String> matches = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
 				EditText nombre=(EditText)findViewById(R.id.textNomLugar);
 				nombre.setText(matches.get(0));
-				
-					   
+
+
 			}else if (campo==2){
 				ArrayList<String> matches = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
 				EditText tipo=(EditText)findViewById(R.id.textTipoLugar);
@@ -214,8 +239,16 @@ public class CargarActivity extends Activity implements OnInitListener{
 				}
 				final int telInt = Integer.parseInt(telefono);
 				lugarBd.setTel(telInt);
-
-				if(lugarBd.ExisteLugar(nombre.getText().toString().toLowerCase())){//true si tiene algo
+				if(latitud==0.0 && longitud==0.0){
+					Toast.makeText(getBaseContext(), "Espere hasta obtener su localizacion", Toast.LENGTH_LONG)
+					.show();
+				}else if(cat.getText().toString().length()==0){
+					Toast.makeText(getBaseContext(), "Campo tipo de lugar no puede ser vacio", Toast.LENGTH_LONG)
+					.show();
+				}else if(nombre.getText().toString().length()==0){
+					Toast.makeText(getBaseContext(), "Campo nombre no puede ser vacio", Toast.LENGTH_LONG)
+					.show();
+				}else if(lugarBd.ExisteLugar(nombre.getText().toString().toLowerCase())){//true si tiene algo
 					//lanzar un cartel diciendo que ya existe cargado un lugar con dicho nombre poner otro
 					//identificador , y poner  el foco en el campo nombre	
 					Toast.makeText(getBaseContext(), "Ya existe un lugar cargado con ese nombre", Toast.LENGTH_LONG)
@@ -224,7 +257,13 @@ public class CargarActivity extends Activity implements OnInitListener{
 				}else{
 					try
 					{
+						Toast.makeText(getBaseContext(), "Localizacion Exitosa", Toast.LENGTH_LONG)
+						.show();
+						lugarBd.setLatitud(latitud);
+						lugarBd.setLongitud(longitud);
 						lugarBd.createLugar(lugarBd);
+						Toast.makeText(getBaseContext(), "Lugar Cargado Exitosamente", Toast.LENGTH_LONG)
+						.show();
 						lugarBd.close();
 						finish();
 					}
@@ -415,28 +454,28 @@ public class CargarActivity extends Activity implements OnInitListener{
 
 		});
 	}
-	
-	/*public void setLocation(Location loc) {
-		//Obtener la direccin de la calle a partir de la latitud y la longitud 
-		if (loc.getLatitude() != 0.0 && loc.getLongitude() != 0.0) {
-			try {
-				Geocoder geocoder = new Geocoder(this, Locale.getDefault());
-				List<Address> list = geocoder.getFromLocation(loc.getLatitude(), loc.getLongitude(), 1);
-				if (!list.isEmpty()) {
-					Address address = list.get(0);
-					messageTextView2.setText("Mi direccin es: \n"
-							+ address.getAddressLine(0));
-					Toast.makeText(getBaseContext(), "Mi Direccion es: "+address.getAddressLine(0), Toast.LENGTH_LONG)
-					.show();
-				}
 
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-	}*/
 
-	
-	
 
+	public void configGps(){
+
+		locManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0,(LocationListener) locListener);
+
+		/*LocationManager locManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+		MyLocationListener locListener = new MyLocationListener();
+		locListener.setMainActivity(this);
+		locManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0,(LocationListener) locListener);
+
+		Criteria criterio = new Criteria();
+	    criterio.setCostAllowed(false);
+	    criterio.setAltitudeRequired(false);
+	    criterio.setAccuracy(Criteria.ACCURACY_FINE);
+
+
+	    String proveedor = locManager.getBestProvider(criterio, true);*/
+		// log.("Mejor proveedor: " + proveedor + "\n");
+		//log("Comenzamos con la última localización conocida:");
+		// Location localizacion = locManager.getLastKnownLocation(proveedor);
+		//LocationProvider info = locManager.getProvider(proveedor);
+	}		
 }

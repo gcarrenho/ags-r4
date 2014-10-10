@@ -156,17 +156,15 @@ public class SelectCatActivity extends Activity{
 				 
 	            public boolean onChildClick(ExpandableListView parent, View v,
 	                    int groupPosition, int childPosition, long id) {
-	            	 LocationManager locManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-			      		locManager.getGpsStatus(null).getTimeToFirstFix();
-			      		 
-			      		MyLocationListener locListener = new MyLocationListener();
-			      		//locListener.setMainActivity(this); 
-			      		locManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0,(LocationListener) locListener);
+	         
 			              String nombre=(String) expListAdapter.getChild(groupPosition, childPosition);
 			              //Buscarlo en la base de datos y traer todos los datos.
 			              //lugarBd.deleteLugar(nombre);
 			              final Intent guiar = new Intent(activity, AgsIntents.getGuiarMapa());
-			              //cargar.putExtra("accion", "cargar");
+			              String nom=(String) expListAdapter.getChild(groupPosition, childPosition);
+			              Lugar l=lugarBd.getLugar(nom);
+			              guiar.putExtra("lat", l.getLatitud());
+			              guiar.putExtra("lng", l.getLongitud());
 			              activity.startActivity(guiar);
 			              lugarBd.close();
 	 

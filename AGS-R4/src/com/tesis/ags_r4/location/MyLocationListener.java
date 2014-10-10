@@ -1,5 +1,6 @@
 package com.tesis.ags_r4.location;
 
+import android.app.Activity;
 import android.location.Location;
 import android.location.LocationListener;
 import android.os.Bundle;
@@ -10,37 +11,25 @@ import com.tesis.ags_r4.activity.CargarActivity;
 import com.tesis.ags_r4.activity.MainMenuActivity;
 
 public class MyLocationListener implements LocationListener {
-	MainMenuActivity menuActivity;
-	CargarActivity cargarActivity;
 	GuiarMapa guiarActivity;
-	public MainMenuActivity getmenuActivity() {
-		return menuActivity;
+	
+	public GuiarMapa getGuiarActivity() {
+		return guiarActivity;
 	}
 	
-	public CargarActivity getCargarActivity() {
-		return cargarActivity;
-	}
-
 	public void setGuiarActivity(GuiarMapa guiarActivity) {
 		this.guiarActivity = guiarActivity;
-	}
-
-	public void setCargarActivity(CargarActivity cargarActivity) {
-		this.cargarActivity = cargarActivity;
 	}
 	
 	@Override
 	public void onLocationChanged(Location loc) {
 		// Este metodo se ejecuta cada vez que el GPS recibe nuevas coordenadas
-		// debido a la deteccin de un cambio de ubicacion
-		loc.getLatitude();
-		loc.getLongitude();
-		String Text = "Mi ubicacion actual es: " + "\n Lat = "
-				+ loc.getLatitude() + "\n Long = " + loc.getLongitude();
-		//messageTextView.setText(Text);
-		//Toast.makeText(getBaseContext(), "Ubicacion Actual "+Text, Toast.LENGTH_LONG).show();
-		//this.guiarActivity.setLocation(loc);//poner otro nombre
-		//this.cargarActivity.setLocation(loc);
+		// debido a la deteccion de un cambio de ubicacion
+		// Este metodo se ejecuta cada vez que el GPS recibe nuevas coordenadas
+					// debido a la deteccin de un cambio de ubicacion
+					loc.getLatitude();
+					loc.getLongitude();
+					guiarActivity.setLocation(loc);
 	}
 
 	@Override
