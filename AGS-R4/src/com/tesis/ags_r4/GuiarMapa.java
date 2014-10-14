@@ -17,7 +17,7 @@ import com.google.android.gms.maps.model.PolylineOptions;
 import com.tesis.ags_r4.R;
 import com.tesis.ags_r4.R.id;
 import com.tesis.ags_r4.R.layout;
-//import com.tesis.ags_r4.location.Location;
+import com.tesis.ags_r4.location.MyLocation;
 import com.tesis.ags_r4.location.MyLocationListener;
 import com.tesis.ags_r4.navigation.GMapV2Direction;
 import com.tesis.ags_r4.navigation.GetDirectionsAsyncTask;
@@ -50,9 +50,10 @@ public class GuiarMapa extends FragmentActivity {
     private MyLocationListener locListener;
     private double lat, mlat;
     private double lng, mlng;
-    
+    private MyLocation mloc;
     /** Nombre del proveedor de localización. */
 	private transient String proveedor;
+	private static float[] results=new float[2];
 
   //EL PROBLEMA CON EL GPS SE DEBE A QUE ESTA CLASE EXTIENDE DE UN FRAMEACTIVITY, EN LAS ACTIVITYS
     //FUNCIONA PERFECTAMENTE.   
@@ -71,16 +72,13 @@ public class GuiarMapa extends FragmentActivity {
 				if (loc.getLatitude() != 0.0 && loc.getLongitude() != 0.0) {
 					mlat=loc.getLatitude();
 					mlng=loc.getLongitude();
+					//cada vez que obtengo la mlat y mlong puedo ir calculando
+					//la distancia que hay en donde estoy hasta donde quiero llegar.
 					setLocation(loc);
+					
 				}
 			}
-		};
-        //setUpMapIfNeeded();
-        //this.configGps();
-       // locManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
- 		/*locListener = new MyLocationListener();
- 		locListener.setGuiarActivity(this);	*/
-	
+		};	
     }
     
     
@@ -93,7 +91,7 @@ public class GuiarMapa extends FragmentActivity {
     }
     
     private void configGps(){
- 		locManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0,(LocationListener) locListener);
+ 		locManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 0,(LocationListener) locListener);
  	  
 		/*if (!locManager.isProviderEnabled(LocationManager.GPS_PROVIDER))
 		{
@@ -156,7 +154,7 @@ public class GuiarMapa extends FragmentActivity {
         //Construye la ruta, desde una latitud-longitud hasta otra latitud-longitud
         //tengo que construir desde mi ubicacion actual hasta la parada de colectivo si se 
         //superan ciertos metros, y sino hasta el lugar si esta cerca.
-        findDirections(mlat,mlng,lat, lng, GMapV2Direction.MODE_WALKING );
+        findDirections(mlat,mlng,-33.123873,-64.348993, GMapV2Direction.MODE_WALKING );
         Toast.makeText(getBaseContext(), String.valueOf("Calculando Recorrido"), Toast.LENGTH_LONG)
         .show();
     }
@@ -192,7 +190,18 @@ public class GuiarMapa extends FragmentActivity {
     public void setLocation(Location loc) {
     	Toast.makeText(getBaseContext(), "Mi Direccion es: "+loc.getLatitude(), Toast.LENGTH_LONG)
 		.show();
-    	posicionInicial();
+    	if (this.dist(mlat, mlng,lat,lng)<1000){
+    		//ruta hastaa el lugar
+    		findDirections(mlat,mlng,lat,lng, GMapV2Direction.MODE_WALKING );
+           Toast.makeText(getBaseContext(), String.valueOf("Calculando Recorrido"), Toast.LENGTH_LONG)
+            .show();
+            //cuando este muy cerca quiere decir que esta en la parada
+            //calcular distancia hacia el lugar y cuando este cerca avisar para
+            //bajarse y una vez abajo calcular ruta
+    	}else{
+    		//ruta hasta alguna parada de colectivo.
+    		//identificar paradas cerca de donde estoy..
+    	}
     	/*int latitud = (int) (loc.getLatitude() * 1E6);
 		int longitud = (int) (loc.getLongitude() * 1E6);
 
@@ -253,6 +262,12 @@ public class GuiarMapa extends FragmentActivity {
 		} else {
 			Log.d(TAG, "Localizacion nula");
 		}
-
 	}
+    
+    private double dist(double mlat, double mlng,double lat, double lng){
+    	//mloc=new MyLocation("GPS");
+    	MyLocation.distanceBetween(mlat, mlng, lat, lng, results);
+    	return results[0];
+    }
+    
 }

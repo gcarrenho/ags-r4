@@ -1,6 +1,6 @@
 package com.tesis.ags_r4.location;
 
-public class Location {
+public class MyLocation {
 	private String mProvider;
     private long mTime = 0;
     private double mLatitude = 0.0;
@@ -33,7 +33,7 @@ public class Location {
      * @param provider the name of the location provider that generated this
      * location fix.
      */
-    public Location(String provider) {
+    public MyLocation(String provider) {
         mProvider = provider;
     }
 
@@ -41,14 +41,14 @@ public class Location {
      * Constructs a new Location object that is a copy of the given
      * location.
      */
-    public Location(Location l) {
+    public MyLocation(MyLocation l) {
         set(l);
     }
 
     /**
      * Sets the contents of the location to the values from the given location.
      */
-    public void set(Location l) {
+    public void set(MyLocation l) {
         mProvider = l.mProvider;
         mTime = l.mTime;
         mLatitude = l.mLatitude;
@@ -219,7 +219,7 @@ public class Location {
      * @param dest the destination location
      * @return the approximate distance in meters
      */
-    public float distanceTo(Location dest) {
+    public float distanceTo(MyLocation dest) {
         // See if we already have the result
         synchronized (mResults) {
             if (mLatitude != mLat1 || mLongitude != mLon1 ||
@@ -247,7 +247,7 @@ public class Location {
      * @param dest the destination location
      * @return the initial bearing in degrees
      */
-    public float bearingTo(Location dest) {
+    public float bearingTo(MyLocation dest) {
         synchronized (mResults) {
             // See if we already have the result
             if (mLatitude != mLat1 || mLongitude != mLon1 ||

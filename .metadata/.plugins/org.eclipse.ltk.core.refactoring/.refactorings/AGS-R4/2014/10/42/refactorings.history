@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;com.tesis.ags_r4.location.Location&apos; to &apos;MyLocation&apos;&#x0A;- Original project: &apos;AGS-R4&apos;&#x0A;- Original element: &apos;com.tesis.ags_r4.location.Location&apos;&#x0A;- Renamed element: &apos;com.tesis.ags_r4.location.MyLocation&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;Location&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;com.tesis.ags_r4.location{Location.java[Location" matchStrategy="1" name="MyLocation" qualified="false" references="true" similarDeclarations="false" stamp="1413254827892" textual="false" version="1.0"/>
+</session>
