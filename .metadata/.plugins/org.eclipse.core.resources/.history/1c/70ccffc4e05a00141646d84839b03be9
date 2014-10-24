@@ -1,0 +1,158 @@
+package com.tesis.ags_r4.activity;
+
+import java.io.InputStream;
+import java.util.ArrayList;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.protocol.BasicHttpContext;
+import org.apache.http.protocol.HttpContext;
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+
+import com.google.android.gms.maps.model.LatLng;
+import com.tesis.ags_r4.R;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.view.Window;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+
+public class InfActivity extends Activity{
+
+	
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		boolean exit = false;
+		Intent intent = getIntent();
+		/*if(intent != null){
+			if(intent.getExtras() != null && intent.getExtras().containsKey(APP_EXIT_KEY)){
+				exit = true;
+			}
+		}*/
+		
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
+		setContentView(R.layout.informacion);
+		Window window = getWindow();
+		View actButton = window.findViewById(R.id.button_act);
+		//Evento que escucha el click sobre el boton cancelar
+		actButton.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Document doc=getDocument(String.valueOf(17));
+				String name=getCoorValue(doc);
+				//EditText text=(EditText)findViewById(R.id.editText1);
+				//text.setText(coor);
+				
+				/*for(int i=1;i<19;i++){
+					if (i==1 || i==2 || i==8 || i==9){
+						getDocument(String.valueOf(i)+"r");
+						getDocument(String.valueOf(i)+"v");
+					}else{
+						getDocument(String.valueOf(i));
+					}
+				}*/
+			}
+		});
+	}
+
+	
+	
+	   public Document getDocument(String linea){
+	        String url = "http://satcrc.com.ar/kml/"+linea+".kml";
+	 
+	        try {
+	            HttpClient httpClient = new DefaultHttpClient();
+	            HttpContext localContext = new BasicHttpContext();
+	            HttpPost httpPost = new HttpPost(url);
+	            HttpResponse response = httpClient.execute(httpPost, localContext);
+	            InputStream in = response.getEntity().getContent();
+	            DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+	            Document doc = builder.parse(in);
+	            return doc;
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        }
+	        return null;
+	    }
+	
+
+	   //ARREGLAR debe retornar una lista ArrayList<LatLng>
+	   public String getCoorValue (Document doc) {
+	        NodeList nl1 = doc.getElementsByTagName("Document");
+	        Node node1 = nl1.item(0);
+	        NodeList nl2 = node1.getChildNodes();
+	        Node node2 = nl2.item(getNodeIndex(nl2, "name"));
+	        //NodeList nl3=node2.getChildNodes();
+	        //Node node3=nl3.item(getNodeIndex(nl3, "coordinates"));
+	        Log.i("CordenadasValues", node2.getTextContent());
+	        return node2.getTextContent();
+	    }
+	   /*EJEMPLO A SEGUIR PARA AGREGAR MULTIPLES PUNTOS LATLONG
+	   List<LatLng> points = decodePoly(_path); // list of latlng
+	   for (int i = 0; i < points.size() - 1; i++) {
+	   LatLng src = points.get(i);
+	   LatLng dest = points.get(i + 1);
+	   Polyline line = mMap.addPolyline(new PolylineOptions() //mMap is the Map Object
+	   .add(new LatLng(src.latitude, src.longitude),
+	   new LatLng(dest.latitude,dest.longitude))
+	   .width(2).color(Color.BLUE).geodesic(true));
+	    }*/
+	   /*
+	   public ArrayList<LatLng> getDirection (Document doc) {
+	        NodeList nl1, nl2, nl3;
+	        ArrayList<LatLng> listGeopoints = new ArrayList<LatLng>();
+	        nl1 = doc.getElementsByTagName("step");
+	        if (nl1.getLength() > 0) {
+	            for (int i = 0; i < nl1.getLength(); i++) {
+	                Node node1 = nl1.item(i);
+	                nl2 = node1.getChildNodes();
+	 
+	                Node locationNode = nl2.item(getNodeIndex(nl2, "start_location"));
+	                nl3 = locationNode.getChildNodes();
+	                Node latNode = nl3.item(getNodeIndex(nl3, "lat"));
+	                double lat = Double.parseDouble(latNode.getTextContent());
+	                Node lngNode = nl3.item(getNodeIndex(nl3, "lng"));
+	                double lng = Double.parseDouble(lngNode.getTextContent());
+	                listGeopoints.add(new LatLng(lat, lng));
+	 
+	                locationNode = nl2.item(getNodeIndex(nl2, "polyline"));
+	                nl3 = locationNode.getChildNodes();
+	                latNode = nl3.item(getNodeIndex(nl3, "points"));
+	                ArrayList<LatLng> arr = decodePoly(latNode.getTextContent());
+	                for(int j = 0 ; j < arr.size() ; j++) {
+	                    listGeopoints.add(new LatLng(arr.get(j).latitude, arr.get(j).longitude));
+	                }
+	 
+	                locationNode = nl2.item(getNodeIndex(nl2, "end_location"));
+	                nl3 = locationNode.getChildNodes();
+	                latNode = nl3.item(getNodeIndex(nl3, "lat"));
+	                lat = Double.parseDouble(latNode.getTextContent());
+	                lngNode = nl3.item(getNodeIndex(nl3, "lng"));
+	                lng = Double.parseDouble(lngNode.getTextContent());
+	                listGeopoints.add(new LatLng(lat, lng));
+	            }
+	        }
+	 
+	        return listGeopoints;
+	    }*/
+	   
+	    private int getNodeIndex(NodeList nl, String nodename) {
+	        for(int i = 0 ; i < nl.getLength() ; i++) {
+	            if(nl.item(i).getNodeName().equals(nodename))
+	                return i;
+	        }
+	        return -1;
+	    }
+}

@@ -1762,11 +1762,14 @@ containing a value of this type.
         public static final int action_menu_divider=0x7f050016;
         public static final int action_menu_presenter=0x7f050017;
         public static final int action_mode_close_button=0x7f050027;
-        public static final int action_settings=0x7f05005e;
+        public static final int action_settings=0x7f050062;
         public static final int activity_chooser_view_content=0x7f050028;
         public static final int always=0x7f05000b;
         public static final int apieButton=0x7f050058;
         public static final int beginning=0x7f050011;
+        public static final int button2=0x7f05005a;
+        public static final int button3=0x7f05005b;
+        public static final int button_act=0x7f050059;
         public static final int cancelarButtom=0x7f050053;
         public static final int cargarButton=0x7f050040;
         public static final int cat=0x7f050054;
@@ -1777,12 +1780,13 @@ containing a value of this type.
         public static final int dialog=0x7f05000e;
         public static final int disableHome=0x7f050008;
         public static final int dropdown=0x7f05000f;
+        public static final int editText1=0x7f05005c;
         public static final int edit_query=0x7f050033;
         public static final int editarButton=0x7f050042;
         public static final int eliminarButton=0x7f050044;
         public static final int end=0x7f050013;
         public static final int expand_activities_button=0x7f050029;
-        public static final int expandableListViewCat=0x7f05005a;
+        public static final int expandableListViewCat=0x7f05005e;
         public static final int expanded_menu=0x7f05002f;
         public static final int favoritosButton=0x7f050049;
         public static final int guiaButton=0x7f050047;
@@ -1793,12 +1797,12 @@ containing a value of this type.
         public static final int ifRoom=0x7f05000a;
         public static final int image=0x7f05002a;
         public static final int informButton=0x7f05004a;
-        public static final int lineasButtom=0x7f05005d;
+        public static final int lineasButtom=0x7f050061;
         public static final int listMode=0x7f050001;
         public static final int list_item=0x7f05002c;
-        public static final int listlineas=0x7f050059;
-        public static final int lug=0x7f05005b;
-        public static final int lugarButtom=0x7f05005c;
+        public static final int listlineas=0x7f05005d;
+        public static final int lug=0x7f05005f;
+        public static final int lugarButtom=0x7f050060;
         public static final int map=0x7f050055;
         public static final int middle=0x7f050012;
         public static final int never=0x7f050009;
@@ -1901,11 +1905,12 @@ containing a value of this type.
         public static final int favoritos=0x7f03001d;
         public static final int guiar=0x7f03001e;
         public static final int guiar_eleg=0x7f03001f;
-        public static final int lineas=0x7f030020;
-        public static final int list_cat=0x7f030021;
-        public static final int lugares_item=0x7f030022;
-        public static final int op_bus=0x7f030023;
-        public static final int support_simple_spinner_dropdown_item=0x7f030024;
+        public static final int informacion=0x7f030020;
+        public static final int lineas=0x7f030021;
+        public static final int list_cat=0x7f030022;
+        public static final int lugares_item=0x7f030023;
+        public static final int op_bus=0x7f030024;
+        public static final int support_simple_spinner_dropdown_item=0x7f030025;
     }
     public static final class menu {
         public static final int main=0x7f0c0000;
@@ -1955,6 +1960,7 @@ containing a value of this type.
         public static final int abm_button=0x7f0a002f;
         public static final int aceptar=0x7f0a002a;
         public static final int action_settings=0x7f0a0039;
+        public static final int actualizar_lineas=0x7f0a0048;
         public static final int app_name=0x7f0a0028;
         public static final int app_version=0x7f0a0029;
         /**   Title for notification shown when GooglePlayServices needs to be

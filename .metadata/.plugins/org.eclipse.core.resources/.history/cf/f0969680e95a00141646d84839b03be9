@@ -1,0 +1,105 @@
+package com.tesis.ags_r4.activity;
+
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.protocol.BasicHttpContext;
+import org.apache.http.protocol.HttpContext;
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Polyline;
+import com.google.android.gms.maps.model.PolylineOptions;
+import com.tesis.ags_r4.R;
+import com.tesis.ags_r4.navigation.GetDirectionBusAsyncTask;
+import com.tesis.ags_r4.navigation.GetDirectionsAsyncTask;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.graphics.Color;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.view.Window;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+
+public class InfActivity extends Activity{
+
+	
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		boolean exit = false;
+		Intent intent = getIntent();
+		/*if(intent != null){
+			if(intent.getExtras() != null && intent.getExtras().containsKey(APP_EXIT_KEY)){
+				exit = true;
+			}
+		}*/
+		
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
+		setContentView(R.layout.informacion);
+		Window window = getWindow();
+		View actButton = window.findViewById(R.id.button_act);
+		//Evento que escucha el click sobre el boton cancelar
+		actButton.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				findDirections(0.24556,0.2586, 0.28963, 0.58963, "walking");
+				//EditText text=(EditText)findViewById(R.id.editText1);
+				//text.setText(coor);
+				
+				/*for(int i=1;i<19;i++){
+					if (i==1 || i==2 || i==8 || i==9){
+						getDocument(String.valueOf(i)+"r");
+						getDocument(String.valueOf(i)+"v");
+					}else{
+						getDocument(String.valueOf(i));
+					}
+				}*/
+			}
+		});
+	}
+
+	
+	  public void findDirections(double fromPositionLat, double fromPositionLong, double toPositionLat, double toPositionLong, String mode)
+	    {
+	        Map<String, String> map = new HashMap<String, String>();
+	        map.put(GetDirectionBusAsyncTask.USER_CURRENT_LAT, String.valueOf(fromPositionLat));
+	        map.put(GetDirectionBusAsyncTask.USER_CURRENT_LONG, String.valueOf(fromPositionLong));
+	        map.put(GetDirectionBusAsyncTask.DESTINATION_LAT, String.valueOf(toPositionLat));
+	        map.put(GetDirectionBusAsyncTask.DESTINATION_LONG, String.valueOf(toPositionLong));
+	        map.put(GetDirectionBusAsyncTask.DIRECTIONS_MODE, mode);
+	     
+	        GetDirectionBusAsyncTask asyncTask = new GetDirectionBusAsyncTask(this);
+	        asyncTask.execute(map);
+	    }
+	    
+	    public void handleGetDirectionsResult(ArrayList directionPoints)
+	    {//Dibujar recorrido
+	        /*Polyline newPolyline;
+	        GoogleMap mMap = ((SupportMapFragment)getSupportFragmentManager().findFragmentById(R.id.map)).getMap();
+	        PolylineOptions rectLine = new PolylineOptions().width(3).color(Color.BLUE);
+	        for(int i = 0 ; i < directionPoints.size() ; i++)
+	        {
+	            rectLine.add((LatLng) directionPoints.get(i));
+	        }
+	        newPolyline = mMap.addPolyline(rectLine);*/
+	    	EditText text=(EditText)findViewById(R.id.editText1);
+			text.setText(directionPoints.get(0).toString());
+	    }
+}

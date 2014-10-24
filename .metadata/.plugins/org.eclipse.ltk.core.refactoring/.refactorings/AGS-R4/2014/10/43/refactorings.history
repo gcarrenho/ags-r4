@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename compilation unit &apos;com.tesis.ags_r4.navigation.GetDirecctionBusAsyncTask.java&apos; to &apos;GetDirectionBusAsyncTask.java&apos;&#x0A;- Original project: &apos;AGS-R4&apos;&#x0A;- Original element: &apos;com.tesis.ags_r4.navigation.GetDirecctionBusAsyncTask.java&apos;&#x0A;- Renamed element: &apos;com.tesis.ags_r4.navigation.GetDirectionBusAsyncTask.java&apos;" description="Rename compilation unit &apos;GetDirecctionBusAsyncTask.java&apos;" flags="2" id="org.eclipse.jdt.ui.rename.compilationunit" input="/src&lt;com.tesis.ags_r4.navigation{GetDirecctionBusAsyncTask.java" name="GetDirectionBusAsyncTask.java" references="false" stamp="1414091026321" version="1.0"/>
+</session>

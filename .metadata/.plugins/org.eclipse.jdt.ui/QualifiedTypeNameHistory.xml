@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
 <fullyQualifiedTypeName name="android.os.Bundle"/>
-<fullyQualifiedTypeName name="com.tesis.ags_r4.R.id"/>
 <fullyQualifiedTypeName name="com.tesis.ags_r4.maps.GuiarMapa"/>
 <fullyQualifiedTypeName name="android.support.v4.app.FragmentActivity"/>
 <fullyQualifiedTypeName name="android.location.LocationListener"/>
@@ -9,7 +8,6 @@
 <fullyQualifiedTypeName name="com.google.android.gms.drive.internal.p"/>
 <fullyQualifiedTypeName name="android.view.Menu"/>
 <fullyQualifiedTypeName name="com.google.android.maps.MapActivity"/>
-<fullyQualifiedTypeName name="com.tesis.ags_r4.R.layout"/>
 <fullyQualifiedTypeName name="android.R"/>
 <fullyQualifiedTypeName name="android.R.layout"/>
 <fullyQualifiedTypeName name="com.tesis.ags_r4.location.Location"/>
@@ -60,4 +58,6 @@
 <fullyQualifiedTypeName name="android.util.Log"/>
 <fullyQualifiedTypeName name="android.view.LayoutInflater"/>
 <fullyQualifiedTypeName name="android.view.ViewGroup"/>
+<fullyQualifiedTypeName name="com.tesis.ags_r4.R.layout"/>
+<fullyQualifiedTypeName name="com.tesis.ags_r4.R.id"/>
 </qualifiedTypeNameHistroy>

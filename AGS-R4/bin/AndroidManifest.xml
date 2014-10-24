@@ -72,7 +72,9 @@
             android:label="Seleccionar Lugar" >
         </activity>
         
+        
          <activity android:name="com.tesis.ags_r4.GuiarMapa"></activity>
+         <activity android:name=".activity.InfActivity"></activity>
          
     </application>
 

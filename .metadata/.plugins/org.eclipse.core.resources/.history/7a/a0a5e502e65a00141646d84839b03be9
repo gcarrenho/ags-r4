@@ -1,0 +1,37 @@
+package com.tesis.ags_r4.navigation;
+
+import java.util.ArrayList;
+import java.util.Map;
+
+import com.tesis.ags_r4.GuiarMapa;
+
+import android.app.ProgressDialog;
+import android.os.AsyncTask;
+
+public class GetDirecctionBusAsyncTask extends AsyncTask<Map<String, String>, Object, ArrayList>{
+
+
+	private GuiarMapa activity;
+	private Exception exception;
+	private ProgressDialog progressDialog;
+
+	public GetDirecctionBusAsyncTask(GuiarMapa activity)
+	{
+		super();
+		this.activity = activity;
+	}
+	
+	 public void onPreExecute()
+	    {
+	        progressDialog = new ProgressDialog(activity);
+	        progressDialog.setMessage("Calculando recorrido");
+	        progressDialog.show();
+	    }
+
+	@Override
+	protected ArrayList doInBackground(Map<String, String>... params) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}
