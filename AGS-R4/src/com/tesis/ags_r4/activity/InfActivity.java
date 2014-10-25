@@ -20,6 +20,7 @@ import org.w3c.dom.NodeList;
 
 import com.google.android.gms.maps.model.LatLng;
 import com.tesis.ags_r4.R;
+import com.tesis.ags_r4.file.MakeFile;
 import com.tesis.ags_r4.navigation.GetDirectionBusAsyncTask;
 
 import android.app.Activity;
@@ -30,10 +31,11 @@ import android.view.View;
 import android.view.Window;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class InfActivity extends Activity{
 
-	
+	private MakeFile mfile=new MakeFile();
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -54,6 +56,19 @@ public class InfActivity extends Activity{
 			@Override
 			public void onClick(View v) {
 				findDirections(0.2563,0.25369,0.89658,0.7895,"walking");
+				Toast.makeText(getBaseContext(), "Los datos fueron grabados correctamente",
+			            Toast.LENGTH_SHORT).show();
+			}
+		});
+		
+		View recButton = window.findViewById(R.id.button_rec);
+		//Evento que escucha el click sobre el boton cancelar
+		recButton.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				String coord=mfile.recuperar("17");
+				EditText text=(EditText)findViewById(R.id.editText1);
+				text.setText(coord);
 			}
 		});
 	}

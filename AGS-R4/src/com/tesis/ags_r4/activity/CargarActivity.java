@@ -240,29 +240,29 @@ public class CargarActivity extends Activity implements OnInitListener{
 				final int telInt = Integer.parseInt(telefono);
 				lugarBd.setTel(telInt);
 				if(latitud==0.0 && longitud==0.0){
-					Toast.makeText(getBaseContext(), "Espere hasta obtener su localizacion", Toast.LENGTH_LONG)
+					Toast.makeText(getBaseContext(),R.string.obt_loc, Toast.LENGTH_LONG)
 					.show();
 				}else if(cat.getText().toString().length()==0){
-					Toast.makeText(getBaseContext(), "Campo tipo de lugar no puede ser vacio", Toast.LENGTH_LONG)
+					Toast.makeText(getBaseContext(),R.string.adv_tdl, Toast.LENGTH_LONG)
 					.show();
 				}else if(nombre.getText().toString().length()==0){
-					Toast.makeText(getBaseContext(), "Campo nombre no puede ser vacio", Toast.LENGTH_LONG)
+					Toast.makeText(getBaseContext(), R.string.adv_cn, Toast.LENGTH_LONG)
 					.show();
 				}else if(lugarBd.ExisteLugar(nombre.getText().toString().toLowerCase())){//true si tiene algo
 					//lanzar un cartel diciendo que ya existe cargado un lugar con dicho nombre poner otro
 					//identificador , y poner  el foco en el campo nombre	
-					Toast.makeText(getBaseContext(), "Ya existe un lugar cargado con ese nombre", Toast.LENGTH_LONG)
+					Toast.makeText(getBaseContext(), R.string.exi_l, Toast.LENGTH_LONG)
 					.show();
 
 				}else{
 					try
 					{
-						Toast.makeText(getBaseContext(), "Localizacion Exitosa", Toast.LENGTH_LONG)
+						Toast.makeText(getBaseContext(), R.string.loc_sat, Toast.LENGTH_LONG)
 						.show();
 						lugarBd.setLatitud(latitud);
 						lugarBd.setLongitud(longitud);
 						lugarBd.createLugar(lugarBd);
-						Toast.makeText(getBaseContext(), "Lugar Cargado Exitosamente", Toast.LENGTH_LONG)
+						Toast.makeText(getBaseContext(), R.string.l_carg, Toast.LENGTH_LONG)
 						.show();
 						lugarBd.close();
 						finish();

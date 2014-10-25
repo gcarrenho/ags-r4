@@ -1767,9 +1767,9 @@ containing a value of this type.
         public static final int always=0x7f05000b;
         public static final int apieButton=0x7f050058;
         public static final int beginning=0x7f050011;
-        public static final int button2=0x7f05005a;
         public static final int button3=0x7f05005b;
         public static final int button_act=0x7f050059;
+        public static final int button_rec=0x7f05005a;
         public static final int cancelarButtom=0x7f050053;
         public static final int cargarButton=0x7f050040;
         public static final int cat=0x7f050054;
@@ -1961,6 +1961,8 @@ containing a value of this type.
         public static final int aceptar=0x7f0a002a;
         public static final int action_settings=0x7f0a0039;
         public static final int actualizar_lineas=0x7f0a0048;
+        public static final int adv_cn=0x7f0a004c;
+        public static final int adv_tdl=0x7f0a004b;
         public static final int app_name=0x7f0a0028;
         public static final int app_version=0x7f0a0029;
         /**   Title for notification shown when GooglePlayServices needs to be
@@ -2066,13 +2068,16 @@ containing a value of this type.
         public static final int editar=0x7f0a003d;
         public static final int eliminar=0x7f0a003c;
         public static final int error_when_retrieving_data=0x7f0a0047;
+        public static final int exi_l=0x7f0a004d;
         public static final int favoritos_Button=0x7f0a0030;
         public static final int guiar_Button=0x7f0a002e;
         public static final int help=0x7f0a002c;
         public static final int information_Button=0x7f0a0031;
         public static final int iniciar=0x7f0a003a;
+        public static final int l_carg=0x7f0a004f;
         public static final int lineas=0x7f0a0038;
         public static final int llamar=0x7f0a003f;
+        public static final int loc_sat=0x7f0a004e;
         /**  Location client code resources (prefix with location_client) 
          */
         public static final int location_client_powered_by_google=0x7f0a0027;
@@ -2083,6 +2088,8 @@ containing a value of this type.
         public static final int lugares=0x7f0a0034;
         public static final int modoDeUso=0x7f0a0046;
         public static final int nombre_lugar=0x7f0a0035;
+        public static final int obt_loc=0x7f0a004a;
+        public static final int recup=0x7f0a0049;
         public static final int tel_lugar=0x7f0a0037;
         public static final int tipo_lugar=0x7f0a0045;
         public static final int visitar=0x7f0a003e;

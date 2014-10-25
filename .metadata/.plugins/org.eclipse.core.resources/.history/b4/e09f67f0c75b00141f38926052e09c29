@@ -1,0 +1,32 @@
+package com.tesis.ags_r4.file;
+
+import java.io.File;
+
+import android.os.Environment;
+import android.view.View;
+import android.widget.Toast;
+
+public class MakeFile {
+
+	public MakeFile(){
+		
+	}
+	
+	public void grabar(View v,String coord) {
+        String nomarchivo = et1.getText().toString();
+        String contenido = et2.getText().toString();
+        try {
+            File tarjeta = Environment.getExternalStorageDirectory();
+            File file = new File(tarjeta.getAbsolutePath(), nomarchivo);
+            OutputStreamWriter osw = new OutputStreamWriter(new FileOutputStream(file));
+            osw.write(contenido);
+            osw.flush();
+            osw.close();
+            Toast.makeText(this, "Los datos fueron grabados correctamente",
+                    Toast.LENGTH_SHORT).show();
+            et1.setText("");
+            et2.setText("");
+        } catch (IOException ioe) {
+        }
+    }
+}

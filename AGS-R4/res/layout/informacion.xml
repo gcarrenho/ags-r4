@@ -11,10 +11,10 @@
         android:text="@string/actualizar_lineas" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/button_rec"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button" />
+        android:text="@string/recup" />
 
     <Button
         android:id="@+id/button3"

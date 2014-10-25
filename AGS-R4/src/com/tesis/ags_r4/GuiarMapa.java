@@ -282,6 +282,9 @@ public class GuiarMapa extends FragmentActivity {
     	return results[0];
     }
     
+    //Hacer un Metodo que tome un arreglo de latitud y longitud
+    //y dibuje el recorrido en el mapa.
+    
  
     
 }
