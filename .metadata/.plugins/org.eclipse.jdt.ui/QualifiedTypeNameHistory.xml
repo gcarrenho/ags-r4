@@ -1,15 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="android.support.v4.app.FragmentActivity"/>
-<fullyQualifiedTypeName name="android.location.LocationListener"/>
-<fullyQualifiedTypeName name="com.google.android.gms.maps.CameraUpdateFactory"/>
-<fullyQualifiedTypeName name="com.google.android.gms.drive.internal.p"/>
-<fullyQualifiedTypeName name="android.view.Menu"/>
-<fullyQualifiedTypeName name="com.google.android.maps.MapActivity"/>
-<fullyQualifiedTypeName name="android.R"/>
-<fullyQualifiedTypeName name="android.R.layout"/>
-<fullyQualifiedTypeName name="com.tesis.ags_r4.location.Location"/>
-<fullyQualifiedTypeName name="com.google.android.gms.maps.model.PolylineOptions"/>
 <fullyQualifiedTypeName name="android.graphics.Canvas"/>
 <fullyQualifiedTypeName name="com.google.android.gms.maps.MapView"/>
 <fullyQualifiedTypeName name="com.google.android.maps.MapView"/>
@@ -34,13 +24,11 @@
 <fullyQualifiedTypeName name="android.app.ProgressDialog"/>
 <fullyQualifiedTypeName name="com.google.android.gms.maps.model.LatLng"/>
 <fullyQualifiedTypeName name="org.w3c.dom.Document"/>
-<fullyQualifiedTypeName name="android.widget.Toast"/>
 <fullyQualifiedTypeName name="com.tesis.ags_r4.navigation.GetDirectionsAsyncTask"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="com.google.android.gms.maps.model.Polyline"/>
 <fullyQualifiedTypeName name="com.tesis.ags_r4.navigation.GMapV2Direction"/>
 <fullyQualifiedTypeName name="com.tesis.ags_r4.R"/>
-<fullyQualifiedTypeName name="com.tesis.ags_r4.R.string"/>
 <fullyQualifiedTypeName name="com.tesis.ags_r4.GuiarMapa"/>
 <fullyQualifiedTypeName name="android.location.Location"/>
 <fullyQualifiedTypeName name="com.google.android.gms.common.GooglePlayServicesClient"/>
@@ -60,4 +48,16 @@
 <fullyQualifiedTypeName name="java.util.HashMap"/>
 <fullyQualifiedTypeName name="com.tesis.ags_r4.navigation.GetDirectionBusAsyncTask"/>
 <fullyQualifiedTypeName name="java.util.Map"/>
+<fullyQualifiedTypeName name="android.view.View"/>
+<fullyQualifiedTypeName name="java.io.File"/>
+<fullyQualifiedTypeName name="android.os.Environment"/>
+<fullyQualifiedTypeName name="android.widget.Toast"/>
+<fullyQualifiedTypeName name="java.io.OutputStreamWriter"/>
+<fullyQualifiedTypeName name="java.io.FileOutputStream"/>
+<fullyQualifiedTypeName name="java.io.IOException"/>
+<fullyQualifiedTypeName name="java.io.FileInputStream"/>
+<fullyQualifiedTypeName name="java.io.InputStreamReader"/>
+<fullyQualifiedTypeName name="java.io.BufferedReader"/>
+<fullyQualifiedTypeName name="com.tesis.ags_r4.R.string"/>
+<fullyQualifiedTypeName name="com.tesis.ags_r4.file.MakeFile"/>
 </qualifiedTypeNameHistroy>

@@ -22,6 +22,7 @@ import org.w3c.dom.Document;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
@@ -29,6 +30,7 @@ import com.google.android.gms.maps.model.PolylineOptions;
 import com.tesis.ags_r4.R;
 import com.tesis.ags_r4.R.id;
 import com.tesis.ags_r4.R.layout;
+import com.tesis.ags_r4.file.MakeFile;
 import com.tesis.ags_r4.location.MyLocation;
 import com.tesis.ags_r4.location.MyLocationListener;
 import com.tesis.ags_r4.navigation.GMapV2Direction;
@@ -66,6 +68,7 @@ public class GuiarMapa extends FragmentActivity {
     /** Nombre del proveedor de localización. */
 	private transient String proveedor;
 	private static float[] results=new float[2];
+	private MakeFile mfile=new MakeFile();
 
   //EL PROBLEMA CON EL GPS SE DEBE A QUE ESTA CLASE EXTIENDE DE UN FRAMEACTIVITY, EN LAS ACTIVITYS
     //FUNCIONA PERFECTAMENTE.   
@@ -156,9 +159,9 @@ public class GuiarMapa extends FragmentActivity {
      */
     private void setUpMap() { 
     	mMap.getUiSettings().setZoomControlsEnabled(false);
-        mMap.addMarker(new MarkerOptions().position(new LatLng(-33.123873,-64.348993)).title("Marker"));
+        //mMap.addMarker(new MarkerOptions().position(new LatLng(-33.123873,-64.348993)).title("Marker"));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(-33.123873, -64.348993), 12));
-        mMap.addMarker(new MarkerOptions().position(new LatLng(-33.112731,-64.309854)).title("Marker")); 
+      //  mMap.addMarker(new MarkerOptions().position(new LatLng(-33.112731,-64.309854)).title("Marker")); 
         //POLILINEA.color(Color.RED);
         //POLILINEA.width(5);
         //mMap.addPolyline(POLILINEA);
@@ -166,7 +169,12 @@ public class GuiarMapa extends FragmentActivity {
         //Construye la ruta, desde una latitud-longitud hasta otra latitud-longitud
         //tengo que construir desde mi ubicacion actual hasta la parada de colectivo si se 
         //superan ciertos metros, y sino hasta el lugar si esta cerca.
-        findDirections(mlat,mlng,-33.123873,-64.348993, GMapV2Direction.MODE_WALKING );
+        //findDirections(mlat,mlng,-33.123873,-64.348993, GMapV2Direction.MODE_WALKING );
+      
+        String coor=mfile.recuperar("17");
+    	String[] listLatLng=coor.split(",0");
+       // this.drawStops(listLatLng);
+        this.drawMap(listLatLng);
         Toast.makeText(getBaseContext(), String.valueOf("Calculando Recorrido"), Toast.LENGTH_LONG)
         .show();
     }
@@ -282,8 +290,52 @@ public class GuiarMapa extends FragmentActivity {
     	return results[0];
     }
     
+    
+    //CALCULAR LA DISTANCIA DE DONDE QUIERO IR Y COMPARAR LA LAT Y LNG
+    //DEL DESTINO CON LOS ARCHIVOS DE LINEAS PARA VER CUAL ESTA MAS CERCA
+    //Y CUAL MAS CERCA DEL ORIGEN TMB.(OJO CON TEMA IDA, VUELTA)
+    //UNA VEZ LISTO ESTO, DIBUJAR RECORRIDO HASTA LA MEJOR OPCION(PARADA)
+    //Y LUEGO AVISAR CUANDO SE ESTE CERCA DEL DESTINOO..
     //Hacer un Metodo que tome un arreglo de latitud y longitud
     //y dibuje el recorrido en el mapa.
+    public void drawMap(String[] listLatLng){
+    	//String coor=mfile.recuperar("17");
+    	//String[] listLatLng=coor.split(",0");
+    	int i=0;
+    	double distCont=0.0;
+    	Polyline newPolyline;
+    	PolylineOptions line = new PolylineOptions().width(3).color(Color.BLUE);
+    	while (i<listLatLng.length-1){
+    		String[] ltln=listLatLng[i].split(",");
+    		double lng=Double.parseDouble(ltln[0]);
+    		double lat=Double.parseDouble(ltln[1]);
+    		line.add(new LatLng(lat, lng));
+    		i++;
+    	}
+    	this.drawStops(listLatLng);
+    	//line.add(new LatLng(33.10933423127904,-64.30096289906105),new LatLng(-33.123873,-64.348993));
+    	newPolyline = mMap.addPolyline(line);
+    }
+    
+    public void drawStops(String[] listLatLng ){
+    	int i=0;
+    	double distCont=0.0;
+    	while (i<listLatLng.length-2){
+    		String[] ltln=listLatLng[i].split(",");
+    		double lng=Double.parseDouble(ltln[0]);
+    		double lat=Double.parseDouble(ltln[1]);
+    		double lngDest=Double.parseDouble(listLatLng[i+1].split(",")[0]);
+    		double latDest=Double.parseDouble(listLatLng[i+1].split(",")[1]);
+    		distCont=this.dist(lat, lng, latDest, lngDest)+distCont;
+    		if(distCont>=200){
+    			//poner parada
+    			 mMap.addMarker(new MarkerOptions().position(new LatLng(latDest,lngDest)).title("Stop")
+    					 .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_action_bus_light)));
+    			distCont=0.0;
+    		}
+    		i++;
+    	}
+    }
     
  
     

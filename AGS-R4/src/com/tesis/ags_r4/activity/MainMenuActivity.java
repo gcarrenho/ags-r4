@@ -154,8 +154,8 @@ public class MainMenuActivity extends Activity {
 				//una vez seleccionado, calcular la distancia desde mi ubicacion.
 				// si la distancia no supera tantos metros(determinar cuantos) guiar caminando
 				//sino identificar que garita de colectivo frena cerca yendo desde mi ubicacion. 
-				//final Intent guiar = new Intent(activity, AgsIntents.getGuiarMapa());
-				final Intent guiar = new Intent(activity, AgsIntents.getSelecCatActivity());
+				final Intent guiar = new Intent(activity, AgsIntents.getGuiarMapa());
+				//final Intent guiar = new Intent(activity, AgsIntents.getSelecCatActivity());
 				guiar.putExtra("boton", "guiar");
 				activity.startActivity(guiar);
 			}

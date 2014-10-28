@@ -62,13 +62,14 @@ public class InfActivity extends Activity{
 		});
 		
 		View recButton = window.findViewById(R.id.button_rec);
-		//Evento que escucha el click sobre el boton cancelar
+		//Evento que escucha el click sobre el boton recuperar
 		recButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				String coord=mfile.recuperar("17");
+				String[] listLatLng=coord.split(",0");
 				EditText text=(EditText)findViewById(R.id.editText1);
-				text.setText(coord);
+				text.setText(String.valueOf(listLatLng.length));
 			}
 		});
 	}
