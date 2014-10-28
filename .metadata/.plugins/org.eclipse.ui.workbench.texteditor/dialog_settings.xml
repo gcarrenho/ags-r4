@@ -1,20 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item value="301" key="DIALOG_WIDTH"/>
-		<item value="204" key="DIALOG_Y_ORIGIN"/>
-		<item value="496" key="DIALOG_HEIGHT"/>
-		<item value="697" key="DIALOG_X_ORIGIN"/>
+		<item value="303" key="DIALOG_WIDTH"/>
+		<item value="222" key="DIALOG_Y_ORIGIN"/>
+		<item value="900" key="DIALOG_X_ORIGIN"/>
+		<item value="475" key="DIALOG_HEIGHT"/>
 		<item value="1|Sans|10.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="true" key="wrap"/>
-		<item value="false" key="isRegEx"/>
 		<item value="false" key="casesensitive"/>
+		<item value="false" key="isRegEx"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="CANADA" key="selection"/>
+		<item value="dist" key="selection"/>
 		<list key="findhistory">
+			<item value="dist"/>
 			<item value="argentina"/>
 			<item value="canada"/>
 			<item value="ar"/>
@@ -22,7 +23,6 @@
 			<item value="cargar"/>
 			<item value="start"/>
 			<item value="onActivityResult"/>
-			<item value="Click"/>
 		</list>
 		<list key="replacehistory">
 		</list>
