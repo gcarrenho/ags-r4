@@ -170,12 +170,47 @@ public class GuiarMapa extends FragmentActivity {
         //tengo que construir desde mi ubicacion actual hasta la parada de colectivo si se 
         //superan ciertos metros, y sino hasta el lugar si esta cerca.
         //findDirections(mlat,mlng,-33.123873,-64.348993, GMapV2Direction.MODE_WALKING );
-      
-        String coor=mfile.recuperar("17");
-    	String[] listLatLng=coor.split(",0");
-       // this.drawStops(listLatLng);
-        this.drawMap(listLatLng);
-        Toast.makeText(getBaseContext(), String.valueOf("Calculando Recorrido"), Toast.LENGTH_LONG)
+        ArrayList<String> listLine = new ArrayList<String>();
+        String coor;
+        for(int i=1;i<19;i++){
+			if (i==1 || i==2 || i==8 || i==9){
+				coor=mfile.recuperar(String.valueOf(i)+"r");
+				listLine.add(coor);
+				coor=mfile.recuperar(String.valueOf(i)+"v");
+				listLine.add(coor);
+			}else{
+				coor=mfile.recuperar(String.valueOf(i));
+				listLine.add(coor);		
+			}
+		}
+        int i=0;
+        double mCurrentDist;
+        double currentDist;
+        double minDist=10000;
+        double minDistDest=10000;
+        String[] minCord=null;
+        int linea=99;
+        while (i<listLine.size()){
+        	String[] listLatLng=(listLine.get(i)).split(",0");  
+        	mCurrentDist=minDist( -64.33496922700614,-33.12196660698608,listLatLng);
+        	currentDist=minDist(-64.33896903770705,-33.12011733513368,listLatLng);//lat lng
+        	
+        	if (currentDist<minDistDest && mCurrentDist<minDist){
+    			minDistDest=currentDist;
+    			minDist=mCurrentDist;
+    			minCord=listLatLng;
+    			/*latOrg=
+    			 * lngOrg=
+    			 * latDest=
+    			 * lng=Dest=
+    			 * */
+    			//deberia recuperar la lat y lng asi despues guio hasta ese punto.
+    		}
+        	i++;
+        }
+    	
+        this.drawMap(minCord);
+        Toast.makeText(getBaseContext(), String.valueOf("Calculando Recorrido "+i), Toast.LENGTH_LONG)
         .show();
     }
     
@@ -335,6 +370,22 @@ public class GuiarMapa extends FragmentActivity {
     		}
     		i++;
     	}
+    }
+    
+    public double minDist(double lat, double lng,String[] listLatLng){
+        int j=0;
+        double minDist=10000;
+    	while (j<listLatLng.length-1){
+    		String[] ltln=listLatLng[j].split(",");
+    		double latLine=Double.parseDouble(ltln[0]);
+    		double lngLine=Double.parseDouble(ltln[1]);
+    		double currentDist=this.dist(lat,lng, latLine, lngLine);
+    		if (currentDist<minDist){
+    			minDist=currentDist;
+    		}
+    		j++;
+    	}
+    	return minDist;
     }
     
  
