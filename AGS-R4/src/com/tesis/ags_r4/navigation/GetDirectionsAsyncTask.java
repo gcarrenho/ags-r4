@@ -7,6 +7,7 @@ import org.w3c.dom.Document;
 import com.google.android.gms.maps.model.LatLng;
 import com.tesis.ags_r4.GuiarMapa;
 import com.tesis.ags_r4.R;
+import com.tesis.ags_r4.activity.InfActivity;
 
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
@@ -22,11 +23,12 @@ public class GetDirectionsAsyncTask extends AsyncTask<Map<String, String>, Objec
     private GuiarMapa activity;
     private Exception exception;
     private ProgressDialog progressDialog;
+    private ArrayList<Instructions> docInstr=new ArrayList<Instructions>();
  
-    public GetDirectionsAsyncTask(GuiarMapa activity)
+    public GetDirectionsAsyncTask(GuiarMapa guiarMapa)
     {
         super();
-        this.activity = activity;
+        this.activity = guiarMapa;
     }
  
     public void onPreExecute()
@@ -42,7 +44,7 @@ public class GetDirectionsAsyncTask extends AsyncTask<Map<String, String>, Objec
         progressDialog.dismiss();
         if (exception == null)
         {
-            activity.handleGetDirectionsResult(result);
+            activity.handleGetDirectionsResult(result,docInstr);
         }
         else
         {
@@ -60,6 +62,8 @@ public class GetDirectionsAsyncTask extends AsyncTask<Map<String, String>, Objec
             LatLng toPosition = new LatLng(Double.valueOf(paramMap.get(DESTINATION_LAT)) , Double.valueOf(paramMap.get(DESTINATION_LONG)));
             GMapV2Direction md = new GMapV2Direction();
             Document doc = md.getDocument(fromPosition, toPosition, paramMap.get(DIRECTIONS_MODE));
+            docInstr=md.getInstructions(doc);  
+            
             ArrayList directionPoints = md.getDirection(doc);
             return directionPoints;
         }
@@ -69,9 +73,32 @@ public class GetDirectionsAsyncTask extends AsyncTask<Map<String, String>, Objec
             return null;
         }
     }
+    
+   /* public ArrayList InstructionsDoc(){
+    	GMapV2Direction md = new GMapV2Direction();
+    	return md.getInstructions(doc);
+    }*/
+    
+/*    public ArrayList<String> getInstructions(Map<String, String>... params){
+    	 Map<String, String> paramMap = params[0];
+    	 LatLng fromPosition = new LatLng(Double.valueOf(paramMap.get(USER_CURRENT_LAT)) , Double.valueOf(paramMap.get(USER_CURRENT_LONG)));
+         LatLng toPosition = new LatLng(Double.valueOf(paramMap.get(DESTINATION_LAT)) , Double.valueOf(paramMap.get(DESTINATION_LONG)));
+         GMapV2Direction md = new GMapV2Direction();
+         Document doc = md.getDocument(fromPosition, toPosition, paramMap.get(DIRECTIONS_MODE));
+         
+         return md.getInstructions(doc);
+    }*/
  
     private void processException()
     {
         Toast.makeText(activity, activity.getString(R.string.error_when_retrieving_data), 3000).show();
     }
+
+	public void setDocInstr(ArrayList<Instructions> docInstr) {
+		this.docInstr = docInstr;
+	}
+
+	public ArrayList<Instructions> getDocInstr() {
+		return docInstr;
+	}
 }

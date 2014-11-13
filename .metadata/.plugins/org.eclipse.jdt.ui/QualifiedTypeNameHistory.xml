@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="com.google.android.gms.maps.MapView"/>
 <fullyQualifiedTypeName name="com.google.android.maps.MapView"/>
 <fullyQualifiedTypeName name="com.google.android.maps.Projection"/>
 <fullyQualifiedTypeName name="com.google.android.maps.GeoPoint"/>
@@ -60,4 +59,5 @@
 <fullyQualifiedTypeName name="com.tesis.ags_r4.R.string"/>
 <fullyQualifiedTypeName name="com.tesis.ags_r4.file.MakeFile"/>
 <fullyQualifiedTypeName name="com.google.android.gms.maps.model.BitmapDescriptorFactory"/>
+<fullyQualifiedTypeName name="com.tesis.ags_r4.navigation.Instructions"/>
 </qualifiedTypeNameHistroy>

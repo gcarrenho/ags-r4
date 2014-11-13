@@ -31,7 +31,7 @@ public class GMapV2Direction {
 	        String url = "http://maps.googleapis.com/maps/api/directions/xml?"
 	                + "origin=" + start.latitude + "," + start.longitude
 	                + "&destination=" + end.latitude + "," + end.longitude
-	                + "&sensor=false&units=metric&mode=" + mode;
+	                + "&mode=" + mode +"&sensor=false&language=es-ES&units=metric";
 	 
 	        try {
 	            HttpClient httpClient = new DefaultHttpClient();
@@ -143,6 +143,50 @@ public class GMapV2Direction {
 	        return listGeopoints;
 	    }
 	 
+	    
+	   
+        
+       
+        
+        
+        
+        
+	    
+	    //Metodo que extrae del xml, la distancia, el tiempo estimado que demorara, y la instruccion a seguir
+	    //Anda perfecto
+	    public ArrayList<Instructions> getInstructions (Document doc) {
+	        NodeList nl1, nl2, nl3;
+	        ArrayList<Instructions> listInst = new ArrayList<Instructions>();
+	        nl1 = doc.getElementsByTagName("step");
+	        if (nl1.getLength() > 0) {
+	            for (int i = 0; i < nl1.getLength(); i++) {
+	                Instructions ins=new Instructions();
+	            	Node node1 = nl1.item(i);
+	                nl2 = node1.getChildNodes();
+	
+	                Node distanceNode = nl2.item(getNodeIndex(nl2, "distance"));
+	                nl3 = distanceNode.getChildNodes();
+	                Node valueNode = nl3.item(getNodeIndex(nl3, "value"));//valor en metros
+	                ins.setDistance(Integer.parseInt(valueNode.getTextContent()));//guardar este valor en la lista(registro)Vamos a crear una clase que contenga lo que necesito.
+	                //listGeopoints.add(new LatLng(lat, lng));
+	                
+	                Node durationNode = nl2.item(getNodeIndex(nl2, "duration"));
+	                nl3 = durationNode.getChildNodes();
+	                valueNode = nl3.item(getNodeIndex(nl3, "value"));//valor en segundos
+	                ins.setDuration(Integer.parseInt(valueNode.getTextContent()));
+	                
+	                Node instructionNode = nl2.item(getNodeIndex(nl2, "html_instructions"));
+	                ins.setInstruction(instructionNode.getTextContent());//Agregar la instruccion en la clase. y una vez que tengo todo lo que quiero, en la lista
+	                listInst.add(ins);
+	         
+	            }
+	        }
+	 
+	        return listInst;
+	    }
+	 
+	    
+	    
 	    private int getNodeIndex(NodeList nl, String nodename) {
 	        for(int i = 0 ; i < nl.getLength() ; i++) {
 	            if(nl.item(i).getNodeName().equals(nodename))

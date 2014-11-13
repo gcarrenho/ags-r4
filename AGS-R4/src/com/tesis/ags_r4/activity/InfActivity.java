@@ -18,13 +18,20 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Polyline;
+import com.google.android.gms.maps.model.PolylineOptions;
 import com.tesis.ags_r4.R;
 import com.tesis.ags_r4.file.MakeFile;
+import com.tesis.ags_r4.navigation.GMapV2Direction;
 import com.tesis.ags_r4.navigation.GetDirectionBusAsyncTask;
+import com.tesis.ags_r4.navigation.GetDirectionsAsyncTask;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -72,6 +79,20 @@ public class InfActivity extends Activity{
 				text.setText(String.valueOf(listLatLng.length));
 			}
 		});
+		
+		View button3 = window.findViewById(R.id.button3);
+		//Evento que escucha el click sobre el boton recuperar
+		button3.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				//String coord=mfile.recuperar("17");
+				//String[] listLatLng=coord.split(",0");
+				findDirections(-33.121881,-64.337958,-33.124945,-64.345854, GMapV2Direction.MODE_WALKING );
+				//findDirections(0.2563,0.25369,0.89658,0.7895,"walking");
+				/*EditText text=(EditText)findViewById(R.id.editText1);
+				text.setText(String.valueOf(text));*/
+			}
+		});
 	}
 	    
 	    public void findDirections(double fromPositionLat, double fromPositionLong, double toPositionLat, double toPositionLong, String mode)
@@ -85,19 +106,32 @@ public class InfActivity extends Activity{
 	     
 	        GetDirectionBusAsyncTask asyncTask = new GetDirectionBusAsyncTask(this);
 	        asyncTask.execute(map);
+	    	/* Map<String, String> map = new HashMap<String, String>();
+	         map.put(GetDirectionsAsyncTask.USER_CURRENT_LAT, String.valueOf(fromPositionLat));
+	         map.put(GetDirectionsAsyncTask.USER_CURRENT_LONG, String.valueOf(fromPositionLong));
+	         map.put(GetDirectionsAsyncTask.DESTINATION_LAT, String.valueOf(toPositionLat));
+	         map.put(GetDirectionsAsyncTask.DESTINATION_LONG, String.valueOf(toPositionLong));
+	         map.put(GetDirectionsAsyncTask.DIRECTIONS_MODE, mode);
+	      
+	         GetDirectionsAsyncTask asyncTask = new GetDirectionsAsyncTask(this);
+	         asyncTask.execute(map);*/
+	         
 	    }
 	    
 	    public void handleGetDirectionsResult(ArrayList directionPoints)
-	    {//Dibujar recorrido
-	        /*Polyline newPolyline;
-	        GoogleMap mMap = ((SupportMapFragment)getSupportFragmentManager().findFragmentById(R.id.map)).getMap();
-	        PolylineOptions rectLine = new PolylineOptions().width(3).color(Color.BLUE);
+	    {
+	       // Polyline newPolyline;
+	        //GoogleMap mMap = ((SupportMapFragment)getSupportFragmentManager().findFragmentById(R.id.map)).getMap();
+	        //PolylineOptions rectLine = new PolylineOptions().width(3).color(Color.RED);
 	        for(int i = 0 ; i < directionPoints.size() ; i++)
 	        {
-	            rectLine.add((LatLng) directionPoints.get(i));
+	            //rectLine.add((LatLng) directionPoints.get(i));
 	        }
-	        newPolyline = mMap.addPolyline(rectLine);*/
-	    	EditText text=(EditText)findViewById(R.id.editText1);
-			text.setText(directionPoints.get(0).toString());
+	        Toast.makeText(getBaseContext(), "Mi Direccion es: "+directionPoints.get(0), Toast.LENGTH_LONG)
+			.show();
+	        //newPolyline = mMap.addPolyline(rectLine);
+	        
+	        EditText text=(EditText)findViewById(R.id.editText1);
+			text.setText(String.valueOf(directionPoints.get(2)));
 	    }
 }
