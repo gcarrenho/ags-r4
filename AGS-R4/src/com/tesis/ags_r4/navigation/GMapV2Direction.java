@@ -167,13 +167,20 @@ public class GMapV2Direction {
 	                Node distanceNode = nl2.item(getNodeIndex(nl2, "distance"));
 	                nl3 = distanceNode.getChildNodes();
 	                Node valueNode = nl3.item(getNodeIndex(nl3, "value"));//valor en metros
-	                ins.setDistance(Integer.parseInt(valueNode.getTextContent()));//guardar este valor en la lista(registro)Vamos a crear una clase que contenga lo que necesito.
+	                ins.setDistance(valueNode.getTextContent());//guardar este valor en la lista(registro)Vamos a crear una clase que contenga lo que necesito.
 	                //listGeopoints.add(new LatLng(lat, lng));
+	                
+	                Node startLocNode = nl2.item(getNodeIndex(nl2, "start_location"));
+	                nl3 = startLocNode.getChildNodes();
+	                valueNode = nl3.item(getNodeIndex(nl3, "lat"));//latitud
+	                ins.setLat(valueNode.getTextContent());
+	                valueNode = nl3.item(getNodeIndex(nl3, "lng"));//lngitud
+	                ins.setLng(valueNode.getTextContent());
 	                
 	                Node durationNode = nl2.item(getNodeIndex(nl2, "duration"));
 	                nl3 = durationNode.getChildNodes();
-	                valueNode = nl3.item(getNodeIndex(nl3, "value"));//valor en segundos
-	                ins.setDuration(Integer.parseInt(valueNode.getTextContent()));
+	                valueNode = nl3.item(getNodeIndex(nl3, "text"));//valor en segundos
+	                ins.setDuration(valueNode.getTextContent());
 	                
 	                Node instructionNode = nl2.item(getNodeIndex(nl2, "html_instructions"));
 	                ins.setInstruction(instructionNode.getTextContent());//Agregar la instruccion en la clase. y una vez que tengo todo lo que quiero, en la lista

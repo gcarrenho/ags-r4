@@ -6,6 +6,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -24,6 +25,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
@@ -49,6 +51,7 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
+import android.util.Pair;
 import android.widget.Toast;
 
 
@@ -63,7 +66,7 @@ public class GuiarMapa extends FragmentActivity {
     private GoogleMap mMap;
     private LocationManager locManager;
     private MyLocationListener locListener;
-    private double lat, mlat;
+    private double lat, mlat, lngDest=0, latDest = 0;
     private double lng, mlng,latLineStopDest,lngLineStopDest,latLineStopMy,lngLineStopMy;
     private MyLocation mloc;
     /** Nombre del proveedor de localización. */
@@ -71,6 +74,10 @@ public class GuiarMapa extends FragmentActivity {
 	private static float[] results=new float[2];
 	private MakeFile mfile=new MakeFile();
 	private  ArrayList<Instructions> inst=new ArrayList<Instructions>();
+	private String textInst=new String();
+	private Marker marker;
+	private int acces, stop, llegoDest=0;
+	private int l=1;
 
     //Conectar con el gps y obtener ubicacion.
     @Override
@@ -87,14 +94,22 @@ public class GuiarMapa extends FragmentActivity {
 				if (loc.getLatitude() != 0.0 && loc.getLongitude() != 0.0) {
 					mlat=loc.getLatitude();
 					mlng=loc.getLongitude();
-					//cada vez que obtengo la mlat y mlong puedo ir calculando
-					//la distancia que hay en donde estoy hasta donde quiero llegar.
-					setLocation(loc);
-					//cada vez que obtengo mi lat y lng voy cal dist hasta que este cerca del lugar e ir diciendo las instrucciones.
-					//
+					//Cuando obtenga la posicion dibujo la ruta. y Digo el recorrido a hacer.
+					//una vez que ya la dibuje, cada vez que obtenga la posicion hago  otra cosa.
+					if(acces==0){
+						setUpMap();
+						acces=1;
+					}else{
+					/*Toast.makeText(getBaseContext(), String.valueOf("Latitud "+ mlat +" Longitud "+mlng), Toast.LENGTH_LONG)
+		    		.show();*/
+				/*	marker.remove();
+					marker=mMap.addMarker(new MarkerOptions().position(new LatLng(mlat,mlng))
+	    					 .icon(BitmapDescriptorFactory.fromResource(R.drawable.pedestrian_bearing)));*/
+					setLocation(loc);}
+					
 				}
 			}
-		};	
+		};
     }
     
     
@@ -146,7 +161,7 @@ public class GuiarMapa extends FragmentActivity {
            // mMap.setMyLocationEnabled(true);
             // Check if we were successful in obtaining the map.
             if (mMap != null) {
-                setUpMap();
+                //setUpMap();
             }
             
         }
@@ -160,53 +175,47 @@ public class GuiarMapa extends FragmentActivity {
      */
     private void setUpMap() { 
     	mMap.getUiSettings().setZoomControlsEnabled(false);
-    	mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(-33.123873, -64.348993), 12));
+    	mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(mlat, mlng), 12));
     	//Construye la ruta, desde una latitud-longitud hasta otra latitud-longitud
     	//tengo que construir desde mi ubicacion actual hasta la parada de colectivo si se 
     	//superan ciertos metros, y sino hasta el lugar si esta cerca.
     	//findDirections(mlat,mlng,-33.123873,-64.348993, GMapV2Direction.MODE_WALKING );
-    	ArrayList<String> listLine = new ArrayList<String>();
+    	ArrayList<Pair> listLine = new ArrayList<Pair>();
     	String coor;
     	for(int i=1;i<19;i++){
     		if (i==1 || i==2 || i==8 || i==9){
     			coor=mfile.recuperar(String.valueOf(i)+"r");
-    			listLine.add(coor);
+    			Pair linCor=new Pair(coor,String.valueOf(i)+"r");
+    			listLine.add(linCor);
     			coor=mfile.recuperar(String.valueOf(i)+"v");
-    			listLine.add(coor);
+    			linCor=new Pair(coor,String.valueOf(i)+"v");
+    			listLine.add(linCor);
     		}else{
     			coor=mfile.recuperar(String.valueOf(i));
-    			listLine.add(coor);		
+    			Pair linCor=new Pair(coor,String.valueOf(i));
+    			listLine.add(linCor);	
     		}
     	}
-
-    	if (this.dist(mlat, mlng,lat,lng)<1000){ //VER COMO OBTENER mlat y mlong solo una vez
-    		//ruta hasta el lugar(destino) no lo llevo hasta la parada
-    		findDirections(mlat,mlng,lat,lng, GMapV2Direction.MODE_WALKING );
-    		//Agregar una var global para identificar si lo gui caminando o en bus.
-    		//asi si va en bus le informo que debe bajarse y recalculo ruta, sino informo llegada a destino
-    	}
-    	else{ // sino hasta la parada de colectivo
 
     		int i=0;
     		double mCurrentDist;
     		double lngMy=0;
     		double latMy=0;
-    		double lngDest=0;
-    		double latDest = 0;
     		double currentDist;
     		double minDist=10000;
     		double minDistDest=10000;
     		String[] minCord=null;
-    		int linea=99;
+    		int linea=0;
     		while (i<listLine.size()){
-    			String[] listLatLng=(listLine.get(i)).split(",0");  
-    			mCurrentDist=minDist( -64.337958,-33.121881,listLatLng,1);//mlat mlng mi ubicacion
+    			String[] listLatLng=String.valueOf((listLine.get(i)).first).split(",0");  
+    			mCurrentDist=minDist( mlng,mlat,listLatLng,1);//mlat mlng mi ubicacion
     			currentDist=minDist(-64.345854,-33.124945,listLatLng,2);//lat lng la del lugar
 
     			if (currentDist<minDistDest && mCurrentDist<minDist){
     				minDistDest=currentDist;
     				minDist=mCurrentDist;
     				minCord=listLatLng;
+    				linea=i; //Aca tengo la linea de colectivo que debera tomarse
     				//double latOr=-64.337958;//la de origen es mi ubcacion
     				//double lngOr=-33.121881;
     				lngMy=lngLineStopMy;//en latLineStopMy tengo la latitud a la parada mas cercana a mi ubicacion
@@ -216,15 +225,20 @@ public class GuiarMapa extends FragmentActivity {
     			}
     			i++;
     		}
-
-    		//cambia el orden de lat y long 1ero va lng y despues lat
-    		findDirections(-33.121881,-64.337958,lngMy, latMy, GMapV2Direction.MODE_WALKING );
+    		
+    		//-33.112120, -64.308465 Barrio;
+    		//-33.107446, -64.321168
+    		//cambia el orden de lat y long 1ero va lng y despues lat -33.11404 -64.30914
+    		findDirections(mlat,mlng,lngMy, latMy, GMapV2Direction.MODE_WALKING );
     		//findDirections(-33.124945,-64.345854,lngDest, latDest, GMapV2Direction.MODE_WALKING );//cuando se baja recalculo la ruta.
     		this.drawMap(minCord);
     		Toast.makeText(getBaseContext(), String.valueOf("Calculando Recorrido "), Toast.LENGTH_LONG)
     		.show();
+    		Toast.makeText(getBaseContext(), String.valueOf("Line a tomar "+String.valueOf((listLine.get(linea)).second)), Toast.LENGTH_LONG)
+    		.show();
+    		
     	}
-    }
+    //}
     
     public void findDirections(double fromPositionLat, double fromPositionLong, double toPositionLat, double toPositionLong, String mode)
     {
@@ -254,6 +268,9 @@ public class GuiarMapa extends FragmentActivity {
         newPolyline = mMap.addPolyline(rectLine);
         
        inst=listInst;
+       fixListInst(inst);
+		Toast.makeText(getBaseContext(),textInst, Toast.LENGTH_LONG)
+		.show();
     }
     
     
@@ -261,72 +278,60 @@ public class GuiarMapa extends FragmentActivity {
     // ir informando que instruccion debe realizar una vez que llega a destino pasar al paso de abajo.
     // y cuando este a 200m del lugar avisar q se baje(cuando esta arriba del lugar) informar calles
     public void setLocation(Location loc) {
-    	Toast.makeText(getBaseContext(), "Mi Direccion es: "+loc.getLatitude(), Toast.LENGTH_LONG)
-		.show();
-    
-    	
-    	/*int latitud = (int) (loc.getLatitude() * 1E6);
-		int longitud = (int) (loc.getLongitude() * 1E6);
-
-		LatLng latLng = new LatLng(latitud, longitud);
-		mMap.addMarker(new MarkerOptions().position(latLng).title(
-				"Madrid, España"));
-		//Obtener la direccin de la calle a partir de la latitud y la longitud 
-		/*if (loc.getLatitude() != 0.0 && loc.getLongitude() != 0.0) {
-			/*try {
-				Geocoder geocoder = new Geocoder(this, Locale.getDefault());
-				List<Address> list = geocoder.getFromLocation(loc.getLatitude(), loc.getLongitude(), 1);
-				if (!list.isEmpty()) {
-					Address address = list.get(0);
-				/*	messageTextView2.setText("Mi direccin es: \n"
-							+ address.getAddressLine(0));*/
-					
-				//}
-
-			/*} catch (IOException e) {
-				e.printStackTrace();
-			}*/
-		//}
+ 	 //PENSAR SI LE VAMOS A DECIR LA CALLE O NO.
+   
+	    	if (inst.size()>l && stop==0){
+		    	if (this.dist(loc.getLatitude(), loc.getLongitude(),Double.parseDouble(inst.get(l).getLat()),Double.parseDouble(inst.get(l).getLng()))<=5){
+		    		//digo que hay que hacer
+		    		stop=1; //llego a la parada
+		    		Toast.makeText(getBaseContext(), inst.get(l).getInstruction(), Toast.LENGTH_LONG)
+		    		.show();
+		    		//y a lat y lng le doy el siguiente de la lista
+		    		l++;
+		    	}else{//le digo donde esta parado
+		    		int latitud = (int) (loc.getLatitude() * 1E6);
+		    		int longitud = (int) (loc.getLongitude() * 1E6);
+		    		
+		    		//Obtener la direccin de la calle a partir de la latitud y la longitud 
+		    		if (loc.getLatitude() != 0.0 && loc.getLongitude() != 0.0) {
+		    			try {
+		    				Geocoder geocoder = new Geocoder(this, Locale.getDefault());
+		    				List<Address> list = geocoder.getFromLocation(loc.getLatitude(), loc.getLongitude(), 1);
+		    				if (!list.isEmpty()) {
+		    					Address address = list.get(0);
+	
+		    					Toast.makeText(getBaseContext(),"Usted sen encuentra en "+address.getAddressLine(0), Toast.LENGTH_LONG)
+		    		    		.show();
+		    				}
+		
+		    			} catch (IOException e) {
+		    				e.printStackTrace();
+		    			}
+		    		}
+		    	}
+	    	}else if(stop==1){
+	    		if(this.dist(loc.getLatitude(), loc.getLongitude(),latDest,lngDest)<=200){
+	    			Toast.makeText(getBaseContext(),"Deberia Tocar el Timbre para descender del Transporte ", Toast.LENGTH_LONG)
+		    		.show();
+	    		}else if (this.dist(loc.getLatitude(), loc.getLongitude(),latDest,lngDest)<=60){
+	    			//recalcular la ruta
+	    			//pensar cuando recalculo, la lista se actualiza o se incrementa en tamano de intruccions
+	    			//las variables hay que reiniciarlas..
+	    			findDirections(lat,lng,lngDest, latDest, GMapV2Direction.MODE_WALKING );
+	    			llegoDest=1; 
+	    		}else{
+	    			//podemos informar donde esta.. pero esto lo vemos..
+	    		}
+	    	}else if(llegoDest==1){
+	    		if (this.dist(loc.getLatitude(), loc.getLongitude(),lat,lng)<=30){
+	    			Toast.makeText(getBaseContext(),"Se Encuentra Muy Proximo al destino deseado. Recorrido Finalizado. ", Toast.LENGTH_LONG)
+		    		.show();
+	    			//Apagar gps o volver al menu.
+	    		}
+	    		
+	    	}
 	}	
-    /*
-    public List getAddress(){
-    	 Geocoder geocoder = new Geocoder(this);
-         List<Address> addresses = null;
-         //addresses.
-         try {
-             addresses = geocoder.getFromLocationName("COLOMBIA", 3);
-         } catch (IOException e) {
-             e.printStackTrace();
-         }
-         return addresses;
-    }*/
-    
-    //Recorre la lista de direcciones y obtiene la lat y long
-    /*for(int i=0;i<addresses.size();i++){
-    	 
-        Address address = (Address) addresses.get(i);
-
-        LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
-    }*/       
-    
-    private void posicionInicial() {
-
-		Criteria criteria = new Criteria();
-		proveedor = locManager.getBestProvider(criteria, true);
-		Location location = locManager.getLastKnownLocation(proveedor);
-		if (null != location) {
-
-			LatLng latLng = new LatLng(location.getLatitude(),
-					location.getLongitude());
-			mMap.addMarker(new MarkerOptions().position(latLng).title(
-					"latitud=" + location.getLatitude() + " longitud="
-							+ location.getLongitude()));
-			Log.d(TAG, "Cargada la localización.");
-		} else {
-			Log.d(TAG, "Localizacion nula");
-		}
-	}
-    
+             
     private double dist(double mlat, double mlng,double lat, double lng){
     	//mloc=new MyLocation("GPS");
     	MyLocation.distanceBetween(mlat, mlng, lat, lng, results);
@@ -413,10 +418,34 @@ public class GuiarMapa extends FragmentActivity {
     }
     
     //Metodo que recorre la lista y agrega la palabra metros, pasos a la distancia,
-    //Insrucciones borra lo que esta entre <>
+    //Insrucciones borra lo que esta entre <....>
     // pasaje de duracion en segundos a minutos dependiendo..
-    public void fixListInst(){
-    	
+    public void fixListInst(ArrayList<Instructions> inst){
+    	int i=0; 
+    	while(i<inst.size()){
+    		if(Integer.parseInt(inst.get(i).getDistance())<1000){
+    			inst.get(i).setDistance(inst.get(i).getDistance()+" Metros, o "+Math.round(Integer.parseInt(inst.get(i).getDistance())/0.6) +" Pasos ");
+    		}else{
+    			inst.get(i).setDistance(Math.round(Integer.parseInt(inst.get(i).getDistance())/1000)+" Kilometros, o "+Math.round(Integer.parseInt(inst.get(i).getDistance())/1000/0.6) +" Pasos ");
+    		}
+    		int j=0;
+			String instruc=inst.get(i).getInstruction();
+			String newInstr=new String();
+			while(j<instruc.length()){
+				if(instruc.charAt(j)=='<'){
+					while(instruc.charAt(j)!='>'){
+						j++;
+					}
+					j++;
+				}else{
+					newInstr=newInstr+instruc.charAt(j);	
+					j++;
+				}
+			}
+			inst.get(i).setInstruction(newInstr);
+			textInst=textInst+".\n"+inst.get(i).getInstruction()+" a "+inst.get(i).getDistance();
+			i++;
+    	}
     }
  
     

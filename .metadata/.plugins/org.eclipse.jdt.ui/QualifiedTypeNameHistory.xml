@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="com.google.android.maps.MapView"/>
-<fullyQualifiedTypeName name="com.google.android.maps.Projection"/>
-<fullyQualifiedTypeName name="com.google.android.maps.GeoPoint"/>
 <fullyQualifiedTypeName name="android.graphics.Point"/>
 <fullyQualifiedTypeName name="android.graphics.Paint"/>
 <fullyQualifiedTypeName name="com.tesis.ags_r4.activity.Recorridos"/>
@@ -60,4 +57,7 @@
 <fullyQualifiedTypeName name="com.tesis.ags_r4.file.MakeFile"/>
 <fullyQualifiedTypeName name="com.google.android.gms.maps.model.BitmapDescriptorFactory"/>
 <fullyQualifiedTypeName name="com.tesis.ags_r4.navigation.Instructions"/>
+<fullyQualifiedTypeName name="com.google.android.gms.maps.model.Marker"/>
+<fullyQualifiedTypeName name="java.util.Locale"/>
+<fullyQualifiedTypeName name="android.util.Pair"/>
 </qualifiedTypeNameHistroy>

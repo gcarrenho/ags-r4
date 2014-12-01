@@ -2,27 +2,29 @@ package com.tesis.ags_r4.navigation;
 
 public class Instructions {
 
-	private int duration;
-	private int distance;
+	private String duration;
+	private String distance;
 	private String instruction;
+	private String lat;
+	private String lng;
 	
 	public Instructions(){
 		
 	}
 
-	public int getDuration() {
+	public String getDuration() {
 		return duration;
 	}
 
-	public void setDuration(int duration) {
+	public void setDuration(String duration) {
 		this.duration = duration;
 	}
 
-	public int getDistance() {
+	public String getDistance() {
 		return distance;
 	}
 
-	public void setDistance(int distance) {
+	public void setDistance(String distance) {
 		this.distance = distance;
 	}
 
@@ -32,6 +34,22 @@ public class Instructions {
 
 	public void setInstruction(String instruction) {
 		this.instruction = instruction;
+	}
+
+	public String getLat() {
+		return lat;
+	}
+
+	public void setLat(String lat) {
+		this.lat = lat;
+	}
+
+	public String getLng() {
+		return lng;
+	}
+
+	public void setLng(String lng) {
+		this.lng = lng;
 	}
 	
 	
