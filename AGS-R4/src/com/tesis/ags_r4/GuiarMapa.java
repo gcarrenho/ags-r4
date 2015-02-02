@@ -42,6 +42,11 @@ import com.tesis.ags_r4.navigation.Instructions;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorListener;
+import android.hardware.SensorManager;
 import android.location.Address;
 import android.location.Criteria;
 import android.location.Geocoder;
@@ -49,6 +54,7 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.os.PowerManager;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.util.Pair;
@@ -56,7 +62,7 @@ import android.widget.Toast;
 
 
 
-public class GuiarMapa extends FragmentActivity {
+public class GuiarMapa extends FragmentActivity /*implements SensorEventListener*/ {
     /**
      * Note that this may be null if the Google Play services APK is not available.
      */
@@ -76,9 +82,12 @@ public class GuiarMapa extends FragmentActivity {
 	private  ArrayList<Instructions> inst=new ArrayList<Instructions>();
 	private String textInst=new String();
 	private Marker marker;
-	private int acces, stop, llegoDest=0;
+	private int acces, stop=0, llegoDest=0;
 	private int l=1;
-
+	//private SensorManager mSensorManager;
+	static final int sensor = SensorManager.SENSOR_ORIENTATION;
+	 protected PowerManager.WakeLock wakelock;
+	 
     //Conectar con el gps y obtener ubicacion.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,6 +96,22 @@ public class GuiarMapa extends FragmentActivity {
         setContentView(R.layout.guiar);
         lat=intent.getDoubleExtra("lat", 0.0);
 		lng=intent.getDoubleExtra("lng", 0.0);
+		// Creamos el objeto para acceder al servicio de sensores CUANDO TENGA UN MOVIL CON DICHO SENSOR PODRE PROBAR.
+		/*SensorManager sensorManager = (SensorManager)getSystemService(SENSOR_SERVICE);
+		List<Sensor> listaSensores = sensorManager.getSensorList(Sensor.TYPE_ORIENTATION);
+		listaSensores = sensorManager.getSensorList(Sensor.TYPE_ORIENTATION);
+		if (!listaSensores.isEmpty()) {
+		       Sensor orientationSensor = listaSensores.get(0);
+		       sensorManager.registerListener(this, orientationSensor,SensorManager.SENSOR_DELAY_FASTEST);
+		}else{
+		 Toast.makeText(getBaseContext(), "No hay sensores", Toast.LENGTH_LONG)
+    		.show();
+		}*/
+		    		
+		final PowerManager pm=(PowerManager)getSystemService(Context.POWER_SERVICE);
+        this.wakelock=pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK, "etiqueta");
+        wakelock.acquire();
+        
         locManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 		locListener = new MyLocationListener(){
 			@Override
@@ -113,6 +138,8 @@ public class GuiarMapa extends FragmentActivity {
     }
     
     
+    //Metodo para para de escuchar los sensores(deberia hacerse en destroy, pause, y cuando finaliza el recorrido)
+    //mSensorManager.unregisterListener(this,mSensorManager.getDefaultSensor(Sensor.TYPE_ORIENTATION));
 
     @Override
     protected void onResume() {
@@ -120,9 +147,18 @@ public class GuiarMapa extends FragmentActivity {
         configGps();
         setUpMapIfNeeded();//tengo que obtener la lat y lng de entrada y hacer lo que hago
     }
+     
     
+    @Override
+    protected void onStop(){
+        super.onStop();
+        locManager.removeUpdates(locListener);
+        this.wakelock.release();
+        finish();
+    }
+      
     private void configGps(){
- 		locManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 0,(LocationListener) locListener);
+ 		locManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 40000, 0,(LocationListener) locListener);
  	  
 		/*if (!locManager.isProviderEnabled(LocationManager.GPS_PROVIDER))
 		{
@@ -161,7 +197,7 @@ public class GuiarMapa extends FragmentActivity {
            // mMap.setMyLocationEnabled(true);
             // Check if we were successful in obtaining the map.
             if (mMap != null) {
-                //setUpMap();
+                //setUpMap();//borrar esto una vez que ya se probo, tiene que hacerse solo cuando se conecta el gps
             }
             
         }
@@ -175,68 +211,75 @@ public class GuiarMapa extends FragmentActivity {
      */
     private void setUpMap() { 
     	mMap.getUiSettings().setZoomControlsEnabled(false);
-    	mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(mlat, mlng), 12));
+    	mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(mlat,mlng), 12));
     	//Construye la ruta, desde una latitud-longitud hasta otra latitud-longitud
     	//tengo que construir desde mi ubicacion actual hasta la parada de colectivo si se 
     	//superan ciertos metros, y sino hasta el lugar si esta cerca.
-    	//findDirections(mlat,mlng,-33.123873,-64.348993, GMapV2Direction.MODE_WALKING );
-    	ArrayList<Pair> listLine = new ArrayList<Pair>();
-    	String coor;
-    	for(int i=1;i<19;i++){
-    		if (i==1 || i==2 || i==8 || i==9){
-    			coor=mfile.recuperar(String.valueOf(i)+"r");
-    			Pair linCor=new Pair(coor,String.valueOf(i)+"r");
-    			listLine.add(linCor);
-    			coor=mfile.recuperar(String.valueOf(i)+"v");
-    			linCor=new Pair(coor,String.valueOf(i)+"v");
-    			listLine.add(linCor);
-    		}else{
-    			coor=mfile.recuperar(String.valueOf(i));
-    			Pair linCor=new Pair(coor,String.valueOf(i));
-    			listLine.add(linCor);	
-    		}
-    	}
-
-    		int i=0;
-    		double mCurrentDist;
-    		double lngMy=0;
-    		double latMy=0;
-    		double currentDist;
-    		double minDist=10000;
-    		double minDistDest=10000;
-    		String[] minCord=null;
-    		int linea=0;
-    		while (i<listLine.size()){
-    			String[] listLatLng=String.valueOf((listLine.get(i)).first).split(",0");  
-    			mCurrentDist=minDist( mlng,mlat,listLatLng,1);//mlat mlng mi ubicacion
-    			currentDist=minDist(-64.345854,-33.124945,listLatLng,2);//lat lng la del lugar
-
-    			if (currentDist<minDistDest && mCurrentDist<minDist){
-    				minDistDest=currentDist;
-    				minDist=mCurrentDist;
-    				minCord=listLatLng;
-    				linea=i; //Aca tengo la linea de colectivo que debera tomarse
-    				//double latOr=-64.337958;//la de origen es mi ubcacion
-    				//double lngOr=-33.121881;
-    				lngMy=lngLineStopMy;//en latLineStopMy tengo la latitud a la parada mas cercana a mi ubicacion
-    				latMy=latLineStopMy;
-    				lngDest=lngLineStopDest;//en latLineStopDest tengo la latitud mas cercana a la parada del destino
-    				latDest=latLineStopDest;//en latLineStop tengo la long mas cercana a la parada del destino
+    	
+    	if(this.dist(mlat,mlng, lat,lng)<=1000){
+    		//Recorrido desde donde estoy hasta el lugar
+    		findDirections(mlat,mlng,lat,lng, GMapV2Direction.MODE_WALKING );
+    	}else{
+		    	ArrayList<Pair> listLine = new ArrayList<Pair>();
+		    	String coor;
+		    	for(int i=1;i<19;i++){
+		    		if (i==1 || i==2 || i==8 || i==9){
+		    			coor=mfile.recuperar(String.valueOf(i)+"r");
+		    			Pair linCor=new Pair(coor,String.valueOf(i)+"r");
+		    			listLine.add(linCor);
+		    			coor=mfile.recuperar(String.valueOf(i)+"v");
+		    			linCor=new Pair(coor,String.valueOf(i)+"v");
+		    			listLine.add(linCor);
+		    		}else{
+		    			coor=mfile.recuperar(String.valueOf(i));
+		    			Pair linCor=new Pair(coor,String.valueOf(i));
+		    			listLine.add(linCor);	
+		    		}
+		    	}
+		
+		    		int i=0;
+		    		double mCurrentDist;
+		    		double lngMy=0;
+		    		double latMy=0;
+		    		double currentDist;
+		    		double minDist=10000;
+		    		double minDistDest=10000;
+		    		String[] minCord=null;
+		    		int linea=0;
+		    		while (i<listLine.size()){
+		    			//-33.123507, 
+		    			String[] listLatLng=String.valueOf((listLine.get(i)).first).split(",0");  
+		    			mCurrentDist=minDist(mlat,mlng ,listLatLng,1);//mlat mlng mi ubicacion
+		    			currentDist=minDist(lat, lng,listLatLng,2);//lat lng la del lugar
+		
+		    			if (currentDist<minDistDest && mCurrentDist<minDist){
+		    				minDistDest=currentDist;
+		    				minDist=mCurrentDist;
+		    				minCord=listLatLng;
+		    				linea=i; //Aca tengo la linea de colectivo que debera tomarse
+		    				//double latOr=-64.337958;//la de origen es mi ubcacion
+		    				//double lngOr=-33.121881;
+		    				lngMy=lngLineStopMy;//en latLineStopMy tengo la latitud a la parada mas cercana a mi ubicacion
+		    				latMy=latLineStopMy;
+		    				lngDest=lngLineStopDest;//en latLineStopDest tengo la latitud mas cercana a la parada del destino
+		    				latDest=latLineStopDest;//en latLineStop tengo la long mas cercana a la parada del destino
+		    			}
+		    			i++;
+		    		}
+		    		
+		    		 mMap.addMarker(new MarkerOptions()
+		    	        .position(new LatLng(lat, lng))
+		    	        .title("Destino"));
+		    		//-33.112120, -64.308465 Barrio;
+		    		//-33.107446, -64.321168
+		    		findDirections(mlat,mlng ,latMy, lngMy, GMapV2Direction.MODE_WALKING );
+		    		//findDirections(-33.124945,-64.345854,lngDest, latDest, GMapV2Direction.MODE_WALKING );//cuando se baja recalculo la ruta.
+		    		this.drawMap(minCord);
+		    		Toast.makeText(getBaseContext(), R.string.calc_rec, Toast.LENGTH_LONG)
+		    		.show();
+		    		Toast.makeText(getBaseContext(), "Linea a Tomar, "+String.valueOf((listLine.get(linea)).second), Toast.LENGTH_LONG)
+		    		.show();
     			}
-    			i++;
-    		}
-    		
-    		//-33.112120, -64.308465 Barrio;
-    		//-33.107446, -64.321168
-    		//cambia el orden de lat y long 1ero va lng y despues lat -33.11404 -64.30914
-    		findDirections(mlat,mlng,lngMy, latMy, GMapV2Direction.MODE_WALKING );
-    		//findDirections(-33.124945,-64.345854,lngDest, latDest, GMapV2Direction.MODE_WALKING );//cuando se baja recalculo la ruta.
-    		this.drawMap(minCord);
-    		Toast.makeText(getBaseContext(), String.valueOf("Calculando Recorrido "), Toast.LENGTH_LONG)
-    		.show();
-    		Toast.makeText(getBaseContext(), String.valueOf("Line a tomar "+String.valueOf((listLine.get(linea)).second)), Toast.LENGTH_LONG)
-    		.show();
-    		
     	}
     //}
     
@@ -278,21 +321,20 @@ public class GuiarMapa extends FragmentActivity {
     // ir informando que instruccion debe realizar una vez que llega a destino pasar al paso de abajo.
     // y cuando este a 200m del lugar avisar q se baje(cuando esta arriba del lugar) informar calles
     public void setLocation(Location loc) {
- 	 //PENSAR SI LE VAMOS A DECIR LA CALLE O NO.
-   
-	    	if (inst.size()>l && stop==0){
-		    	if (this.dist(loc.getLatitude(), loc.getLongitude(),Double.parseDouble(inst.get(l).getLat()),Double.parseDouble(inst.get(l).getLng()))<=5){
+   //ARREGLAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAR ACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+	    	if (inst.size()>l){
+		    	if (this.dist(loc.getLatitude(), loc.getLongitude(),Double.parseDouble(inst.get(l).getLat()),Double.parseDouble(inst.get(l).getLng()))<=20){
 		    		//digo que hay que hacer
-		    		stop=1; //llego a la parada
 		    		Toast.makeText(getBaseContext(), inst.get(l).getInstruction(), Toast.LENGTH_LONG)
 		    		.show();
 		    		//y a lat y lng le doy el siguiente de la lista
 		    		l++;
-		    	}else{//le digo donde esta parado
+		    	}
+		    	else{//le digo donde esta parado
 		    		int latitud = (int) (loc.getLatitude() * 1E6);
 		    		int longitud = (int) (loc.getLongitude() * 1E6);
 		    		
-		    		//Obtener la direccin de la calle a partir de la latitud y la longitud 
+		    		//Obtener la direccion de la calle a partir de la latitud y la longitud 
 		    		if (loc.getLatitude() != 0.0 && loc.getLongitude() != 0.0) {
 		    			try {
 		    				Geocoder geocoder = new Geocoder(this, Locale.getDefault());
@@ -300,7 +342,7 @@ public class GuiarMapa extends FragmentActivity {
 		    				if (!list.isEmpty()) {
 		    					Address address = list.get(0);
 	
-		    					Toast.makeText(getBaseContext(),"Usted sen encuentra en "+address.getAddressLine(0), Toast.LENGTH_LONG)
+		    					Toast.makeText(getBaseContext(),"Usted se Encuentra en "+address.getAddressLine(0), Toast.LENGTH_LONG)
 		    		    		.show();
 		    				}
 		
@@ -309,22 +351,46 @@ public class GuiarMapa extends FragmentActivity {
 		    			}
 		    		}
 		    	}
-	    	}else if(stop==1){
-	    		if(this.dist(loc.getLatitude(), loc.getLongitude(),latDest,lngDest)<=200){
-	    			Toast.makeText(getBaseContext(),"Deberia Tocar el Timbre para descender del Transporte ", Toast.LENGTH_LONG)
+	    	}else if(inst.size()==l && stop==0){
+	    		Toast.makeText(getBaseContext(),"Se Encuentra Muy Proximo a la parada de colectivo.", Toast.LENGTH_LONG)
+	    		.show();
+	    		stop=1;
+	    	}else if(inst.size()==l && stop==1){
+	    		if(this.dist(loc.getLatitude(), loc.getLongitude(),latDest,lngDest)>60 && this.dist(loc.getLatitude(), loc.getLongitude(),latDest,lngDest)<=200){
+	    			Toast.makeText(getBaseContext(),"Deberia Tocar el Timbre para descender del Transporte", Toast.LENGTH_LONG)
 		    		.show();
 	    		}else if (this.dist(loc.getLatitude(), loc.getLongitude(),latDest,lngDest)<=60){
 	    			//recalcular la ruta
 	    			//pensar cuando recalculo, la lista se actualiza o se incrementa en tamano de intruccions
 	    			//las variables hay que reiniciarlas..
 	    			findDirections(lat,lng,lngDest, latDest, GMapV2Direction.MODE_WALKING );
-	    			llegoDest=1; 
+	    			llegoDest=1;
+	    			l=1;
 	    		}else{
 	    			//podemos informar donde esta.. pero esto lo vemos..
+	    			int latitud = (int) (loc.getLatitude() * 1E6);
+		    		int longitud = (int) (loc.getLongitude() * 1E6);
+		    		
+		    		//Obtener la direccion de la calle a partir de la latitud y la longitud 
+		    		if (loc.getLatitude() != 0.0 && loc.getLongitude() != 0.0) {
+		    			try {
+		    				Geocoder geocoder = new Geocoder(this, Locale.getDefault());
+		    				List<Address> list = geocoder.getFromLocation(loc.getLatitude(), loc.getLongitude(), 1);
+		    				if (!list.isEmpty()) {
+		    					Address address = list.get(0);
+	
+		    					Toast.makeText(getBaseContext(),"Usted se Encuentra en "+address.getAddressLine(0), Toast.LENGTH_LONG)
+		    		    		.show();
+		    				}
+		
+		    			} catch (IOException e) {
+		    				e.printStackTrace();
+		    			}
+		    		}
 	    		}
-	    	}else if(llegoDest==1){
+	    	}else if(inst.size()==l && stop==1 && llegoDest==1){
 	    		if (this.dist(loc.getLatitude(), loc.getLongitude(),lat,lng)<=30){
-	    			Toast.makeText(getBaseContext(),"Se Encuentra Muy Proximo al destino deseado. Recorrido Finalizado. ", Toast.LENGTH_LONG)
+	    			Toast.makeText(getBaseContext(),"Se Encuentra Muy Proximo al destino deseado. Recorrido Finalizado.", Toast.LENGTH_LONG)
 		    		.show();
 	    			//Apagar gps o volver al menu.
 	    		}
@@ -393,8 +459,8 @@ public class GuiarMapa extends FragmentActivity {
         double minDist=10000;
     	while (j<listLatLng.length-1){
     		String[] ltln=listLatLng[j].split(",");
-    		double latLine=Double.parseDouble(ltln[0]);
-    		double lngLine=Double.parseDouble(ltln[1]);
+    		double latLine=Double.parseDouble(ltln[1]);
+    		double lngLine=Double.parseDouble(ltln[0]);
     		double currentDist=this.dist(lat,lng, latLine, lngLine);
     		if (currentDist<minDist){
     			minDist=currentDist;
@@ -447,6 +513,78 @@ public class GuiarMapa extends FragmentActivity {
 			i++;
     	}
     }
- 
+
     
+    
+    //Si se vuelve atras o el telefono se suspende el gps se apaga.
+    //Al ciego se le va a suspender muy seguido...
+    /*@Override
+    protected void onStop() {
+        super.onStop();
+        locManager.removeUpdates(locListener);   
+    }*/
+    
+    
+
+
+
+    
+  //HASTA QUE NO CONSIGA UN TELEFONO CON SENSOR DE ORIENTACION, NO VOY A PODER PROBAR DICHO SENSOR  
+ /*
+	private String getDireccion(float values) {
+		String txtDirection = "";
+		if (values < 22)
+			txtDirection = "Norte";
+		else if (values >= 22 && values < 67)
+			txtDirection = "Noreste";
+		else if (values >= 67 && values < 112)
+			txtDirection = "Este";
+		else if (values >= 112 && values < 157)
+			txtDirection = "Sureste";
+		else if (values >= 157 && values < 202)
+			txtDirection = "Sur";
+		else if (values >= 202 && values < 247)
+			txtDirection = "Suroeste";
+		else if (values >= 247 && values < 292)
+			txtDirection = "Oeste";
+		else if (values >= 292 && values < 337)
+			txtDirection = "Noroeste";
+		else if (values >= 337)
+			txtDirection = "Norte";
+
+		return txtDirection;
+	}*/	
+	 // Metodo que escucha el cambio de los sensores
+		//@Override
+		/*public void onSensorChanged(SensorEvent event) {
+			// TODO Auto-generated method stub
+			String txt = "\n\nSensor: ";
+			Toast.makeText(getBaseContext(),"Escuchandoooo", Toast.LENGTH_LONG)
+			.show();
+			synchronized (this) {
+				Log.d("sensor", event.sensor.getName());
+
+				//if (event.sensor.getType()==Sensor.TYPE_ORIENTATION) {
+				
+					txt += "orientation\n";
+					txt += "\n azimut: " + getDireccion(event.values[0]);
+					txt += "\n y: " + event.values[1] + "Œ";
+					txt += "\n z: " + event.values[2] + "Œ";
+					//orientacion.setText(txt);
+					Toast.makeText(getBaseContext(),"Va con Direcciona al "+ getDireccion(event.values[0]), Toast.LENGTH_LONG)
+		    		.show();
+				//}
+			}	
+			
+		}
+
+
+
+		// Metodo que escucha el cambio de sensibilidad de los sensores	
+		@Override
+		public void onAccuracyChanged(Sensor sensor, int accuracy) {
+			// TODO Auto-generated method stub
+			
+		}*/
+	
 }

@@ -58,7 +58,7 @@ public class InfActivity extends Activity{
 		setContentView(R.layout.informacion);
 		Window window = getWindow();
 		View actButton = window.findViewById(R.id.button_act);
-		//Evento que escucha el click sobre el boton cancelar
+		//Evento actualizar
 		actButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {

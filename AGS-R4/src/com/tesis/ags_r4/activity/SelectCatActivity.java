@@ -62,7 +62,6 @@ public class SelectCatActivity extends Activity{
 		lugarBd= new Lugar(this);
 		lugarBd.open();
 		l=lugarBd.getAllLugares();
-		
 		setContentView(R.layout.list_cat);
 		createListCat();
 		createCollecctionLugares();
@@ -77,6 +76,10 @@ public class SelectCatActivity extends Activity{
 		String boton=intent.getStringExtra("boton");
 		if(boton.equalsIgnoreCase("eliminar")){//apreto boton eliminar
 			//eliminar el lugar de la base de datos..
+			if(l.isEmpty()){
+				Toast.makeText(getBaseContext(),R.string.no_lugar, Toast.LENGTH_LONG)
+	            .show();
+			}
 			 expListView.setOnChildClickListener(new OnChildClickListener() {
 				 
 		            public boolean onChildClick(ExpandableListView parent, View v,
@@ -126,6 +129,9 @@ public class SelectCatActivity extends Activity{
 			 
 		}else if (boton.equalsIgnoreCase("editar")){//apreto boton editar
 			//abrir el evento para editar el lugar
+			if(l.isEmpty()){
+				Toast.makeText(this, R.string.no_lugar,Toast.LENGTH_SHORT).show();
+			}
 			 expListView.setOnChildClickListener(new OnChildClickListener() {
 				 
 		            public boolean onChildClick(ExpandableListView parent, View v,
@@ -152,11 +158,14 @@ public class SelectCatActivity extends Activity{
 		        });
 			 			 		
 		}else{//el boton es para guiar
+			
+			if(l.isEmpty()){
+  				Toast.makeText(getBaseContext(),R.string.no_lugar, Toast.LENGTH_LONG)
+  	            .show();
+  				}
 			expListView.setOnChildClickListener(new OnChildClickListener() {
-				 
 	            public boolean onChildClick(ExpandableListView parent, View v,
 	                    int groupPosition, int childPosition, long id) {
-	         
 			              String nombre=(String) expListAdapter.getChild(groupPosition, childPosition);
 			              //Buscarlo en la base de datos y traer todos los datos.
 			              //lugarBd.deleteLugar(nombre);
@@ -233,4 +242,19 @@ public class SelectCatActivity extends Activity{
   	   final ExpandableListAdapter expListAdapter = new ExpandableListAdapter(this, listCat, collLugares);
          expListView.setAdapter(expListAdapter);
 	  }
+	  
+	  	@Override
+	    protected void onRestart() {
+	        super.onRestart();
+	        lugarBd.open();
+	        
+	    }
+	  
+	  	@Override
+	    protected void onPause() {
+	        super.onPause();
+	      
+	    }
+	  
+	  	
 }

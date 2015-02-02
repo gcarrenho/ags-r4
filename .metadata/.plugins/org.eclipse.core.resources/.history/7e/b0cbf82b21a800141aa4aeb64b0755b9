@@ -1,0 +1,11 @@
+package snippet;
+
+public class Snippet {
+	@Override
+	    protected void onStop() {
+	        super.onStop();
+	        locManager.removeUpdates(locListener);
+	        
+	    }
+}
+

@@ -8,8 +8,9 @@
     <string name="help">Help</string>
     <string name="close">Close</string>
     <string name="guiar_Button">Guiar</string>
-    <string name="abm_button">ABM Lugar</string>
+    <string name="abm_button">Lugares</string>
     <string name="favoritos_Button">Favoritos</string>
+     <string name="salir_Button">Salir</string>
     <string name="information_Button">Información</string>
     <string name="a_Pie">A pie</string>
     <string name="colectivo">Colectivo</string>
@@ -33,7 +34,7 @@
     <string name="tipo_lugar">Tipo de Lugar (Ejemplo: Salud)</string>
     
     <string name="modoDeUso">Al iniciar se tiene un menu de opciones, en donde usted debe elegir entre \"Cargar\", \"Visitar\", \"Llamar\", \"Ayuda\", si elige cargar, usted podra cargar en el mapa un lugar nuevo, se le pedira, nombre del lugar, telefono y el tipo de lugar. Si elije Visitar, se le pedira que tipo de lugar desea visitar, se les nombrara todos los lugares que se corresponden con dicho tipo, debera elegir el que usted desea de los nombrados, o indicar que quiere ir al mas cercano.Si elige llamar, usted debera elegir el tipo y se le nombraran los existentes, elige el que desea y se efectuara la llamada.Si elige ayuda, se le explicara el uso de la aplicacion.Repetir, Volver a opciones.</string>
-	<string name="error_when_retrieving_data">Problemas</string>
+	<string name="error_when_retrieving_data">Surgió cun problema cuando se intento conectar a internet</string>
 	<string name="actualizar_lineas">Actualizar Recorridos</string>
 	<string name="recup">Recuperar</string>
 	<string name="obt_loc">Espere hasta obtener su localizacion</string>
@@ -42,5 +43,16 @@
 	<string name="exi_l">Ya existe un lugar cargado con ese nombre</string>
 	<string name="loc_sat">Localizacion Exitosa</string>
 	<string name="l_carg">Lugar Cargado Exitosamente</string>
+	<string name="no_lugar">No Existen Lugares Cargados. Vuelva Atras</string>
+	<string name="lugar">Lugar </string>
+	<string name="elim_mens"> Eliminado Correctamente </string>
+	<string name="calc_rec">Calculando Recorrido</string>
+	<string name="lin_tom">Linea a Tomar </string>
+	<string name="toc_timbre">Deberia Tocar el Timbre para descender del Transporte </string>
+	<string name="dest_prox">Se Encuentra Muy Proximo al destino deseado. Recorrido Finalizado. </string>
+	<string name="metros"> Metros, o </string>
+	<string name="kilom"> Kilometros, o </string>
+	<string name="pasos"> Pasos </string>
+	<string name="ubic">Usted se Encuentra en </string>
 	
 </resources>

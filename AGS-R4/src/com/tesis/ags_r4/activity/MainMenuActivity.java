@@ -59,7 +59,7 @@ public class MainMenuActivity extends Activity {
 		
 		View leftview = (View) window.findViewById(R.id.guiaButton);
 		//leftview.startAnimation(getAnimation(-1, 0));
-		leftview = (View) window.findViewById(R.id.favoritosButton);
+		leftview = (View) window.findViewById(R.id.salirButton);
 		//leftview.startAnimation(getAnimation(-1, 0));
 		
 		View rightview = (View) window.findViewById(R.id.abmButton);
@@ -154,8 +154,8 @@ public class MainMenuActivity extends Activity {
 				//una vez seleccionado, calcular la distancia desde mi ubicacion.
 				// si la distancia no supera tantos metros(determinar cuantos) guiar caminando
 				//sino identificar que garita de colectivo frena cerca yendo desde mi ubicacion. 
-				final Intent guiar = new Intent(activity, AgsIntents.getGuiarMapa());
-				//final Intent guiar = new Intent(activity, AgsIntents.getSelecCatActivity());
+				//final Intent guiar = new Intent(activity, AgsIntents.getGuiarMapa());
+				final Intent guiar = new Intent(activity, AgsIntents.getSelecCatActivity());
 				guiar.putExtra("boton", "guiar");
 				activity.startActivity(guiar);
 			}
@@ -187,19 +187,20 @@ public class MainMenuActivity extends Activity {
 			
 		});
 
-		//Se presiono el boton favoritos
-		View favoritosButton = window.findViewById(R.id.favoritosButton);
-		favoritosButton.setOnClickListener(new OnClickListener() {
+		//Se presiono el boton salir
+		View salirButton = window.findViewById(R.id.salirButton);
+		salirButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				final Intent favoritos = new Intent(activity, AgsIntents.getFavoritosActivity());
+				/*final Intent favoritos = new Intent(activity, AgsIntents.getFavoritosActivity());
 				favoritos.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-				activity.startActivity(favoritos);
+				activity.startActivity(favoritos);*/
+				System.exit(0);
 			}
 		});
 
 		//Evento que se ejecuta si se realiza un click prolongado sobre el boton
-		favoritosButton.setOnLongClickListener(new View.OnLongClickListener(){
+		salirButton.setOnLongClickListener(new View.OnLongClickListener(){
 			public boolean onLongClick(View v) {
 	            return true;
 	         }

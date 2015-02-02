@@ -1,4 +1,4 @@
-!SESSION 2014-11-26 15:05:33.193 -----------------------------------------------
+!SESSION 2015-01-30 20:29:42.342 -----------------------------------------------
 eclipse.buildId=4.3.2.M20140221-1700
 java.version=1.6.0_30
 java.vendor=Sun Microsystems Inc.
@@ -7,373 +7,12 @@ Framework arguments:  -product org.eclipse.epp.package.standard.product
 Command-line arguments:  -os linux -ws gtk -arch x86 -product org.eclipse.epp.package.standard.product
 
 This is a continuation of log file /home/german/workTesis/.metadata/.bak_0.log
-Created Time: 2014-11-26 15:05:58.631
-!SESSION 2014-11-26 15:05:33.193 -----------------------------------------------
-eclipse.buildId=4.3.2.M20140221-1700
-java.version=1.6.0_30
-java.vendor=Sun Microsystems Inc.
-BootLoader constants: OS=linux, ARCH=x86, WS=gtk, NL=es_AR
-Framework arguments:  -product org.eclipse.epp.package.standard.product
-Command-line arguments:  -os linux -ws gtk -arch x86 -product org.eclipse.epp.package.standard.product
+Created Time: 2015-01-30 20:30:02.371
 
-!ENTRY org.eclipse.core.resources 4 2 2014-11-26 15:05:58.631
-!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.core.resources".
+!ENTRY org.eclipse.osgi 2 0 2015-01-30 20:30:02.371
+!MESSAGE While loading class "org.eclipse.cdt.internal.core.PositionTracker", thread "Thread[Worker-4,5,main]" timed out waiting (5000ms) for thread "Thread[main,6,main]" to finish starting bundle "org.eclipse.cdt.core_5.6.0.201402142303 [275]". To avoid deadlock, thread "Thread[Worker-4,5,main]" is proceeding but "org.eclipse.cdt.internal.core.PositionTracker" may not be fully initialized.
 !STACK 0
-java.lang.NullPointerException
-	at org.eclipse.jdt.internal.compiler.lookup.PackageBinding.getTypeOrPackage(PackageBinding.java:183)
-	at org.eclipse.jdt.internal.compiler.lookup.Scope.getTypeOrPackage(Scope.java:2799)
-	at org.eclipse.jdt.internal.compiler.lookup.Scope.getType(Scope.java:2509)
-	at org.eclipse.jdt.internal.compiler.ast.SingleTypeReference.getTypeBinding(SingleTypeReference.java:44)
-	at org.eclipse.jdt.internal.compiler.ast.TypeReference.internalResolveType(TypeReference.java:132)
-	at org.eclipse.jdt.internal.compiler.ast.TypeReference.resolveType(TypeReference.java:204)
-	at org.eclipse.jdt.internal.compiler.ast.TypeReference.resolveType(TypeReference.java:200)
-	at org.eclipse.jdt.internal.compiler.ast.Annotation.resolveType(Annotation.java:285)
-	at org.eclipse.jdt.internal.compiler.ast.ASTNode.resolveAnnotations(ASTNode.java:685)
-	at org.eclipse.jdt.internal.compiler.lookup.MethodBinding.getAnnotationTagBits(MethodBinding.java:569)
-	at org.eclipse.jdt.internal.compiler.lookup.SourceTypeBinding.resolveTypesFor(SourceTypeBinding.java:1491)
-	at org.eclipse.jdt.internal.compiler.lookup.SourceTypeBinding.methods(SourceTypeBinding.java:1220)
-	at org.eclipse.jdt.internal.compiler.lookup.SourceTypeBinding.faultInTypesForFieldsAndMethods(SourceTypeBinding.java:696)
-	at org.eclipse.jdt.internal.compiler.lookup.ClassScope.buildAnonymousTypeBinding(ClassScope.java:102)
-	at org.eclipse.jdt.internal.compiler.lookup.BlockScope.addAnonymousType(BlockScope.java:88)
-	at org.eclipse.jdt.internal.compiler.ast.QualifiedAllocationExpression.resolveTypeForQualifiedAllocationExpression(QualifiedAllocationExpression.java:439)
-	at org.eclipse.jdt.internal.compiler.ast.QualifiedAllocationExpression.resolveType(QualifiedAllocationExpression.java:272)
-	at org.eclipse.jdt.internal.compiler.ast.MessageSend.resolveType(MessageSend.java:605)
-	at org.eclipse.jdt.internal.compiler.ast.Expression.resolve(Expression.java:970)
-	at org.eclipse.jdt.internal.compiler.ast.AbstractMethodDeclaration.resolveStatements(AbstractMethodDeclaration.java:510)
-	at org.eclipse.jdt.internal.compiler.ast.MethodDeclaration.resolveStatements(MethodDeclaration.java:265)
-	at org.eclipse.jdt.internal.compiler.ast.AbstractMethodDeclaration.resolve(AbstractMethodDeclaration.java:469)
-	at org.eclipse.jdt.internal.compiler.ast.TypeDeclaration.resolve(TypeDeclaration.java:1185)
-	at org.eclipse.jdt.internal.compiler.ast.TypeDeclaration.resolve(TypeDeclaration.java:1295)
-	at org.eclipse.jdt.internal.compiler.ast.CompilationUnitDeclaration.resolve(CompilationUnitDeclaration.java:561)
-	at org.eclipse.jdt.internal.compiler.Compiler.process(Compiler.java:770)
-	at org.eclipse.jdt.internal.compiler.ProcessTaskManager.run(ProcessTaskManager.java:137)
-	at java.lang.Thread.run(Thread.java:701)
-
-!ENTRY org.eclipse.core.resources 4 75 2014-11-26 15:06:05.298
-!MESSAGE Errors occurred during the build.
-!SUBENTRY 1 org.eclipse.jdt.core 4 75 2014-11-26 15:06:05.298
-!MESSAGE Errors running builder 'Java Builder' on project 'AGS-R4'.
-!STACK 0
-java.lang.NullPointerException
-	at org.eclipse.jdt.internal.compiler.lookup.PackageBinding.getTypeOrPackage(PackageBinding.java:183)
-	at org.eclipse.jdt.internal.compiler.lookup.Scope.getTypeOrPackage(Scope.java:2799)
-	at org.eclipse.jdt.internal.compiler.lookup.Scope.getType(Scope.java:2509)
-	at org.eclipse.jdt.internal.compiler.ast.SingleTypeReference.getTypeBinding(SingleTypeReference.java:44)
-	at org.eclipse.jdt.internal.compiler.ast.TypeReference.internalResolveType(TypeReference.java:132)
-	at org.eclipse.jdt.internal.compiler.ast.TypeReference.resolveType(TypeReference.java:204)
-	at org.eclipse.jdt.internal.compiler.ast.TypeReference.resolveType(TypeReference.java:200)
-	at org.eclipse.jdt.internal.compiler.ast.Annotation.resolveType(Annotation.java:285)
-	at org.eclipse.jdt.internal.compiler.ast.ASTNode.resolveAnnotations(ASTNode.java:685)
-	at org.eclipse.jdt.internal.compiler.lookup.MethodBinding.getAnnotationTagBits(MethodBinding.java:569)
-	at org.eclipse.jdt.internal.compiler.lookup.SourceTypeBinding.resolveTypesFor(SourceTypeBinding.java:1491)
-	at org.eclipse.jdt.internal.compiler.lookup.SourceTypeBinding.methods(SourceTypeBinding.java:1220)
-	at org.eclipse.jdt.internal.compiler.lookup.SourceTypeBinding.faultInTypesForFieldsAndMethods(SourceTypeBinding.java:696)
-	at org.eclipse.jdt.internal.compiler.lookup.ClassScope.buildAnonymousTypeBinding(ClassScope.java:102)
-	at org.eclipse.jdt.internal.compiler.lookup.BlockScope.addAnonymousType(BlockScope.java:88)
-	at org.eclipse.jdt.internal.compiler.ast.QualifiedAllocationExpression.resolveTypeForQualifiedAllocationExpression(QualifiedAllocationExpression.java:439)
-	at org.eclipse.jdt.internal.compiler.ast.QualifiedAllocationExpression.resolveType(QualifiedAllocationExpression.java:272)
-	at org.eclipse.jdt.internal.compiler.ast.MessageSend.resolveType(MessageSend.java:605)
-	at org.eclipse.jdt.internal.compiler.ast.Expression.resolve(Expression.java:970)
-	at org.eclipse.jdt.internal.compiler.ast.AbstractMethodDeclaration.resolveStatements(AbstractMethodDeclaration.java:510)
-	at org.eclipse.jdt.internal.compiler.ast.MethodDeclaration.resolveStatements(MethodDeclaration.java:265)
-	at org.eclipse.jdt.internal.compiler.ast.AbstractMethodDeclaration.resolve(AbstractMethodDeclaration.java:469)
-	at org.eclipse.jdt.internal.compiler.ast.TypeDeclaration.resolve(TypeDeclaration.java:1185)
-	at org.eclipse.jdt.internal.compiler.ast.TypeDeclaration.resolve(TypeDeclaration.java:1295)
-	at org.eclipse.jdt.internal.compiler.ast.CompilationUnitDeclaration.resolve(CompilationUnitDeclaration.java:561)
-	at org.eclipse.jdt.internal.compiler.Compiler.process(Compiler.java:770)
-	at org.eclipse.jdt.internal.compiler.ProcessTaskManager.run(ProcessTaskManager.java:137)
-	at java.lang.Thread.run(Thread.java:701)
-!SESSION 2014-11-30 16:57:09.792 -----------------------------------------------
-eclipse.buildId=4.3.2.M20140221-1700
-java.version=1.6.0_30
-java.vendor=Sun Microsystems Inc.
-BootLoader constants: OS=linux, ARCH=x86, WS=gtk, NL=es_AR
-Framework arguments:  -product org.eclipse.epp.package.standard.product
-Command-line arguments:  -os linux -ws gtk -arch x86 -product org.eclipse.epp.package.standard.product
-
-!ENTRY org.eclipse.core.resources 4 2 2014-11-30 16:57:34.819
-!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.core.resources".
-!STACK 0
-java.lang.NullPointerException
-	at org.eclipse.jdt.internal.compiler.codegen.IntegerCache.putIfAbsent(IntegerCache.java:107)
-	at org.eclipse.jdt.internal.compiler.codegen.ConstantPool.literalIndex(ConstantPool.java:524)
-	at org.eclipse.jdt.internal.compiler.ClassFile.generateConstantValueAttribute(ClassFile.java:2002)
-	at org.eclipse.jdt.internal.compiler.ClassFile.addFieldAttributes(ClassFile.java:401)
-	at org.eclipse.jdt.internal.compiler.ClassFile.addFieldInfo(ClassFile.java:461)
-	at org.eclipse.jdt.internal.compiler.ClassFile.addFieldInfos(ClassFile.java:499)
-	at org.eclipse.jdt.internal.compiler.ast.TypeDeclaration.generateCode(TypeDeclaration.java:549)
-	at org.eclipse.jdt.internal.compiler.ast.TypeDeclaration.generateCode(TypeDeclaration.java:624)
-	at org.eclipse.jdt.internal.compiler.ast.TypeDeclaration.generateCode(TypeDeclaration.java:555)
-	at org.eclipse.jdt.internal.compiler.ast.TypeDeclaration.generateCode(TypeDeclaration.java:631)
-	at org.eclipse.jdt.internal.compiler.ast.CompilationUnitDeclaration.generateCode(CompilationUnitDeclaration.java:360)
-	at org.eclipse.jdt.internal.compiler.Compiler.process(Compiler.java:781)
-	at org.eclipse.jdt.internal.compiler.ProcessTaskManager.run(ProcessTaskManager.java:137)
-	at java.lang.Thread.run(Thread.java:701)
-
-!ENTRY org.eclipse.ui.workbench 4 2 2014-11-30 16:57:37.669
-!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.ui.workbench".
-!STACK 0
-java.lang.NullPointerException
-	at org.eclipse.equinox.p2.metadata.MetadataFactory.getCachedTouchpointType(MetadataFactory.java:778)
-	at org.eclipse.equinox.p2.metadata.MetadataFactory.createTouchpointType(MetadataFactory.java:673)
-	at org.eclipse.equinox.internal.p2.metadata.repository.io.MetadataParser$TouchpointTypeHandler.<init>(MetadataParser.java:705)
-	at org.eclipse.equinox.internal.p2.metadata.repository.io.MetadataParser$InstallableUnitHandler.startElement(MetadataParser.java:208)
-	at org.eclipse.equinox.internal.p2.persistence.XMLParser$AbstractHandler.startElement(XMLParser.java:165)
-	at com.sun.org.apache.xerces.internal.parsers.AbstractSAXParser.startElement(AbstractSAXParser.java:507)
-	at com.sun.org.apache.xerces.internal.parsers.AbstractXMLDocumentParser.emptyElement(AbstractXMLDocumentParser.java:182)
-	at com.sun.org.apache.xerces.internal.impl.XMLNSDocumentScannerImpl.scanStartElement(XMLNSDocumentScannerImpl.java:355)
-	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl$FragmentContentDriver.next(XMLDocumentFragmentScannerImpl.java:2739)
-	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl.next(XMLDocumentScannerImpl.java:625)
-	at com.sun.org.apache.xerces.internal.impl.XMLNSDocumentScannerImpl.next(XMLNSDocumentScannerImpl.java:117)
-	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanDocument(XMLDocumentFragmentScannerImpl.java:489)
-	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:828)
-	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:757)
-	at com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(XMLParser.java:133)
-	at com.sun.org.apache.xerces.internal.parsers.AbstractSAXParser.parse(AbstractSAXParser.java:1211)
-	at com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl$JAXPSAXParser.parse(SAXParserImpl.java:551)
-	at org.eclipse.equinox.internal.p2.engine.SimpleProfileRegistry$Parser.parse(SimpleProfileRegistry.java:700)
-	at org.eclipse.equinox.internal.p2.engine.SimpleProfileRegistry$Parser.parse(SimpleProfileRegistry.java:689)
-	at org.eclipse.equinox.internal.p2.engine.SimpleProfileRegistry.restore(SimpleProfileRegistry.java:507)
-	at org.eclipse.equinox.internal.p2.engine.SimpleProfileRegistry.getProfileMap(SimpleProfileRegistry.java:338)
-	at org.eclipse.equinox.internal.p2.engine.SimpleProfileRegistry.internalGetProfile(SimpleProfileRegistry.java:248)
-	at org.eclipse.equinox.internal.p2.engine.SimpleProfileRegistry.getProfile(SimpleProfileRegistry.java:178)
-	at org.eclipse.equinox.internal.p2.ui.sdk.scheduler.AutomaticUpdateScheduler.earlyStartup(AutomaticUpdateScheduler.java:88)
-	at org.eclipse.ui.internal.EarlyStartupRunnable.runEarlyStartup(EarlyStartupRunnable.java:87)
-	at org.eclipse.ui.internal.EarlyStartupRunnable.run(EarlyStartupRunnable.java:66)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
-	at org.eclipse.ui.internal.Workbench$55.run(Workbench.java:2555)
-	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
-
-!ENTRY org.eclipse.ui 4 4 2014-11-30 16:57:37.670
-!MESSAGE Unhandled Exception
-
-!ENTRY org.eclipse.equinox.p2.ui.sdk.scheduler 4 0 2014-11-30 16:57:37.670
-!MESSAGE Unable to execute early startup code for an extension
-!STACK 0
-java.lang.NullPointerException
-	at org.eclipse.equinox.p2.metadata.MetadataFactory.getCachedTouchpointType(MetadataFactory.java:778)
-	at org.eclipse.equinox.p2.metadata.MetadataFactory.createTouchpointType(MetadataFactory.java:673)
-	at org.eclipse.equinox.internal.p2.metadata.repository.io.MetadataParser$TouchpointTypeHandler.<init>(MetadataParser.java:705)
-	at org.eclipse.equinox.internal.p2.metadata.repository.io.MetadataParser$InstallableUnitHandler.startElement(MetadataParser.java:208)
-	at org.eclipse.equinox.internal.p2.persistence.XMLParser$AbstractHandler.startElement(XMLParser.java:165)
-	at com.sun.org.apache.xerces.internal.parsers.AbstractSAXParser.startElement(AbstractSAXParser.java:507)
-	at com.sun.org.apache.xerces.internal.parsers.AbstractXMLDocumentParser.emptyElement(AbstractXMLDocumentParser.java:182)
-	at com.sun.org.apache.xerces.internal.impl.XMLNSDocumentScannerImpl.scanStartElement(XMLNSDocumentScannerImpl.java:355)
-	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl$FragmentContentDriver.next(XMLDocumentFragmentScannerImpl.java:2739)
-	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl.next(XMLDocumentScannerImpl.java:625)
-	at com.sun.org.apache.xerces.internal.impl.XMLNSDocumentScannerImpl.next(XMLNSDocumentScannerImpl.java:117)
-	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanDocument(XMLDocumentFragmentScannerImpl.java:489)
-	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:828)
-	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:757)
-	at com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(XMLParser.java:133)
-	at com.sun.org.apache.xerces.internal.parsers.AbstractSAXParser.parse(AbstractSAXParser.java:1211)
-	at com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl$JAXPSAXParser.parse(SAXParserImpl.java:551)
-	at org.eclipse.equinox.internal.p2.engine.SimpleProfileRegistry$Parser.parse(SimpleProfileRegistry.java:700)
-	at org.eclipse.equinox.internal.p2.engine.SimpleProfileRegistry$Parser.parse(SimpleProfileRegistry.java:689)
-	at org.eclipse.equinox.internal.p2.engine.SimpleProfileRegistry.restore(SimpleProfileRegistry.java:507)
-	at org.eclipse.equinox.internal.p2.engine.SimpleProfileRegistry.getProfileMap(SimpleProfileRegistry.java:338)
-	at org.eclipse.equinox.internal.p2.engine.SimpleProfileRegistry.internalGetProfile(SimpleProfileRegistry.java:248)
-	at org.eclipse.equinox.internal.p2.engine.SimpleProfileRegistry.getProfile(SimpleProfileRegistry.java:178)
-	at org.eclipse.equinox.internal.p2.ui.sdk.scheduler.AutomaticUpdateScheduler.earlyStartup(AutomaticUpdateScheduler.java:88)
-	at org.eclipse.ui.internal.EarlyStartupRunnable.runEarlyStartup(EarlyStartupRunnable.java:87)
-	at org.eclipse.ui.internal.EarlyStartupRunnable.run(EarlyStartupRunnable.java:66)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
-	at org.eclipse.ui.internal.Workbench$55.run(Workbench.java:2555)
-	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
-
-!ENTRY org.eclipse.osgi 2 0 2014-11-30 16:57:44.415
-!MESSAGE While loading class "org.eclipse.cdt.managedbuilder.core.ResourceChangeHandler2$RcMoveHandler", thread "Thread[Worker-0,5,main]" timed out waiting (5008ms) for thread "Thread[Worker-2,5,main]" to finish starting bundle "org.eclipse.cdt.managedbuilder.core_8.3.0.201402142303 [292]". To avoid deadlock, thread "Thread[Worker-0,5,main]" is proceeding but "org.eclipse.cdt.managedbuilder.core.ResourceChangeHandler2$RcMoveHandler" may not be fully initialized.
-!STACK 0
-org.osgi.framework.BundleException: State change in progress for bundle "reference:file:plugins/org.eclipse.cdt.managedbuilder.core_8.3.0.201402142303.jar" by thread "Worker-2".
-	at org.eclipse.osgi.framework.internal.core.AbstractBundle.beginStateChange(AbstractBundle.java:1088)
-	at org.eclipse.osgi.framework.internal.core.AbstractBundle.start(AbstractBundle.java:298)
-	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:478)
-	at org.eclipse.osgi.internal.loader.BundleLoader.setLazyTrigger(BundleLoader.java:263)
-	at org.eclipse.core.runtime.internal.adaptor.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:109)
-	at org.eclipse.osgi.baseadaptor.loader.ClasspathManager.findLocalClass(ClasspathManager.java:469)
-	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.findLocalClass(DefaultClassLoader.java:216)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findLocalClass(BundleLoader.java:395)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findClassInternal(BundleLoader.java:464)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:421)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:412)
-	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.loadClass(DefaultClassLoader.java:107)
-	at java.lang.ClassLoader.loadClass(ClassLoader.java:268)
-	at org.eclipse.cdt.managedbuilder.core.ResourceChangeHandler2.createResourceMoveHandler(ResourceChangeHandler2.java:87)
-	at org.eclipse.cdt.core.settings.model.util.ResourceChangeHandlerBase.resourceChanged(ResourceChangeHandlerBase.java:149)
-	at org.eclipse.cdt.managedbuilder.core.ResourceChangeHandler2.resourceChanged(ResourceChangeHandler2.java:172)
-	at org.eclipse.core.internal.events.NotificationManager$1.run(NotificationManager.java:291)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
-	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:285)
-	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:149)
-	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:396)
-	at org.eclipse.core.internal.resources.Workspace.endOperation(Workspace.java:1531)
-	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:156)
-	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
-	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
-Caused by: org.eclipse.osgi.framework.internal.core.AbstractBundle$BundleStatusException
-	... 25 more
-Root exception:
-org.eclipse.osgi.framework.internal.core.AbstractBundle$BundleStatusException
-	at org.eclipse.osgi.framework.internal.core.AbstractBundle.beginStateChange(AbstractBundle.java:1088)
-	at org.eclipse.osgi.framework.internal.core.AbstractBundle.start(AbstractBundle.java:298)
-	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:478)
-	at org.eclipse.osgi.internal.loader.BundleLoader.setLazyTrigger(BundleLoader.java:263)
-	at org.eclipse.core.runtime.internal.adaptor.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:109)
-	at org.eclipse.osgi.baseadaptor.loader.ClasspathManager.findLocalClass(ClasspathManager.java:469)
-	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.findLocalClass(DefaultClassLoader.java:216)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findLocalClass(BundleLoader.java:395)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findClassInternal(BundleLoader.java:464)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:421)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:412)
-	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.loadClass(DefaultClassLoader.java:107)
-	at java.lang.ClassLoader.loadClass(ClassLoader.java:268)
-	at org.eclipse.cdt.managedbuilder.core.ResourceChangeHandler2.createResourceMoveHandler(ResourceChangeHandler2.java:87)
-	at org.eclipse.cdt.core.settings.model.util.ResourceChangeHandlerBase.resourceChanged(ResourceChangeHandlerBase.java:149)
-	at org.eclipse.cdt.managedbuilder.core.ResourceChangeHandler2.resourceChanged(ResourceChangeHandler2.java:172)
-	at org.eclipse.core.internal.events.NotificationManager$1.run(NotificationManager.java:291)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
-	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:285)
-	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:149)
-	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:396)
-	at org.eclipse.core.internal.resources.Workspace.endOperation(Workspace.java:1531)
-	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:156)
-	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
-	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
-
-!ENTRY org.eclipse.osgi 2 0 2014-11-30 16:57:44.553
-!MESSAGE While loading class "org.eclipse.cdt.internal.core.PositionTrackerChain", thread "Thread[Worker-4,5,main]" timed out waiting (5000ms) for thread "Thread[Worker-2,5,main]" to finish starting bundle "org.eclipse.cdt.core_5.6.0.201402142303 [275]". To avoid deadlock, thread "Thread[Worker-4,5,main]" is proceeding but "org.eclipse.cdt.internal.core.PositionTrackerChain" may not be fully initialized.
-!STACK 0
-org.osgi.framework.BundleException: State change in progress for bundle "reference:file:plugins/org.eclipse.cdt.core_5.6.0.201402142303.jar" by thread "Worker-2".
-	at org.eclipse.osgi.framework.internal.core.AbstractBundle.beginStateChange(AbstractBundle.java:1088)
-	at org.eclipse.osgi.framework.internal.core.AbstractBundle.start(AbstractBundle.java:298)
-	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:478)
-	at org.eclipse.osgi.internal.loader.BundleLoader.setLazyTrigger(BundleLoader.java:263)
-	at org.eclipse.core.runtime.internal.adaptor.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:109)
-	at org.eclipse.osgi.baseadaptor.loader.ClasspathManager.findLocalClass(ClasspathManager.java:469)
-	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.findLocalClass(DefaultClassLoader.java:216)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findLocalClass(BundleLoader.java:395)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findClassInternal(BundleLoader.java:464)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:421)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:412)
-	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.loadClass(DefaultClassLoader.java:107)
-	at java.lang.ClassLoader.loadClass(ClassLoader.java:268)
-	at org.eclipse.cdt.internal.core.PositionTrackerManager.createCheckpoint(PositionTrackerManager.java:117)
-	at org.eclipse.cdt.internal.core.PositionTrackerManager.bufferCreated(PositionTrackerManager.java:75)
-	at org.eclipse.core.internal.filebuffers.TextFileBufferManager$11.run(TextFileBufferManager.java:802)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
-	at org.eclipse.core.internal.filebuffers.TextFileBufferManager.fireBufferCreated(TextFileBufferManager.java:800)
-	at org.eclipse.core.internal.filebuffers.TextFileBufferManager.connect(TextFileBufferManager.java:127)
-	at org.eclipse.wst.sse.core.internal.FileBufferModelManager.getModel(FileBufferModelManager.java:786)
-	at org.eclipse.wst.sse.core.internal.model.ModelManagerImpl._doCommonGetModel(ModelManagerImpl.java:545)
-	at org.eclipse.wst.sse.core.internal.model.ModelManagerImpl._commonGetModel(ModelManagerImpl.java:509)
-	at org.eclipse.wst.sse.core.internal.model.ModelManagerImpl._commonGetModel(ModelManagerImpl.java:482)
-	at org.eclipse.wst.sse.core.internal.model.ModelManagerImpl.getModelForRead(ModelManagerImpl.java:1428)
-	at com.android.ide.eclipse.adt.internal.lint.EclipseLintClient$1.parseXml(EclipseLintClient.java:228)
-	at com.android.tools.lint.client.api.LintDriver.runFileDetectors(LintDriver.java:943)
-	at com.android.tools.lint.client.api.LintDriver.checkProject(LintDriver.java:880)
-	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:431)
-	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
-	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
-	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
-Caused by: org.eclipse.osgi.framework.internal.core.AbstractBundle$BundleStatusException
-	... 31 more
-Root exception:
-org.eclipse.osgi.framework.internal.core.AbstractBundle$BundleStatusException
-	at org.eclipse.osgi.framework.internal.core.AbstractBundle.beginStateChange(AbstractBundle.java:1088)
-	at org.eclipse.osgi.framework.internal.core.AbstractBundle.start(AbstractBundle.java:298)
-	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:478)
-	at org.eclipse.osgi.internal.loader.BundleLoader.setLazyTrigger(BundleLoader.java:263)
-	at org.eclipse.core.runtime.internal.adaptor.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:109)
-	at org.eclipse.osgi.baseadaptor.loader.ClasspathManager.findLocalClass(ClasspathManager.java:469)
-	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.findLocalClass(DefaultClassLoader.java:216)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findLocalClass(BundleLoader.java:395)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findClassInternal(BundleLoader.java:464)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:421)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:412)
-	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.loadClass(DefaultClassLoader.java:107)
-	at java.lang.ClassLoader.loadClass(ClassLoader.java:268)
-	at org.eclipse.cdt.internal.core.PositionTrackerManager.createCheckpoint(PositionTrackerManager.java:117)
-	at org.eclipse.cdt.internal.core.PositionTrackerManager.bufferCreated(PositionTrackerManager.java:75)
-	at org.eclipse.core.internal.filebuffers.TextFileBufferManager$11.run(TextFileBufferManager.java:802)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
-	at org.eclipse.core.internal.filebuffers.TextFileBufferManager.fireBufferCreated(TextFileBufferManager.java:800)
-	at org.eclipse.core.internal.filebuffers.TextFileBufferManager.connect(TextFileBufferManager.java:127)
-	at org.eclipse.wst.sse.core.internal.FileBufferModelManager.getModel(FileBufferModelManager.java:786)
-	at org.eclipse.wst.sse.core.internal.model.ModelManagerImpl._doCommonGetModel(ModelManagerImpl.java:545)
-	at org.eclipse.wst.sse.core.internal.model.ModelManagerImpl._commonGetModel(ModelManagerImpl.java:509)
-	at org.eclipse.wst.sse.core.internal.model.ModelManagerImpl._commonGetModel(ModelManagerImpl.java:482)
-	at org.eclipse.wst.sse.core.internal.model.ModelManagerImpl.getModelForRead(ModelManagerImpl.java:1428)
-	at com.android.ide.eclipse.adt.internal.lint.EclipseLintClient$1.parseXml(EclipseLintClient.java:228)
-	at com.android.tools.lint.client.api.LintDriver.runFileDetectors(LintDriver.java:943)
-	at com.android.tools.lint.client.api.LintDriver.checkProject(LintDriver.java:880)
-	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:431)
-	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
-	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
-	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
-
-!ENTRY org.eclipse.osgi 2 0 2014-11-30 16:57:49.417
-!MESSAGE While loading class "org.eclipse.cdt.managedbuilder.core.IManagedBuildInfo", thread "Thread[Worker-0,5,main]" timed out waiting (5000ms) for thread "Thread[Worker-2,5,main]" to finish starting bundle "org.eclipse.cdt.managedbuilder.core_8.3.0.201402142303 [292]". To avoid deadlock, thread "Thread[Worker-0,5,main]" is proceeding but "org.eclipse.cdt.managedbuilder.core.IManagedBuildInfo" may not be fully initialized.
-!STACK 0
-org.osgi.framework.BundleException: State change in progress for bundle "reference:file:plugins/org.eclipse.cdt.managedbuilder.core_8.3.0.201402142303.jar" by thread "Worker-2".
-	at org.eclipse.osgi.framework.internal.core.AbstractBundle.beginStateChange(AbstractBundle.java:1088)
-	at org.eclipse.osgi.framework.internal.core.AbstractBundle.start(AbstractBundle.java:298)
-	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:478)
-	at org.eclipse.osgi.internal.loader.BundleLoader.setLazyTrigger(BundleLoader.java:263)
-	at org.eclipse.core.runtime.internal.adaptor.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:109)
-	at org.eclipse.osgi.baseadaptor.loader.ClasspathManager.findLocalClass(ClasspathManager.java:469)
-	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.findLocalClass(DefaultClassLoader.java:216)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findLocalClass(BundleLoader.java:395)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findClassInternal(BundleLoader.java:464)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:421)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:412)
-	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.loadClass(DefaultClassLoader.java:107)
-	at java.lang.ClassLoader.loadClass(ClassLoader.java:268)
-	at org.eclipse.cdt.managedbuilder.core.ResourceChangeHandler2.createResourceMoveHandler(ResourceChangeHandler2.java:87)
-	at org.eclipse.cdt.core.settings.model.util.ResourceChangeHandlerBase.resourceChanged(ResourceChangeHandlerBase.java:149)
-	at org.eclipse.cdt.managedbuilder.core.ResourceChangeHandler2.resourceChanged(ResourceChangeHandler2.java:172)
-	at org.eclipse.core.internal.events.NotificationManager$1.run(NotificationManager.java:291)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
-	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:285)
-	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:149)
-	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:396)
-	at org.eclipse.core.internal.resources.Workspace.endOperation(Workspace.java:1531)
-	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:156)
-	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
-	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
-Caused by: org.eclipse.osgi.framework.internal.core.AbstractBundle$BundleStatusException
-	... 25 more
-Root exception:
-org.eclipse.osgi.framework.internal.core.AbstractBundle$BundleStatusException
-	at org.eclipse.osgi.framework.internal.core.AbstractBundle.beginStateChange(AbstractBundle.java:1088)
-	at org.eclipse.osgi.framework.internal.core.AbstractBundle.start(AbstractBundle.java:298)
-	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:478)
-	at org.eclipse.osgi.internal.loader.BundleLoader.setLazyTrigger(BundleLoader.java:263)
-	at org.eclipse.core.runtime.internal.adaptor.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:109)
-	at org.eclipse.osgi.baseadaptor.loader.ClasspathManager.findLocalClass(ClasspathManager.java:469)
-	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.findLocalClass(DefaultClassLoader.java:216)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findLocalClass(BundleLoader.java:395)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findClassInternal(BundleLoader.java:464)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:421)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:412)
-	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.loadClass(DefaultClassLoader.java:107)
-	at java.lang.ClassLoader.loadClass(ClassLoader.java:268)
-	at org.eclipse.cdt.managedbuilder.core.ResourceChangeHandler2.createResourceMoveHandler(ResourceChangeHandler2.java:87)
-	at org.eclipse.cdt.core.settings.model.util.ResourceChangeHandlerBase.resourceChanged(ResourceChangeHandlerBase.java:149)
-	at org.eclipse.cdt.managedbuilder.core.ResourceChangeHandler2.resourceChanged(ResourceChangeHandler2.java:172)
-	at org.eclipse.core.internal.events.NotificationManager$1.run(NotificationManager.java:291)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
-	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:285)
-	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:149)
-	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:396)
-	at org.eclipse.core.internal.resources.Workspace.endOperation(Workspace.java:1531)
-	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:156)
-	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
-	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
-
-!ENTRY org.eclipse.osgi 2 0 2014-11-30 16:57:49.575
-!MESSAGE While loading class "org.eclipse.cdt.internal.core.PositionTracker", thread "Thread[Worker-4,5,main]" timed out waiting (5001ms) for thread "Thread[Worker-2,5,main]" to finish starting bundle "org.eclipse.cdt.core_5.6.0.201402142303 [275]". To avoid deadlock, thread "Thread[Worker-4,5,main]" is proceeding but "org.eclipse.cdt.internal.core.PositionTracker" may not be fully initialized.
-!STACK 0
-org.osgi.framework.BundleException: State change in progress for bundle "reference:file:plugins/org.eclipse.cdt.core_5.6.0.201402142303.jar" by thread "Worker-2".
+org.osgi.framework.BundleException: State change in progress for bundle "reference:file:plugins/org.eclipse.cdt.core_5.6.0.201402142303.jar" by thread "main".
 	at org.eclipse.osgi.framework.internal.core.AbstractBundle.beginStateChange(AbstractBundle.java:1088)
 	at org.eclipse.osgi.framework.internal.core.AbstractBundle.start(AbstractBundle.java:298)
 	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:478)
@@ -445,10 +84,10 @@ org.eclipse.osgi.framework.internal.core.AbstractBundle$BundleStatusException
 	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
 
-!ENTRY org.eclipse.osgi 2 0 2014-11-30 16:57:54.578
-!MESSAGE While loading class "org.eclipse.cdt.core.settings.model.util.ResourceChangeHandlerBase$DeltaVisitor", thread "Thread[Worker-0,5,main]" timed out waiting (5000ms) for thread "Thread[Worker-2,5,main]" to finish starting bundle "org.eclipse.cdt.core_5.6.0.201402142303 [275]". To avoid deadlock, thread "Thread[Worker-0,5,main]" is proceeding but "org.eclipse.cdt.core.settings.model.util.ResourceChangeHandlerBase$DeltaVisitor" may not be fully initialized.
+!ENTRY org.eclipse.osgi 2 0 2015-01-30 20:30:02.373
+!MESSAGE While loading class "org.eclipse.cdt.managedbuilder.core.ResourceChangeHandler2$RcMoveHandler", thread "Thread[Worker-1,5,main]" timed out waiting (5001ms) for thread "Thread[main,6,main]" to finish starting bundle "org.eclipse.cdt.managedbuilder.core_8.3.0.201402142303 [292]". To avoid deadlock, thread "Thread[Worker-1,5,main]" is proceeding but "org.eclipse.cdt.managedbuilder.core.ResourceChangeHandler2$RcMoveHandler" may not be fully initialized.
 !STACK 0
-org.osgi.framework.BundleException: State change in progress for bundle "reference:file:plugins/org.eclipse.cdt.core_5.6.0.201402142303.jar" by thread "Worker-2".
+org.osgi.framework.BundleException: State change in progress for bundle "reference:file:plugins/org.eclipse.cdt.managedbuilder.core_8.3.0.201402142303.jar" by thread "main".
 	at org.eclipse.osgi.framework.internal.core.AbstractBundle.beginStateChange(AbstractBundle.java:1088)
 	at org.eclipse.osgi.framework.internal.core.AbstractBundle.start(AbstractBundle.java:298)
 	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:478)
@@ -462,8 +101,8 @@ org.osgi.framework.BundleException: State change in progress for bundle "referen
 	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:412)
 	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.loadClass(DefaultClassLoader.java:107)
 	at java.lang.ClassLoader.loadClass(ClassLoader.java:268)
-	at org.eclipse.cdt.core.settings.model.util.ResourceChangeHandlerBase.doHandleResourceMove(ResourceChangeHandlerBase.java:190)
-	at org.eclipse.cdt.core.settings.model.util.ResourceChangeHandlerBase.resourceChanged(ResourceChangeHandlerBase.java:150)
+	at org.eclipse.cdt.managedbuilder.core.ResourceChangeHandler2.createResourceMoveHandler(ResourceChangeHandler2.java:87)
+	at org.eclipse.cdt.core.settings.model.util.ResourceChangeHandlerBase.resourceChanged(ResourceChangeHandlerBase.java:149)
 	at org.eclipse.cdt.managedbuilder.core.ResourceChangeHandler2.resourceChanged(ResourceChangeHandler2.java:172)
 	at org.eclipse.core.internal.events.NotificationManager$1.run(NotificationManager.java:291)
 	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
@@ -471,8 +110,8 @@ org.osgi.framework.BundleException: State change in progress for bundle "referen
 	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:149)
 	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:396)
 	at org.eclipse.core.internal.resources.Workspace.endOperation(Workspace.java:1531)
-	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:156)
-	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2354)
+	at org.eclipse.core.internal.events.NotificationManager$NotifyJob.run(NotificationManager.java:40)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
 Caused by: org.eclipse.osgi.framework.internal.core.AbstractBundle$BundleStatusException
 	... 25 more
@@ -491,8 +130,8 @@ org.eclipse.osgi.framework.internal.core.AbstractBundle$BundleStatusException
 	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:412)
 	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.loadClass(DefaultClassLoader.java:107)
 	at java.lang.ClassLoader.loadClass(ClassLoader.java:268)
-	at org.eclipse.cdt.core.settings.model.util.ResourceChangeHandlerBase.doHandleResourceMove(ResourceChangeHandlerBase.java:190)
-	at org.eclipse.cdt.core.settings.model.util.ResourceChangeHandlerBase.resourceChanged(ResourceChangeHandlerBase.java:150)
+	at org.eclipse.cdt.managedbuilder.core.ResourceChangeHandler2.createResourceMoveHandler(ResourceChangeHandler2.java:87)
+	at org.eclipse.cdt.core.settings.model.util.ResourceChangeHandlerBase.resourceChanged(ResourceChangeHandlerBase.java:149)
 	at org.eclipse.cdt.managedbuilder.core.ResourceChangeHandler2.resourceChanged(ResourceChangeHandler2.java:172)
 	at org.eclipse.core.internal.events.NotificationManager$1.run(NotificationManager.java:291)
 	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
@@ -500,14 +139,14 @@ org.eclipse.osgi.framework.internal.core.AbstractBundle$BundleStatusException
 	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:149)
 	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:396)
 	at org.eclipse.core.internal.resources.Workspace.endOperation(Workspace.java:1531)
-	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:156)
-	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2354)
+	at org.eclipse.core.internal.events.NotificationManager$NotifyJob.run(NotificationManager.java:40)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
 
-!ENTRY org.eclipse.osgi 2 0 2014-11-30 16:57:59.602
-!MESSAGE While loading class "org.eclipse.cdt.internal.core.PositionTracker$Node", thread "Thread[Worker-4,5,main]" timed out waiting (5000ms) for thread "Thread[Worker-2,5,main]" to finish starting bundle "org.eclipse.cdt.core_5.6.0.201402142303 [275]". To avoid deadlock, thread "Thread[Worker-4,5,main]" is proceeding but "org.eclipse.cdt.internal.core.PositionTracker$Node" may not be fully initialized.
+!ENTRY org.eclipse.osgi 2 0 2015-01-30 20:30:07.376
+!MESSAGE While loading class "org.eclipse.cdt.internal.core.PositionTracker$Node", thread "Thread[Worker-4,5,main]" timed out waiting (5000ms) for thread "Thread[main,6,main]" to finish starting bundle "org.eclipse.cdt.core_5.6.0.201402142303 [275]". To avoid deadlock, thread "Thread[Worker-4,5,main]" is proceeding but "org.eclipse.cdt.internal.core.PositionTracker$Node" may not be fully initialized.
 !STACK 0
-org.osgi.framework.BundleException: State change in progress for bundle "reference:file:plugins/org.eclipse.cdt.core_5.6.0.201402142303.jar" by thread "Worker-2".
+org.osgi.framework.BundleException: State change in progress for bundle "reference:file:plugins/org.eclipse.cdt.core_5.6.0.201402142303.jar" by thread "main".
 	at org.eclipse.osgi.framework.internal.core.AbstractBundle.beginStateChange(AbstractBundle.java:1088)
 	at org.eclipse.osgi.framework.internal.core.AbstractBundle.start(AbstractBundle.java:298)
 	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:478)
@@ -581,10 +220,128 @@ org.eclipse.osgi.framework.internal.core.AbstractBundle$BundleStatusException
 	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
 
-!ENTRY org.eclipse.osgi 2 0 2014-11-30 16:58:04.606
-!MESSAGE While loading class "org.eclipse.cdt.managedbuilder.core.ResourceChangeHandler2$Visitor", thread "Thread[Worker-0,5,main]" timed out waiting (5000ms) for thread "Thread[Worker-2,5,main]" to finish starting bundle "org.eclipse.cdt.managedbuilder.core_8.3.0.201402142303 [292]". To avoid deadlock, thread "Thread[Worker-0,5,main]" is proceeding but "org.eclipse.cdt.managedbuilder.core.ResourceChangeHandler2$Visitor" may not be fully initialized.
+!ENTRY org.eclipse.osgi 2 0 2015-01-30 20:30:07.378
+!MESSAGE While loading class "org.eclipse.cdt.managedbuilder.core.IManagedBuildInfo", thread "Thread[Worker-1,5,main]" timed out waiting (5000ms) for thread "Thread[main,6,main]" to finish starting bundle "org.eclipse.cdt.managedbuilder.core_8.3.0.201402142303 [292]". To avoid deadlock, thread "Thread[Worker-1,5,main]" is proceeding but "org.eclipse.cdt.managedbuilder.core.IManagedBuildInfo" may not be fully initialized.
 !STACK 0
-org.osgi.framework.BundleException: State change in progress for bundle "reference:file:plugins/org.eclipse.cdt.managedbuilder.core_8.3.0.201402142303.jar" by thread "Worker-2".
+org.osgi.framework.BundleException: State change in progress for bundle "reference:file:plugins/org.eclipse.cdt.managedbuilder.core_8.3.0.201402142303.jar" by thread "main".
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.beginStateChange(AbstractBundle.java:1088)
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.start(AbstractBundle.java:298)
+	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:478)
+	at org.eclipse.osgi.internal.loader.BundleLoader.setLazyTrigger(BundleLoader.java:263)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:109)
+	at org.eclipse.osgi.baseadaptor.loader.ClasspathManager.findLocalClass(ClasspathManager.java:469)
+	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.findLocalClass(DefaultClassLoader.java:216)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findLocalClass(BundleLoader.java:395)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClassInternal(BundleLoader.java:464)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:421)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:412)
+	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.loadClass(DefaultClassLoader.java:107)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:268)
+	at org.eclipse.cdt.managedbuilder.core.ResourceChangeHandler2.createResourceMoveHandler(ResourceChangeHandler2.java:87)
+	at org.eclipse.cdt.core.settings.model.util.ResourceChangeHandlerBase.resourceChanged(ResourceChangeHandlerBase.java:149)
+	at org.eclipse.cdt.managedbuilder.core.ResourceChangeHandler2.resourceChanged(ResourceChangeHandler2.java:172)
+	at org.eclipse.core.internal.events.NotificationManager$1.run(NotificationManager.java:291)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:285)
+	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:149)
+	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:396)
+	at org.eclipse.core.internal.resources.Workspace.endOperation(Workspace.java:1531)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2354)
+	at org.eclipse.core.internal.events.NotificationManager$NotifyJob.run(NotificationManager.java:40)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+Caused by: org.eclipse.osgi.framework.internal.core.AbstractBundle$BundleStatusException
+	... 25 more
+Root exception:
+org.eclipse.osgi.framework.internal.core.AbstractBundle$BundleStatusException
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.beginStateChange(AbstractBundle.java:1088)
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.start(AbstractBundle.java:298)
+	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:478)
+	at org.eclipse.osgi.internal.loader.BundleLoader.setLazyTrigger(BundleLoader.java:263)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:109)
+	at org.eclipse.osgi.baseadaptor.loader.ClasspathManager.findLocalClass(ClasspathManager.java:469)
+	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.findLocalClass(DefaultClassLoader.java:216)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findLocalClass(BundleLoader.java:395)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClassInternal(BundleLoader.java:464)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:421)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:412)
+	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.loadClass(DefaultClassLoader.java:107)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:268)
+	at org.eclipse.cdt.managedbuilder.core.ResourceChangeHandler2.createResourceMoveHandler(ResourceChangeHandler2.java:87)
+	at org.eclipse.cdt.core.settings.model.util.ResourceChangeHandlerBase.resourceChanged(ResourceChangeHandlerBase.java:149)
+	at org.eclipse.cdt.managedbuilder.core.ResourceChangeHandler2.resourceChanged(ResourceChangeHandler2.java:172)
+	at org.eclipse.core.internal.events.NotificationManager$1.run(NotificationManager.java:291)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:285)
+	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:149)
+	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:396)
+	at org.eclipse.core.internal.resources.Workspace.endOperation(Workspace.java:1531)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2354)
+	at org.eclipse.core.internal.events.NotificationManager$NotifyJob.run(NotificationManager.java:40)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY org.eclipse.osgi 2 0 2015-01-30 20:30:12.382
+!MESSAGE While loading class "org.eclipse.cdt.core.settings.model.util.ResourceChangeHandlerBase$DeltaVisitor", thread "Thread[Worker-1,5,main]" timed out waiting (5000ms) for thread "Thread[main,6,main]" to finish starting bundle "org.eclipse.cdt.core_5.6.0.201402142303 [275]". To avoid deadlock, thread "Thread[Worker-1,5,main]" is proceeding but "org.eclipse.cdt.core.settings.model.util.ResourceChangeHandlerBase$DeltaVisitor" may not be fully initialized.
+!STACK 0
+org.osgi.framework.BundleException: State change in progress for bundle "reference:file:plugins/org.eclipse.cdt.core_5.6.0.201402142303.jar" by thread "main".
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.beginStateChange(AbstractBundle.java:1088)
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.start(AbstractBundle.java:298)
+	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:478)
+	at org.eclipse.osgi.internal.loader.BundleLoader.setLazyTrigger(BundleLoader.java:263)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:109)
+	at org.eclipse.osgi.baseadaptor.loader.ClasspathManager.findLocalClass(ClasspathManager.java:469)
+	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.findLocalClass(DefaultClassLoader.java:216)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findLocalClass(BundleLoader.java:395)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClassInternal(BundleLoader.java:464)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:421)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:412)
+	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.loadClass(DefaultClassLoader.java:107)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:268)
+	at org.eclipse.cdt.core.settings.model.util.ResourceChangeHandlerBase.doHandleResourceMove(ResourceChangeHandlerBase.java:190)
+	at org.eclipse.cdt.core.settings.model.util.ResourceChangeHandlerBase.resourceChanged(ResourceChangeHandlerBase.java:150)
+	at org.eclipse.cdt.managedbuilder.core.ResourceChangeHandler2.resourceChanged(ResourceChangeHandler2.java:172)
+	at org.eclipse.core.internal.events.NotificationManager$1.run(NotificationManager.java:291)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:285)
+	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:149)
+	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:396)
+	at org.eclipse.core.internal.resources.Workspace.endOperation(Workspace.java:1531)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2354)
+	at org.eclipse.core.internal.events.NotificationManager$NotifyJob.run(NotificationManager.java:40)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+Caused by: org.eclipse.osgi.framework.internal.core.AbstractBundle$BundleStatusException
+	... 25 more
+Root exception:
+org.eclipse.osgi.framework.internal.core.AbstractBundle$BundleStatusException
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.beginStateChange(AbstractBundle.java:1088)
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.start(AbstractBundle.java:298)
+	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:478)
+	at org.eclipse.osgi.internal.loader.BundleLoader.setLazyTrigger(BundleLoader.java:263)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:109)
+	at org.eclipse.osgi.baseadaptor.loader.ClasspathManager.findLocalClass(ClasspathManager.java:469)
+	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.findLocalClass(DefaultClassLoader.java:216)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findLocalClass(BundleLoader.java:395)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClassInternal(BundleLoader.java:464)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:421)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:412)
+	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.loadClass(DefaultClassLoader.java:107)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:268)
+	at org.eclipse.cdt.core.settings.model.util.ResourceChangeHandlerBase.doHandleResourceMove(ResourceChangeHandlerBase.java:190)
+	at org.eclipse.cdt.core.settings.model.util.ResourceChangeHandlerBase.resourceChanged(ResourceChangeHandlerBase.java:150)
+	at org.eclipse.cdt.managedbuilder.core.ResourceChangeHandler2.resourceChanged(ResourceChangeHandler2.java:172)
+	at org.eclipse.core.internal.events.NotificationManager$1.run(NotificationManager.java:291)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:285)
+	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:149)
+	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:396)
+	at org.eclipse.core.internal.resources.Workspace.endOperation(Workspace.java:1531)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2354)
+	at org.eclipse.core.internal.events.NotificationManager$NotifyJob.run(NotificationManager.java:40)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY org.eclipse.osgi 2 0 2015-01-30 20:30:17.390
+!MESSAGE While loading class "org.eclipse.cdt.managedbuilder.core.ResourceChangeHandler2$Visitor", thread "Thread[Worker-1,5,main]" timed out waiting (5000ms) for thread "Thread[main,6,main]" to finish starting bundle "org.eclipse.cdt.managedbuilder.core_8.3.0.201402142303 [292]". To avoid deadlock, thread "Thread[Worker-1,5,main]" is proceeding but "org.eclipse.cdt.managedbuilder.core.ResourceChangeHandler2$Visitor" may not be fully initialized.
+!STACK 0
+org.osgi.framework.BundleException: State change in progress for bundle "reference:file:plugins/org.eclipse.cdt.managedbuilder.core_8.3.0.201402142303.jar" by thread "main".
 	at org.eclipse.osgi.framework.internal.core.AbstractBundle.beginStateChange(AbstractBundle.java:1088)
 	at org.eclipse.osgi.framework.internal.core.AbstractBundle.start(AbstractBundle.java:298)
 	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:478)
@@ -605,8 +362,8 @@ org.osgi.framework.BundleException: State change in progress for bundle "referen
 	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:149)
 	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:396)
 	at org.eclipse.core.internal.resources.Workspace.endOperation(Workspace.java:1531)
-	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:156)
-	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2354)
+	at org.eclipse.core.internal.events.NotificationManager$NotifyJob.run(NotificationManager.java:40)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
 Caused by: org.eclipse.osgi.framework.internal.core.AbstractBundle$BundleStatusException
 	... 23 more
@@ -632,14 +389,14 @@ org.eclipse.osgi.framework.internal.core.AbstractBundle$BundleStatusException
 	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:149)
 	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:396)
 	at org.eclipse.core.internal.resources.Workspace.endOperation(Workspace.java:1531)
-	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:156)
-	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2354)
+	at org.eclipse.core.internal.events.NotificationManager$NotifyJob.run(NotificationManager.java:40)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
 
-!ENTRY org.eclipse.osgi 2 0 2014-11-30 16:58:09.611
-!MESSAGE While loading class "org.eclipse.cdt.internal.core.model.CElementDelta", thread "Thread[Worker-0,5,main]" timed out waiting (5000ms) for thread "Thread[Worker-2,5,main]" to finish starting bundle "org.eclipse.cdt.core_5.6.0.201402142303 [275]". To avoid deadlock, thread "Thread[Worker-0,5,main]" is proceeding but "org.eclipse.cdt.internal.core.model.CElementDelta" may not be fully initialized.
+!ENTRY org.eclipse.osgi 2 0 2015-01-30 20:30:22.396
+!MESSAGE While loading class "org.eclipse.cdt.internal.core.model.CElementDelta", thread "Thread[Worker-1,5,main]" timed out waiting (5001ms) for thread "Thread[main,6,main]" to finish starting bundle "org.eclipse.cdt.core_5.6.0.201402142303 [275]". To avoid deadlock, thread "Thread[Worker-1,5,main]" is proceeding but "org.eclipse.cdt.internal.core.model.CElementDelta" may not be fully initialized.
 !STACK 0
-org.osgi.framework.BundleException: State change in progress for bundle "reference:file:plugins/org.eclipse.cdt.core_5.6.0.201402142303.jar" by thread "Worker-2".
+org.osgi.framework.BundleException: State change in progress for bundle "reference:file:plugins/org.eclipse.cdt.core_5.6.0.201402142303.jar" by thread "main".
 	at org.eclipse.osgi.framework.internal.core.AbstractBundle.beginStateChange(AbstractBundle.java:1088)
 	at org.eclipse.osgi.framework.internal.core.AbstractBundle.start(AbstractBundle.java:298)
 	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:478)
@@ -661,8 +418,8 @@ org.osgi.framework.BundleException: State change in progress for bundle "referen
 	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:149)
 	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:396)
 	at org.eclipse.core.internal.resources.Workspace.endOperation(Workspace.java:1531)
-	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:156)
-	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2354)
+	at org.eclipse.core.internal.events.NotificationManager$NotifyJob.run(NotificationManager.java:40)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
 Caused by: org.eclipse.osgi.framework.internal.core.AbstractBundle$BundleStatusException
 	... 24 more
@@ -689,14 +446,14 @@ org.eclipse.osgi.framework.internal.core.AbstractBundle$BundleStatusException
 	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:149)
 	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:396)
 	at org.eclipse.core.internal.resources.Workspace.endOperation(Workspace.java:1531)
-	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:156)
-	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2354)
+	at org.eclipse.core.internal.events.NotificationManager$NotifyJob.run(NotificationManager.java:40)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
 
-!ENTRY org.eclipse.osgi 2 0 2014-11-30 16:58:14.687
-!MESSAGE While loading class "org.eclipse.cdt.internal.core.model.Util", thread "Thread[Worker-0,5,main]" timed out waiting (5000ms) for thread "Thread[Worker-2,5,main]" to finish starting bundle "org.eclipse.cdt.core_5.6.0.201402142303 [275]". To avoid deadlock, thread "Thread[Worker-0,5,main]" is proceeding but "org.eclipse.cdt.internal.core.model.Util" may not be fully initialized.
+!ENTRY org.eclipse.osgi 2 0 2015-01-30 20:30:27.434
+!MESSAGE While loading class "org.eclipse.cdt.internal.core.model.Util", thread "Thread[Worker-1,5,main]" timed out waiting (5000ms) for thread "Thread[main,6,main]" to finish starting bundle "org.eclipse.cdt.core_5.6.0.201402142303 [275]". To avoid deadlock, thread "Thread[Worker-1,5,main]" is proceeding but "org.eclipse.cdt.internal.core.model.Util" may not be fully initialized.
 !STACK 0
-org.osgi.framework.BundleException: State change in progress for bundle "reference:file:plugins/org.eclipse.cdt.core_5.6.0.201402142303.jar" by thread "Worker-2".
+org.osgi.framework.BundleException: State change in progress for bundle "reference:file:plugins/org.eclipse.cdt.core_5.6.0.201402142303.jar" by thread "main".
 	at org.eclipse.osgi.framework.internal.core.AbstractBundle.beginStateChange(AbstractBundle.java:1088)
 	at org.eclipse.osgi.framework.internal.core.AbstractBundle.start(AbstractBundle.java:298)
 	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:478)
@@ -720,8 +477,8 @@ org.osgi.framework.BundleException: State change in progress for bundle "referen
 	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:149)
 	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:396)
 	at org.eclipse.core.internal.resources.Workspace.endOperation(Workspace.java:1531)
-	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:156)
-	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2354)
+	at org.eclipse.core.internal.events.NotificationManager$NotifyJob.run(NotificationManager.java:40)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
 Caused by: org.eclipse.osgi.framework.internal.core.AbstractBundle$BundleStatusException
 	... 26 more
@@ -750,14 +507,14 @@ org.eclipse.osgi.framework.internal.core.AbstractBundle$BundleStatusException
 	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:149)
 	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:396)
 	at org.eclipse.core.internal.resources.Workspace.endOperation(Workspace.java:1531)
-	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:156)
-	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2354)
+	at org.eclipse.core.internal.events.NotificationManager$NotifyJob.run(NotificationManager.java:40)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
 
-!ENTRY org.eclipse.osgi 2 0 2014-11-30 16:58:19.691
-!MESSAGE While loading class "org.eclipse.cdt.core.model.ElementChangedEvent", thread "Thread[Worker-0,5,main]" timed out waiting (5000ms) for thread "Thread[Worker-2,5,main]" to finish starting bundle "org.eclipse.cdt.core_5.6.0.201402142303 [275]". To avoid deadlock, thread "Thread[Worker-0,5,main]" is proceeding but "org.eclipse.cdt.core.model.ElementChangedEvent" may not be fully initialized.
+!ENTRY org.eclipse.osgi 2 0 2015-01-30 20:30:32.439
+!MESSAGE While loading class "org.eclipse.cdt.core.model.ElementChangedEvent", thread "Thread[Worker-1,5,main]" timed out waiting (5000ms) for thread "Thread[main,6,main]" to finish starting bundle "org.eclipse.cdt.core_5.6.0.201402142303 [275]". To avoid deadlock, thread "Thread[Worker-1,5,main]" is proceeding but "org.eclipse.cdt.core.model.ElementChangedEvent" may not be fully initialized.
 !STACK 0
-org.osgi.framework.BundleException: State change in progress for bundle "reference:file:plugins/org.eclipse.cdt.core_5.6.0.201402142303.jar" by thread "Worker-2".
+org.osgi.framework.BundleException: State change in progress for bundle "reference:file:plugins/org.eclipse.cdt.core_5.6.0.201402142303.jar" by thread "main".
 	at org.eclipse.osgi.framework.internal.core.AbstractBundle.beginStateChange(AbstractBundle.java:1088)
 	at org.eclipse.osgi.framework.internal.core.AbstractBundle.start(AbstractBundle.java:298)
 	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:478)
@@ -782,8 +539,8 @@ org.osgi.framework.BundleException: State change in progress for bundle "referen
 	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:149)
 	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:396)
 	at org.eclipse.core.internal.resources.Workspace.endOperation(Workspace.java:1531)
-	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:156)
-	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2354)
+	at org.eclipse.core.internal.events.NotificationManager$NotifyJob.run(NotificationManager.java:40)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
 Caused by: org.eclipse.osgi.framework.internal.core.AbstractBundle$BundleStatusException
 	... 27 more
@@ -813,14 +570,14 @@ org.eclipse.osgi.framework.internal.core.AbstractBundle$BundleStatusException
 	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:149)
 	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:396)
 	at org.eclipse.core.internal.resources.Workspace.endOperation(Workspace.java:1531)
-	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:156)
-	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2354)
+	at org.eclipse.core.internal.events.NotificationManager$NotifyJob.run(NotificationManager.java:40)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
 
-!ENTRY org.eclipse.osgi 2 0 2014-11-30 16:58:24.708
-!MESSAGE While loading class "org.eclipse.cdt.internal.core.model.CModelManager$2", thread "Thread[Worker-0,5,main]" timed out waiting (5000ms) for thread "Thread[Worker-2,5,main]" to finish starting bundle "org.eclipse.cdt.core_5.6.0.201402142303 [275]". To avoid deadlock, thread "Thread[Worker-0,5,main]" is proceeding but "org.eclipse.cdt.internal.core.model.CModelManager$2" may not be fully initialized.
+!ENTRY org.eclipse.osgi 2 0 2015-01-30 20:30:37.442
+!MESSAGE While loading class "org.eclipse.cdt.internal.core.model.CModelManager$2", thread "Thread[Worker-1,5,main]" timed out waiting (5000ms) for thread "Thread[main,6,main]" to finish starting bundle "org.eclipse.cdt.core_5.6.0.201402142303 [275]". To avoid deadlock, thread "Thread[Worker-1,5,main]" is proceeding but "org.eclipse.cdt.internal.core.model.CModelManager$2" may not be fully initialized.
 !STACK 0
-org.osgi.framework.BundleException: State change in progress for bundle "reference:file:plugins/org.eclipse.cdt.core_5.6.0.201402142303.jar" by thread "Worker-2".
+org.osgi.framework.BundleException: State change in progress for bundle "reference:file:plugins/org.eclipse.cdt.core_5.6.0.201402142303.jar" by thread "main".
 	at org.eclipse.osgi.framework.internal.core.AbstractBundle.beginStateChange(AbstractBundle.java:1088)
 	at org.eclipse.osgi.framework.internal.core.AbstractBundle.start(AbstractBundle.java:298)
 	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:478)
@@ -845,8 +602,8 @@ org.osgi.framework.BundleException: State change in progress for bundle "referen
 	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:149)
 	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:396)
 	at org.eclipse.core.internal.resources.Workspace.endOperation(Workspace.java:1531)
-	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:156)
-	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2354)
+	at org.eclipse.core.internal.events.NotificationManager$NotifyJob.run(NotificationManager.java:40)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
 Caused by: org.eclipse.osgi.framework.internal.core.AbstractBundle$BundleStatusException
 	... 27 more
@@ -876,31 +633,247 @@ org.eclipse.osgi.framework.internal.core.AbstractBundle$BundleStatusException
 	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:149)
 	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:396)
 	at org.eclipse.core.internal.resources.Workspace.endOperation(Workspace.java:1531)
-	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:156)
-	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2354)
+	at org.eclipse.core.internal.events.NotificationManager$NotifyJob.run(NotificationManager.java:40)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
 
-!ENTRY org.eclipse.core.resources 4 75 2014-11-30 16:58:24.712
-!MESSAGE Errors occurred during the build.
-!SUBENTRY 1 org.eclipse.jdt.core 4 75 2014-11-30 16:58:24.712
-!MESSAGE Errors running builder 'Java Builder' on project 'AGS-R4'.
-!STACK 0
-java.lang.NullPointerException
-	at org.eclipse.jdt.internal.compiler.codegen.IntegerCache.putIfAbsent(IntegerCache.java:107)
-	at org.eclipse.jdt.internal.compiler.codegen.ConstantPool.literalIndex(ConstantPool.java:524)
-	at org.eclipse.jdt.internal.compiler.ClassFile.generateConstantValueAttribute(ClassFile.java:2002)
-	at org.eclipse.jdt.internal.compiler.ClassFile.addFieldAttributes(ClassFile.java:401)
-	at org.eclipse.jdt.internal.compiler.ClassFile.addFieldInfo(ClassFile.java:461)
-	at org.eclipse.jdt.internal.compiler.ClassFile.addFieldInfos(ClassFile.java:499)
-	at org.eclipse.jdt.internal.compiler.ast.TypeDeclaration.generateCode(TypeDeclaration.java:549)
-	at org.eclipse.jdt.internal.compiler.ast.TypeDeclaration.generateCode(TypeDeclaration.java:624)
-	at org.eclipse.jdt.internal.compiler.ast.TypeDeclaration.generateCode(TypeDeclaration.java:555)
-	at org.eclipse.jdt.internal.compiler.ast.TypeDeclaration.generateCode(TypeDeclaration.java:631)
-	at org.eclipse.jdt.internal.compiler.ast.CompilationUnitDeclaration.generateCode(CompilationUnitDeclaration.java:360)
-	at org.eclipse.jdt.internal.compiler.Compiler.process(Compiler.java:781)
-	at org.eclipse.jdt.internal.compiler.ProcessTaskManager.run(ProcessTaskManager.java:137)
-	at java.lang.Thread.run(Thread.java:701)
-!SESSION 2014-11-30 17:53:58.432 -----------------------------------------------
+!ENTRY org.eclipse.jface 2 0 2015-01-30 21:35:21.492
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2015-01-30 21:35:21.492
+!MESSAGE A conflict occurred for CTRL+I:
+Binding(CTRL+I,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.indent,Correct Indentation,
+		Corrects the indentation of the selected lines,
+		Category(org.eclipse.jdt.ui.category.source,Source,Java Source Actions,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@476b91,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.jdt.ui.javaEditorScope,,,system)
+Binding(CTRL+I,
+	ParameterizedCommand(Command(org.eclipse.wst.sse.ui.format.active.elements,Format Active Elements,
+		Format active elements,
+		Category(org.eclipse.ui.category.edit,Edit,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@81b008,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.wst.sse.ui.structuredTextEditorScope,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2015-01-30 21:35:21.492
+!MESSAGE A conflict occurred for CTRL+SHIFT+F:
+Binding(CTRL+SHIFT+F,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.format,Format,
+		Format the selected text,
+		Category(org.eclipse.jdt.ui.category.source,Source,Java Source Actions,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@e7186e,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.jdt.ui.javaEditorScope,,,system)
+Binding(CTRL+SHIFT+F,
+	ParameterizedCommand(Command(org.eclipse.wst.sse.ui.format.document,Format,
+		Format selection,
+		Category(org.eclipse.ui.category.edit,Edit,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@535c5a,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.wst.sse.ui.structuredTextEditorScope,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2015-01-30 21:35:21.492
+!MESSAGE A conflict occurred for CTRL+SHIFT+ARROW_DOWN:
+Binding(CTRL+SHIFT+ARROW_DOWN,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.goto.next.member,Go to Next Member,
+		Move the caret to the next member of the compilation unit,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@1f4e359,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.jdt.ui.javaEditorScope,,,system)
+Binding(CTRL+SHIFT+ARROW_DOWN,
+	ParameterizedCommand(Command(org.eclipse.wst.xml.ui.nextSibling,Next Sibling,
+		Go to Next Sibling,
+		Category(org.eclipse.ui.category.edit,Edit,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@d96d9,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.wst.sse.ui.structuredTextEditorScope,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2015-01-30 21:35:21.492
+!MESSAGE A conflict occurred for ALT+SHIFT+ARROW_LEFT:
+Binding(ALT+SHIFT+ARROW_LEFT,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.select.previous,Select Previous Element,
+		Expand selection to include previous sibling,
+		Category(org.eclipse.ui.category.edit,Edit,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@7a0dfd,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.jdt.ui.javaEditorScope,,,system)
+Binding(ALT+SHIFT+ARROW_LEFT,
+	ParameterizedCommand(Command(org.eclipse.wst.sse.ui.structure.select.previous,Select Previous Element,
+		Expand selection to include previous sibling,
+		Category(org.eclipse.ui.category.edit,Edit,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@723278,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.wst.sse.ui.structuredTextEditorScope,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2015-01-30 21:35:21.492
+!MESSAGE A conflict occurred for ALT+SHIFT+ARROW_UP:
+Binding(ALT+SHIFT+ARROW_UP,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.select.enclosing,Select Enclosing Element,
+		Expand selection to include enclosing element,
+		Category(org.eclipse.ui.category.edit,Edit,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@12c94ae,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.jdt.ui.javaEditorScope,,,system)
+Binding(ALT+SHIFT+ARROW_UP,
+	ParameterizedCommand(Command(org.eclipse.wst.sse.ui.structure.select.enclosing,Select Enclosing Element,
+		Expand selection to include enclosing element,
+		Category(org.eclipse.ui.category.edit,Edit,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@13a59e,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.wst.sse.ui.structuredTextEditorScope,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2015-01-30 21:35:21.492
+!MESSAGE A conflict occurred for CTRL+SHIFT+P:
+Binding(CTRL+SHIFT+P,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.goto.matching.bracket,Go to Matching Bracket,
+		Moves the cursor to the matching bracket,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@1d54cef,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.jdt.ui.javaEditorScope,,,system)
+Binding(CTRL+SHIFT+P,
+	ParameterizedCommand(Command(org.eclipse.wst.sse.ui.goto.matching.bracket,Matching Character,
+		Go to Matching Character,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@130c1c8,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.wst.sse.ui.structuredTextEditorScope,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2015-01-30 21:35:21.492
+!MESSAGE A conflict occurred for CTRL+SHIFT+/:
+Binding(CTRL+SHIFT+/,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.add.block.comment,Add Block Comment,
+		Enclose the selection with a block comment,
+		Category(org.eclipse.jdt.ui.category.source,Source,Java Source Actions,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@ae0aef,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.jdt.ui.javaEditorScope,,,system)
+Binding(CTRL+SHIFT+/,
+	ParameterizedCommand(Command(org.eclipse.wst.sse.ui.add.block.comment,Add Block Comment,
+		Add Block Comment,
+		Category(org.eclipse.ui.category.edit,Edit,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@1ef3d9,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.wst.sse.ui.structuredTextEditorScope,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2015-01-30 21:35:21.492
+!MESSAGE A conflict occurred for CTRL+O:
+Binding(CTRL+O,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.show.outline,Quick Outline,
+		Show the quick outline for the editor input,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@4fe4bf,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.jdt.ui.javaEditorScope,,,system)
+Binding(CTRL+O,
+	ParameterizedCommand(Command(org.eclipse.wst.sse.ui.quick_outline,Quick Outline,
+		Show the quick outline for the editor input,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@132ef26,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.wst.sse.ui.structuredTextEditorScope,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2015-01-30 21:35:21.492
+!MESSAGE A conflict occurred for CTRL+SHIFT+ARROW_UP:
+Binding(CTRL+SHIFT+ARROW_UP,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.goto.previous.member,Go to Previous Member,
+		Move the caret to the previous member of the compilation unit,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@f2e1d9,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.jdt.ui.javaEditorScope,,,system)
+Binding(CTRL+SHIFT+ARROW_UP,
+	ParameterizedCommand(Command(org.eclipse.wst.xml.ui.previousSibling,Previous Sibling,
+		Go to Previous Sibling,
+		Category(org.eclipse.ui.category.edit,Edit,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@1045ca0,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.wst.sse.ui.structuredTextEditorScope,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2015-01-30 21:35:21.492
+!MESSAGE A conflict occurred for ALT+SHIFT+ARROW_DOWN:
+Binding(ALT+SHIFT+ARROW_DOWN,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.select.last,Restore Last Selection,
+		Restore last selection,
+		Category(org.eclipse.ui.category.edit,Edit,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@1c991f2,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.jdt.ui.javaEditorScope,,,system)
+Binding(ALT+SHIFT+ARROW_DOWN,
+	ParameterizedCommand(Command(org.eclipse.wst.sse.ui.structure.select.last,Restore Last Selection,
+		Restore last selection,
+		Category(org.eclipse.ui.category.edit,Edit,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@183b617,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.wst.sse.ui.structuredTextEditorScope,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2015-01-30 21:35:21.492
+!MESSAGE A conflict occurred for CTRL+SHIFT+C:
+Binding(CTRL+SHIFT+C,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.toggle.comment,Toggle Comment,
+		Toggle comment the selected lines,
+		Category(org.eclipse.jdt.ui.category.source,Source,Java Source Actions,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@8ce241,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.jdt.ui.javaEditorScope,,,system)
+Binding(CTRL+SHIFT+C,
+	ParameterizedCommand(Command(org.eclipse.wst.sse.ui.toggle.comment,Toggle Comment,
+		Toggle Comment,
+		Category(org.eclipse.ui.category.edit,Edit,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@57395e,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.wst.sse.ui.structuredTextEditorScope,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2015-01-30 21:35:21.492
+!MESSAGE A conflict occurred for ALT+SHIFT+ARROW_RIGHT:
+Binding(ALT+SHIFT+ARROW_RIGHT,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.select.next,Select Next Element,
+		Expand selection to include next sibling,
+		Category(org.eclipse.ui.category.edit,Edit,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@15a3561,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.jdt.ui.javaEditorScope,,,system)
+Binding(ALT+SHIFT+ARROW_RIGHT,
+	ParameterizedCommand(Command(org.eclipse.wst.sse.ui.structure.select.next,Select Next Element,
+		Expand selection to include next sibling,
+		Category(org.eclipse.ui.category.edit,Edit,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@1dffeb0,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.wst.sse.ui.structuredTextEditorScope,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2015-01-30 21:35:21.492
+!MESSAGE A conflict occurred for CTRL+SHIFT+\:
+Binding(CTRL+SHIFT+\,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.remove.block.comment,Remove Block Comment,
+		Remove the block comment enclosing the selection,
+		Category(org.eclipse.jdt.ui.category.source,Source,Java Source Actions,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@166a221,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.jdt.ui.javaEditorScope,,,system)
+Binding(CTRL+SHIFT+\,
+	ParameterizedCommand(Command(org.eclipse.wst.sse.ui.remove.block.comment,Remove Block Comment,
+		Remove Block Comment,
+		Category(org.eclipse.ui.category.edit,Edit,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@1ffd6fd,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.wst.sse.ui.structuredTextEditorScope,,,system)
+!SESSION 2015-02-01 17:46:27.115 -----------------------------------------------
 eclipse.buildId=4.3.2.M20140221-1700
 java.version=1.6.0_30
 java.vendor=Sun Microsystems Inc.
@@ -908,585 +881,300 @@ BootLoader constants: OS=linux, ARCH=x86, WS=gtk, NL=es_AR
 Framework arguments:  -product org.eclipse.epp.package.standard.product
 Command-line arguments:  -os linux -ws gtk -arch x86 -product org.eclipse.epp.package.standard.product
 
-!ENTRY org.eclipse.osgi 2 0 2014-11-30 17:54:15.039
-!MESSAGE While loading class "org.eclipse.cdt.internal.core.PositionTrackerChain", thread "Thread[Worker-6,5,main]" timed out waiting (5007ms) for thread "Thread[Worker-0,5,main]" to finish starting bundle "org.eclipse.cdt.core_5.6.0.201402142303 [275]". To avoid deadlock, thread "Thread[Worker-6,5,main]" is proceeding but "org.eclipse.cdt.internal.core.PositionTrackerChain" may not be fully initialized.
-!STACK 0
-org.osgi.framework.BundleException: State change in progress for bundle "reference:file:plugins/org.eclipse.cdt.core_5.6.0.201402142303.jar" by thread "Worker-0".
-	at org.eclipse.osgi.framework.internal.core.AbstractBundle.beginStateChange(AbstractBundle.java:1088)
-	at org.eclipse.osgi.framework.internal.core.AbstractBundle.start(AbstractBundle.java:298)
-	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:478)
-	at org.eclipse.osgi.internal.loader.BundleLoader.setLazyTrigger(BundleLoader.java:263)
-	at org.eclipse.core.runtime.internal.adaptor.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:109)
-	at org.eclipse.osgi.baseadaptor.loader.ClasspathManager.findLocalClass(ClasspathManager.java:469)
-	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.findLocalClass(DefaultClassLoader.java:216)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findLocalClass(BundleLoader.java:395)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findClassInternal(BundleLoader.java:464)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:421)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:412)
-	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.loadClass(DefaultClassLoader.java:107)
-	at java.lang.ClassLoader.loadClass(ClassLoader.java:268)
-	at org.eclipse.cdt.internal.core.PositionTrackerManager.createCheckpoint(PositionTrackerManager.java:117)
-	at org.eclipse.cdt.internal.core.PositionTrackerManager.bufferCreated(PositionTrackerManager.java:75)
-	at org.eclipse.core.internal.filebuffers.TextFileBufferManager$11.run(TextFileBufferManager.java:802)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
-	at org.eclipse.core.internal.filebuffers.TextFileBufferManager.fireBufferCreated(TextFileBufferManager.java:800)
-	at org.eclipse.core.internal.filebuffers.TextFileBufferManager.connect(TextFileBufferManager.java:127)
-	at org.eclipse.wst.sse.core.internal.FileBufferModelManager.getModel(FileBufferModelManager.java:786)
-	at org.eclipse.wst.sse.core.internal.model.ModelManagerImpl._doCommonGetModel(ModelManagerImpl.java:545)
-	at org.eclipse.wst.sse.core.internal.model.ModelManagerImpl._commonGetModel(ModelManagerImpl.java:509)
-	at org.eclipse.wst.sse.core.internal.model.ModelManagerImpl._commonGetModel(ModelManagerImpl.java:482)
-	at org.eclipse.wst.sse.core.internal.model.ModelManagerImpl.getModelForRead(ModelManagerImpl.java:1428)
-	at com.android.ide.eclipse.adt.internal.lint.EclipseLintClient$1.parseXml(EclipseLintClient.java:228)
-	at com.android.tools.lint.client.api.LintDriver.runFileDetectors(LintDriver.java:943)
-	at com.android.tools.lint.client.api.LintDriver.checkProject(LintDriver.java:880)
-	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:431)
-	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
-	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
-	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
-Caused by: org.eclipse.osgi.framework.internal.core.AbstractBundle$BundleStatusException
-	... 31 more
-Root exception:
-org.eclipse.osgi.framework.internal.core.AbstractBundle$BundleStatusException
-	at org.eclipse.osgi.framework.internal.core.AbstractBundle.beginStateChange(AbstractBundle.java:1088)
-	at org.eclipse.osgi.framework.internal.core.AbstractBundle.start(AbstractBundle.java:298)
-	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:478)
-	at org.eclipse.osgi.internal.loader.BundleLoader.setLazyTrigger(BundleLoader.java:263)
-	at org.eclipse.core.runtime.internal.adaptor.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:109)
-	at org.eclipse.osgi.baseadaptor.loader.ClasspathManager.findLocalClass(ClasspathManager.java:469)
-	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.findLocalClass(DefaultClassLoader.java:216)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findLocalClass(BundleLoader.java:395)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findClassInternal(BundleLoader.java:464)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:421)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:412)
-	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.loadClass(DefaultClassLoader.java:107)
-	at java.lang.ClassLoader.loadClass(ClassLoader.java:268)
-	at org.eclipse.cdt.internal.core.PositionTrackerManager.createCheckpoint(PositionTrackerManager.java:117)
-	at org.eclipse.cdt.internal.core.PositionTrackerManager.bufferCreated(PositionTrackerManager.java:75)
-	at org.eclipse.core.internal.filebuffers.TextFileBufferManager$11.run(TextFileBufferManager.java:802)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
-	at org.eclipse.core.internal.filebuffers.TextFileBufferManager.fireBufferCreated(TextFileBufferManager.java:800)
-	at org.eclipse.core.internal.filebuffers.TextFileBufferManager.connect(TextFileBufferManager.java:127)
-	at org.eclipse.wst.sse.core.internal.FileBufferModelManager.getModel(FileBufferModelManager.java:786)
-	at org.eclipse.wst.sse.core.internal.model.ModelManagerImpl._doCommonGetModel(ModelManagerImpl.java:545)
-	at org.eclipse.wst.sse.core.internal.model.ModelManagerImpl._commonGetModel(ModelManagerImpl.java:509)
-	at org.eclipse.wst.sse.core.internal.model.ModelManagerImpl._commonGetModel(ModelManagerImpl.java:482)
-	at org.eclipse.wst.sse.core.internal.model.ModelManagerImpl.getModelForRead(ModelManagerImpl.java:1428)
-	at com.android.ide.eclipse.adt.internal.lint.EclipseLintClient$1.parseXml(EclipseLintClient.java:228)
-	at com.android.tools.lint.client.api.LintDriver.runFileDetectors(LintDriver.java:943)
-	at com.android.tools.lint.client.api.LintDriver.checkProject(LintDriver.java:880)
-	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:431)
-	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
-	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
-	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+!ENTRY org.eclipse.core.resources 2 10035 2015-02-01 17:53:10.766
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
 
-!ENTRY org.eclipse.osgi 2 0 2014-11-30 17:54:20.044
-!MESSAGE While loading class "org.eclipse.cdt.core.settings.model.util.ResourceChangeHandlerBase$DeltaVisitor", thread "Thread[Worker-3,5,main]" timed out waiting (5001ms) for thread "Thread[Worker-0,5,main]" to finish starting bundle "org.eclipse.cdt.core_5.6.0.201402142303 [275]". To avoid deadlock, thread "Thread[Worker-3,5,main]" is proceeding but "org.eclipse.cdt.core.settings.model.util.ResourceChangeHandlerBase$DeltaVisitor" may not be fully initialized.
-!STACK 0
-org.osgi.framework.BundleException: State change in progress for bundle "reference:file:plugins/org.eclipse.cdt.core_5.6.0.201402142303.jar" by thread "Worker-0".
-	at org.eclipse.osgi.framework.internal.core.AbstractBundle.beginStateChange(AbstractBundle.java:1088)
-	at org.eclipse.osgi.framework.internal.core.AbstractBundle.start(AbstractBundle.java:298)
-	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:478)
-	at org.eclipse.osgi.internal.loader.BundleLoader.setLazyTrigger(BundleLoader.java:263)
-	at org.eclipse.core.runtime.internal.adaptor.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:109)
-	at org.eclipse.osgi.baseadaptor.loader.ClasspathManager.findLocalClass(ClasspathManager.java:469)
-	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.findLocalClass(DefaultClassLoader.java:216)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findLocalClass(BundleLoader.java:395)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findClassInternal(BundleLoader.java:464)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:421)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:412)
-	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.loadClass(DefaultClassLoader.java:107)
-	at java.lang.ClassLoader.loadClass(ClassLoader.java:268)
-	at org.eclipse.cdt.core.settings.model.util.ResourceChangeHandlerBase.doHandleResourceMove(ResourceChangeHandlerBase.java:190)
-	at org.eclipse.cdt.core.settings.model.util.ResourceChangeHandlerBase.resourceChanged(ResourceChangeHandlerBase.java:150)
-	at org.eclipse.cdt.managedbuilder.core.ResourceChangeHandler2.resourceChanged(ResourceChangeHandler2.java:172)
-	at org.eclipse.core.internal.events.NotificationManager$1.run(NotificationManager.java:291)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
-	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:285)
-	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:149)
-	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:396)
-	at org.eclipse.core.internal.resources.Workspace.endOperation(Workspace.java:1531)
-	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2354)
-	at org.eclipse.core.internal.events.NotificationManager$NotifyJob.run(NotificationManager.java:40)
-	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
-Caused by: org.eclipse.osgi.framework.internal.core.AbstractBundle$BundleStatusException
-	... 25 more
-Root exception:
-org.eclipse.osgi.framework.internal.core.AbstractBundle$BundleStatusException
-	at org.eclipse.osgi.framework.internal.core.AbstractBundle.beginStateChange(AbstractBundle.java:1088)
-	at org.eclipse.osgi.framework.internal.core.AbstractBundle.start(AbstractBundle.java:298)
-	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:478)
-	at org.eclipse.osgi.internal.loader.BundleLoader.setLazyTrigger(BundleLoader.java:263)
-	at org.eclipse.core.runtime.internal.adaptor.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:109)
-	at org.eclipse.osgi.baseadaptor.loader.ClasspathManager.findLocalClass(ClasspathManager.java:469)
-	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.findLocalClass(DefaultClassLoader.java:216)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findLocalClass(BundleLoader.java:395)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findClassInternal(BundleLoader.java:464)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:421)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:412)
-	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.loadClass(DefaultClassLoader.java:107)
-	at java.lang.ClassLoader.loadClass(ClassLoader.java:268)
-	at org.eclipse.cdt.core.settings.model.util.ResourceChangeHandlerBase.doHandleResourceMove(ResourceChangeHandlerBase.java:190)
-	at org.eclipse.cdt.core.settings.model.util.ResourceChangeHandlerBase.resourceChanged(ResourceChangeHandlerBase.java:150)
-	at org.eclipse.cdt.managedbuilder.core.ResourceChangeHandler2.resourceChanged(ResourceChangeHandler2.java:172)
-	at org.eclipse.core.internal.events.NotificationManager$1.run(NotificationManager.java:291)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
-	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:285)
-	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:149)
-	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:396)
-	at org.eclipse.core.internal.resources.Workspace.endOperation(Workspace.java:1531)
-	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2354)
-	at org.eclipse.core.internal.events.NotificationManager$NotifyJob.run(NotificationManager.java:40)
-	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+!ENTRY org.eclipse.ui.ide 4 4 2015-02-02 01:08:23.936
+!MESSAGE Problems saving workspace
 
-!ENTRY org.eclipse.osgi 2 0 2014-11-30 17:54:25.050
-!MESSAGE While loading class "org.eclipse.cdt.internal.core.PositionTracker", thread "Thread[Worker-6,5,main]" timed out waiting (5001ms) for thread "Thread[Worker-0,5,main]" to finish starting bundle "org.eclipse.cdt.core_5.6.0.201402142303 [275]". To avoid deadlock, thread "Thread[Worker-6,5,main]" is proceeding but "org.eclipse.cdt.internal.core.PositionTracker" may not be fully initialized.
+!ENTRY org.eclipse.ui.ide 4 1 2015-02-02 01:08:23.946
+!MESSAGE Problems occurred while trying to save the state of the workbench.
+!SUBENTRY 1 org.eclipse.core.resources 4 568 2015-02-02 01:08:23.946
+!MESSAGE Could not write workspace metadata '/home/german/workTesis/.metadata/.plugins/org.eclipse.core.resources/.root/118.tree'.
 !STACK 0
-org.osgi.framework.BundleException: State change in progress for bundle "reference:file:plugins/org.eclipse.cdt.core_5.6.0.201402142303.jar" by thread "Worker-0".
-	at org.eclipse.osgi.framework.internal.core.AbstractBundle.beginStateChange(AbstractBundle.java:1088)
-	at org.eclipse.osgi.framework.internal.core.AbstractBundle.start(AbstractBundle.java:298)
-	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:478)
-	at org.eclipse.osgi.internal.loader.BundleLoader.setLazyTrigger(BundleLoader.java:263)
-	at org.eclipse.core.runtime.internal.adaptor.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:109)
-	at org.eclipse.osgi.baseadaptor.loader.ClasspathManager.findLocalClass(ClasspathManager.java:469)
-	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.findLocalClass(DefaultClassLoader.java:216)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findLocalClass(BundleLoader.java:395)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findClassInternal(BundleLoader.java:464)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:421)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:412)
-	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.loadClass(DefaultClassLoader.java:107)
-	at java.lang.ClassLoader.loadClass(ClassLoader.java:268)
-	at org.eclipse.cdt.internal.core.PositionTrackerChain.createCheckpoint(PositionTrackerChain.java:51)
-	at org.eclipse.cdt.internal.core.PositionTrackerChain.<init>(PositionTrackerChain.java:34)
-	at org.eclipse.cdt.internal.core.PositionTrackerManager.createCheckpoint(PositionTrackerManager.java:117)
-	at org.eclipse.cdt.internal.core.PositionTrackerManager.bufferCreated(PositionTrackerManager.java:75)
-	at org.eclipse.core.internal.filebuffers.TextFileBufferManager$11.run(TextFileBufferManager.java:802)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
-	at org.eclipse.core.internal.filebuffers.TextFileBufferManager.fireBufferCreated(TextFileBufferManager.java:800)
-	at org.eclipse.core.internal.filebuffers.TextFileBufferManager.connect(TextFileBufferManager.java:127)
-	at org.eclipse.wst.sse.core.internal.FileBufferModelManager.getModel(FileBufferModelManager.java:786)
-	at org.eclipse.wst.sse.core.internal.model.ModelManagerImpl._doCommonGetModel(ModelManagerImpl.java:545)
-	at org.eclipse.wst.sse.core.internal.model.ModelManagerImpl._commonGetModel(ModelManagerImpl.java:509)
-	at org.eclipse.wst.sse.core.internal.model.ModelManagerImpl._commonGetModel(ModelManagerImpl.java:482)
-	at org.eclipse.wst.sse.core.internal.model.ModelManagerImpl.getModelForRead(ModelManagerImpl.java:1428)
-	at com.android.ide.eclipse.adt.internal.lint.EclipseLintClient$1.parseXml(EclipseLintClient.java:228)
-	at com.android.tools.lint.client.api.LintDriver.runFileDetectors(LintDriver.java:943)
-	at com.android.tools.lint.client.api.LintDriver.checkProject(LintDriver.java:880)
-	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:431)
-	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
-	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
-	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
-Caused by: org.eclipse.osgi.framework.internal.core.AbstractBundle$BundleStatusException
-	... 33 more
-Root exception:
-org.eclipse.osgi.framework.internal.core.AbstractBundle$BundleStatusException
-	at org.eclipse.osgi.framework.internal.core.AbstractBundle.beginStateChange(AbstractBundle.java:1088)
-	at org.eclipse.osgi.framework.internal.core.AbstractBundle.start(AbstractBundle.java:298)
-	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:478)
-	at org.eclipse.osgi.internal.loader.BundleLoader.setLazyTrigger(BundleLoader.java:263)
-	at org.eclipse.core.runtime.internal.adaptor.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:109)
-	at org.eclipse.osgi.baseadaptor.loader.ClasspathManager.findLocalClass(ClasspathManager.java:469)
-	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.findLocalClass(DefaultClassLoader.java:216)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findLocalClass(BundleLoader.java:395)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findClassInternal(BundleLoader.java:464)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:421)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:412)
-	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.loadClass(DefaultClassLoader.java:107)
-	at java.lang.ClassLoader.loadClass(ClassLoader.java:268)
-	at org.eclipse.cdt.internal.core.PositionTrackerChain.createCheckpoint(PositionTrackerChain.java:51)
-	at org.eclipse.cdt.internal.core.PositionTrackerChain.<init>(PositionTrackerChain.java:34)
-	at org.eclipse.cdt.internal.core.PositionTrackerManager.createCheckpoint(PositionTrackerManager.java:117)
-	at org.eclipse.cdt.internal.core.PositionTrackerManager.bufferCreated(PositionTrackerManager.java:75)
-	at org.eclipse.core.internal.filebuffers.TextFileBufferManager$11.run(TextFileBufferManager.java:802)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
-	at org.eclipse.core.internal.filebuffers.TextFileBufferManager.fireBufferCreated(TextFileBufferManager.java:800)
-	at org.eclipse.core.internal.filebuffers.TextFileBufferManager.connect(TextFileBufferManager.java:127)
-	at org.eclipse.wst.sse.core.internal.FileBufferModelManager.getModel(FileBufferModelManager.java:786)
-	at org.eclipse.wst.sse.core.internal.model.ModelManagerImpl._doCommonGetModel(ModelManagerImpl.java:545)
-	at org.eclipse.wst.sse.core.internal.model.ModelManagerImpl._commonGetModel(ModelManagerImpl.java:509)
-	at org.eclipse.wst.sse.core.internal.model.ModelManagerImpl._commonGetModel(ModelManagerImpl.java:482)
-	at org.eclipse.wst.sse.core.internal.model.ModelManagerImpl.getModelForRead(ModelManagerImpl.java:1428)
-	at com.android.ide.eclipse.adt.internal.lint.EclipseLintClient$1.parseXml(EclipseLintClient.java:228)
-	at com.android.tools.lint.client.api.LintDriver.runFileDetectors(LintDriver.java:943)
-	at com.android.tools.lint.client.api.LintDriver.checkProject(LintDriver.java:880)
-	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:431)
-	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
-	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
-	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+java.lang.NullPointerException
+	at org.eclipse.core.internal.resources.ResourceInfo.writeTo(ResourceInfo.java:466)
+	at org.eclipse.core.internal.resources.SaveManager.writeElement(SaveManager.java:1836)
+	at org.eclipse.core.internal.watson.ElementTreeWriter$1.writeData(ElementTreeWriter.java:62)
+	at org.eclipse.core.internal.dtree.DataTreeWriter.writeNode(DataTreeWriter.java:74)
+	at org.eclipse.core.internal.dtree.DataTreeWriter.writeNode(DataTreeWriter.java:89)
+	at org.eclipse.core.internal.dtree.DataTreeWriter.writeNode(DataTreeWriter.java:89)
+	at org.eclipse.core.internal.dtree.DataTreeWriter.writeNode(DataTreeWriter.java:89)
+	at org.eclipse.core.internal.dtree.DataTreeWriter.writeNode(DataTreeWriter.java:89)
+	at org.eclipse.core.internal.dtree.DataTreeWriter.writeNode(DataTreeWriter.java:89)
+	at org.eclipse.core.internal.dtree.DataTreeWriter.writeTree(DataTreeWriter.java:182)
+	at org.eclipse.core.internal.watson.ElementTreeWriter.writeTree(ElementTreeWriter.java:236)
+	at org.eclipse.core.internal.watson.ElementTreeWriter.writeDeltaChain(ElementTreeWriter.java:194)
+	at org.eclipse.core.internal.resources.SaveManager.writeTree(SaveManager.java:1953)
+	at org.eclipse.core.internal.resources.SaveManager.saveTree(SaveManager.java:1355)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1134)
+	at org.eclipse.core.internal.resources.Workspace.save(Workspace.java:2376)
+	at org.eclipse.ui.internal.ide.application.IDEWorkbenchAdvisor$5.run(IDEWorkbenchAdvisor.java:508)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:121)
+!SESSION 2015-02-02 17:57:32.323 -----------------------------------------------
+eclipse.buildId=4.3.2.M20140221-1700
+java.version=1.6.0_30
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=linux, ARCH=x86, WS=gtk, NL=es_AR
+Framework arguments:  -product org.eclipse.epp.package.standard.product
+Command-line arguments:  -os linux -ws gtk -arch x86 -product org.eclipse.epp.package.standard.product
 
-!ENTRY org.eclipse.osgi 2 0 2014-11-30 17:54:30.054
-!MESSAGE While loading class "org.eclipse.cdt.internal.core.model.CElementDelta", thread "Thread[Worker-3,5,main]" timed out waiting (5001ms) for thread "Thread[Worker-0,5,main]" to finish starting bundle "org.eclipse.cdt.core_5.6.0.201402142303 [275]". To avoid deadlock, thread "Thread[Worker-3,5,main]" is proceeding but "org.eclipse.cdt.internal.core.model.CElementDelta" may not be fully initialized.
-!STACK 0
-org.osgi.framework.BundleException: State change in progress for bundle "reference:file:plugins/org.eclipse.cdt.core_5.6.0.201402142303.jar" by thread "Worker-0".
-	at org.eclipse.osgi.framework.internal.core.AbstractBundle.beginStateChange(AbstractBundle.java:1088)
-	at org.eclipse.osgi.framework.internal.core.AbstractBundle.start(AbstractBundle.java:298)
-	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:478)
-	at org.eclipse.osgi.internal.loader.BundleLoader.setLazyTrigger(BundleLoader.java:263)
-	at org.eclipse.core.runtime.internal.adaptor.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:109)
-	at org.eclipse.osgi.baseadaptor.loader.ClasspathManager.findLocalClass(ClasspathManager.java:469)
-	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.findLocalClass(DefaultClassLoader.java:216)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findLocalClass(BundleLoader.java:395)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findClassInternal(BundleLoader.java:464)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:421)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:412)
-	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.loadClass(DefaultClassLoader.java:107)
-	at java.lang.ClassLoader.loadClass(ClassLoader.java:268)
-	at org.eclipse.cdt.internal.core.model.DeltaProcessor.processResourceDelta(DeltaProcessor.java:429)
-	at org.eclipse.cdt.internal.core.model.CModelManager.resourceChanged(CModelManager.java:903)
-	at org.eclipse.core.internal.events.NotificationManager$1.run(NotificationManager.java:291)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
-	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:285)
-	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:149)
-	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:396)
-	at org.eclipse.core.internal.resources.Workspace.endOperation(Workspace.java:1531)
-	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2354)
-	at org.eclipse.core.internal.events.NotificationManager$NotifyJob.run(NotificationManager.java:40)
-	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
-Caused by: org.eclipse.osgi.framework.internal.core.AbstractBundle$BundleStatusException
-	... 24 more
-Root exception:
-org.eclipse.osgi.framework.internal.core.AbstractBundle$BundleStatusException
-	at org.eclipse.osgi.framework.internal.core.AbstractBundle.beginStateChange(AbstractBundle.java:1088)
-	at org.eclipse.osgi.framework.internal.core.AbstractBundle.start(AbstractBundle.java:298)
-	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:478)
-	at org.eclipse.osgi.internal.loader.BundleLoader.setLazyTrigger(BundleLoader.java:263)
-	at org.eclipse.core.runtime.internal.adaptor.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:109)
-	at org.eclipse.osgi.baseadaptor.loader.ClasspathManager.findLocalClass(ClasspathManager.java:469)
-	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.findLocalClass(DefaultClassLoader.java:216)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findLocalClass(BundleLoader.java:395)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findClassInternal(BundleLoader.java:464)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:421)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:412)
-	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.loadClass(DefaultClassLoader.java:107)
-	at java.lang.ClassLoader.loadClass(ClassLoader.java:268)
-	at org.eclipse.cdt.internal.core.model.DeltaProcessor.processResourceDelta(DeltaProcessor.java:429)
-	at org.eclipse.cdt.internal.core.model.CModelManager.resourceChanged(CModelManager.java:903)
-	at org.eclipse.core.internal.events.NotificationManager$1.run(NotificationManager.java:291)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
-	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:285)
-	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:149)
-	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:396)
-	at org.eclipse.core.internal.resources.Workspace.endOperation(Workspace.java:1531)
-	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2354)
-	at org.eclipse.core.internal.events.NotificationManager$NotifyJob.run(NotificationManager.java:40)
-	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+!ENTRY org.eclipse.core.resources 2 10035 2015-02-02 17:57:38.270
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+!SESSION 2015-02-02 17:58:09.616 -----------------------------------------------
+eclipse.buildId=4.3.2.M20140221-1700
+java.version=1.6.0_30
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=linux, ARCH=x86, WS=gtk, NL=es_AR
+Framework arguments:  -product org.eclipse.epp.package.standard.product
+Command-line arguments:  -os linux -ws gtk -arch x86 -product org.eclipse.epp.package.standard.product
 
-!ENTRY org.eclipse.osgi 2 0 2014-11-30 17:54:35.058
-!MESSAGE While loading class "org.eclipse.cdt.internal.core.PositionTracker$Node", thread "Thread[Worker-6,5,main]" timed out waiting (5001ms) for thread "Thread[Worker-0,5,main]" to finish starting bundle "org.eclipse.cdt.core_5.6.0.201402142303 [275]". To avoid deadlock, thread "Thread[Worker-6,5,main]" is proceeding but "org.eclipse.cdt.internal.core.PositionTracker$Node" may not be fully initialized.
-!STACK 0
-org.osgi.framework.BundleException: State change in progress for bundle "reference:file:plugins/org.eclipse.cdt.core_5.6.0.201402142303.jar" by thread "Worker-0".
-	at org.eclipse.osgi.framework.internal.core.AbstractBundle.beginStateChange(AbstractBundle.java:1088)
-	at org.eclipse.osgi.framework.internal.core.AbstractBundle.start(AbstractBundle.java:298)
-	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:478)
-	at org.eclipse.osgi.internal.loader.BundleLoader.setLazyTrigger(BundleLoader.java:263)
-	at org.eclipse.core.runtime.internal.adaptor.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:109)
-	at org.eclipse.osgi.baseadaptor.loader.ClasspathManager.findLocalClass(ClasspathManager.java:469)
-	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.findLocalClass(DefaultClassLoader.java:216)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findLocalClass(BundleLoader.java:395)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findClassInternal(BundleLoader.java:464)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:421)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:412)
-	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.loadClass(DefaultClassLoader.java:107)
-	at java.lang.ClassLoader.loadClass(ClassLoader.java:268)
-	at org.eclipse.cdt.internal.core.PositionTracker.<init>(PositionTracker.java:28)
-	at org.eclipse.cdt.internal.core.PositionTrackerChain.createCheckpoint(PositionTrackerChain.java:51)
-	at org.eclipse.cdt.internal.core.PositionTrackerChain.<init>(PositionTrackerChain.java:34)
-	at org.eclipse.cdt.internal.core.PositionTrackerManager.createCheckpoint(PositionTrackerManager.java:117)
-	at org.eclipse.cdt.internal.core.PositionTrackerManager.bufferCreated(PositionTrackerManager.java:75)
-	at org.eclipse.core.internal.filebuffers.TextFileBufferManager$11.run(TextFileBufferManager.java:802)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
-	at org.eclipse.core.internal.filebuffers.TextFileBufferManager.fireBufferCreated(TextFileBufferManager.java:800)
-	at org.eclipse.core.internal.filebuffers.TextFileBufferManager.connect(TextFileBufferManager.java:127)
-	at org.eclipse.wst.sse.core.internal.FileBufferModelManager.getModel(FileBufferModelManager.java:786)
-	at org.eclipse.wst.sse.core.internal.model.ModelManagerImpl._doCommonGetModel(ModelManagerImpl.java:545)
-	at org.eclipse.wst.sse.core.internal.model.ModelManagerImpl._commonGetModel(ModelManagerImpl.java:509)
-	at org.eclipse.wst.sse.core.internal.model.ModelManagerImpl._commonGetModel(ModelManagerImpl.java:482)
-	at org.eclipse.wst.sse.core.internal.model.ModelManagerImpl.getModelForRead(ModelManagerImpl.java:1428)
-	at com.android.ide.eclipse.adt.internal.lint.EclipseLintClient$1.parseXml(EclipseLintClient.java:228)
-	at com.android.tools.lint.client.api.LintDriver.runFileDetectors(LintDriver.java:943)
-	at com.android.tools.lint.client.api.LintDriver.checkProject(LintDriver.java:880)
-	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:431)
-	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
-	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
-	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
-Caused by: org.eclipse.osgi.framework.internal.core.AbstractBundle$BundleStatusException
-	... 34 more
-Root exception:
-org.eclipse.osgi.framework.internal.core.AbstractBundle$BundleStatusException
-	at org.eclipse.osgi.framework.internal.core.AbstractBundle.beginStateChange(AbstractBundle.java:1088)
-	at org.eclipse.osgi.framework.internal.core.AbstractBundle.start(AbstractBundle.java:298)
-	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:478)
-	at org.eclipse.osgi.internal.loader.BundleLoader.setLazyTrigger(BundleLoader.java:263)
-	at org.eclipse.core.runtime.internal.adaptor.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:109)
-	at org.eclipse.osgi.baseadaptor.loader.ClasspathManager.findLocalClass(ClasspathManager.java:469)
-	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.findLocalClass(DefaultClassLoader.java:216)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findLocalClass(BundleLoader.java:395)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findClassInternal(BundleLoader.java:464)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:421)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:412)
-	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.loadClass(DefaultClassLoader.java:107)
-	at java.lang.ClassLoader.loadClass(ClassLoader.java:268)
-	at org.eclipse.cdt.internal.core.PositionTracker.<init>(PositionTracker.java:28)
-	at org.eclipse.cdt.internal.core.PositionTrackerChain.createCheckpoint(PositionTrackerChain.java:51)
-	at org.eclipse.cdt.internal.core.PositionTrackerChain.<init>(PositionTrackerChain.java:34)
-	at org.eclipse.cdt.internal.core.PositionTrackerManager.createCheckpoint(PositionTrackerManager.java:117)
-	at org.eclipse.cdt.internal.core.PositionTrackerManager.bufferCreated(PositionTrackerManager.java:75)
-	at org.eclipse.core.internal.filebuffers.TextFileBufferManager$11.run(TextFileBufferManager.java:802)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
-	at org.eclipse.core.internal.filebuffers.TextFileBufferManager.fireBufferCreated(TextFileBufferManager.java:800)
-	at org.eclipse.core.internal.filebuffers.TextFileBufferManager.connect(TextFileBufferManager.java:127)
-	at org.eclipse.wst.sse.core.internal.FileBufferModelManager.getModel(FileBufferModelManager.java:786)
-	at org.eclipse.wst.sse.core.internal.model.ModelManagerImpl._doCommonGetModel(ModelManagerImpl.java:545)
-	at org.eclipse.wst.sse.core.internal.model.ModelManagerImpl._commonGetModel(ModelManagerImpl.java:509)
-	at org.eclipse.wst.sse.core.internal.model.ModelManagerImpl._commonGetModel(ModelManagerImpl.java:482)
-	at org.eclipse.wst.sse.core.internal.model.ModelManagerImpl.getModelForRead(ModelManagerImpl.java:1428)
-	at com.android.ide.eclipse.adt.internal.lint.EclipseLintClient$1.parseXml(EclipseLintClient.java:228)
-	at com.android.tools.lint.client.api.LintDriver.runFileDetectors(LintDriver.java:943)
-	at com.android.tools.lint.client.api.LintDriver.checkProject(LintDriver.java:880)
-	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:431)
-	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:374)
-	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
-	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+!ENTRY org.eclipse.core.resources 2 10035 2015-02-02 17:58:12.405
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
 
-!ENTRY org.eclipse.osgi 2 0 2014-11-30 17:54:40.061
-!MESSAGE While loading class "org.eclipse.cdt.internal.core.model.Util", thread "Thread[Worker-3,5,main]" timed out waiting (5000ms) for thread "Thread[Worker-0,5,main]" to finish starting bundle "org.eclipse.cdt.core_5.6.0.201402142303 [275]". To avoid deadlock, thread "Thread[Worker-3,5,main]" is proceeding but "org.eclipse.cdt.internal.core.model.Util" may not be fully initialized.
-!STACK 0
-org.osgi.framework.BundleException: State change in progress for bundle "reference:file:plugins/org.eclipse.cdt.core_5.6.0.201402142303.jar" by thread "Worker-0".
-	at org.eclipse.osgi.framework.internal.core.AbstractBundle.beginStateChange(AbstractBundle.java:1088)
-	at org.eclipse.osgi.framework.internal.core.AbstractBundle.start(AbstractBundle.java:298)
-	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:478)
-	at org.eclipse.osgi.internal.loader.BundleLoader.setLazyTrigger(BundleLoader.java:263)
-	at org.eclipse.core.runtime.internal.adaptor.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:109)
-	at org.eclipse.osgi.baseadaptor.loader.ClasspathManager.findLocalClass(ClasspathManager.java:469)
-	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.findLocalClass(DefaultClassLoader.java:216)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findLocalClass(BundleLoader.java:395)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findClassInternal(BundleLoader.java:464)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:421)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:412)
-	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.loadClass(DefaultClassLoader.java:107)
-	at java.lang.ClassLoader.loadClass(ClassLoader.java:268)
-	at org.eclipse.cdt.internal.core.model.CModelManager.firePostChangeDelta(CModelManager.java:1106)
-	at org.eclipse.cdt.internal.core.model.CModelManager.fire(CModelManager.java:1078)
-	at org.eclipse.cdt.internal.core.model.CModelManager.fire(CModelManager.java:1035)
-	at org.eclipse.cdt.internal.core.model.CModelManager.resourceChanged(CModelManager.java:909)
-	at org.eclipse.core.internal.events.NotificationManager$1.run(NotificationManager.java:291)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
-	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:285)
-	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:149)
-	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:396)
-	at org.eclipse.core.internal.resources.Workspace.endOperation(Workspace.java:1531)
-	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2354)
-	at org.eclipse.core.internal.events.NotificationManager$NotifyJob.run(NotificationManager.java:40)
-	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
-Caused by: org.eclipse.osgi.framework.internal.core.AbstractBundle$BundleStatusException
-	... 26 more
-Root exception:
-org.eclipse.osgi.framework.internal.core.AbstractBundle$BundleStatusException
-	at org.eclipse.osgi.framework.internal.core.AbstractBundle.beginStateChange(AbstractBundle.java:1088)
-	at org.eclipse.osgi.framework.internal.core.AbstractBundle.start(AbstractBundle.java:298)
-	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:478)
-	at org.eclipse.osgi.internal.loader.BundleLoader.setLazyTrigger(BundleLoader.java:263)
-	at org.eclipse.core.runtime.internal.adaptor.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:109)
-	at org.eclipse.osgi.baseadaptor.loader.ClasspathManager.findLocalClass(ClasspathManager.java:469)
-	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.findLocalClass(DefaultClassLoader.java:216)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findLocalClass(BundleLoader.java:395)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findClassInternal(BundleLoader.java:464)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:421)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:412)
-	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.loadClass(DefaultClassLoader.java:107)
-	at java.lang.ClassLoader.loadClass(ClassLoader.java:268)
-	at org.eclipse.cdt.internal.core.model.CModelManager.firePostChangeDelta(CModelManager.java:1106)
-	at org.eclipse.cdt.internal.core.model.CModelManager.fire(CModelManager.java:1078)
-	at org.eclipse.cdt.internal.core.model.CModelManager.fire(CModelManager.java:1035)
-	at org.eclipse.cdt.internal.core.model.CModelManager.resourceChanged(CModelManager.java:909)
-	at org.eclipse.core.internal.events.NotificationManager$1.run(NotificationManager.java:291)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
-	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:285)
-	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:149)
-	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:396)
-	at org.eclipse.core.internal.resources.Workspace.endOperation(Workspace.java:1531)
-	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2354)
-	at org.eclipse.core.internal.events.NotificationManager$NotifyJob.run(NotificationManager.java:40)
-	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+!ENTRY org.eclipse.jface 2 0 2015-02-02 20:26:50.426
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2015-02-02 20:26:50.426
+!MESSAGE A conflict occurred for CTRL+I:
+Binding(CTRL+I,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.indent,Correct Indentation,
+		Corrects the indentation of the selected lines,
+		Category(org.eclipse.jdt.ui.category.source,Source,Java Source Actions,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@197ea84,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.jdt.ui.javaEditorScope,,,system)
+Binding(CTRL+I,
+	ParameterizedCommand(Command(org.eclipse.wst.sse.ui.format.active.elements,Format Active Elements,
+		Format active elements,
+		Category(org.eclipse.ui.category.edit,Edit,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@d80d1d,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.wst.sse.ui.structuredTextEditorScope,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2015-02-02 20:26:50.426
+!MESSAGE A conflict occurred for CTRL+SHIFT+F:
+Binding(CTRL+SHIFT+F,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.format,Format,
+		Format the selected text,
+		Category(org.eclipse.jdt.ui.category.source,Source,Java Source Actions,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@a5a0ba,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.jdt.ui.javaEditorScope,,,system)
+Binding(CTRL+SHIFT+F,
+	ParameterizedCommand(Command(org.eclipse.wst.sse.ui.format.document,Format,
+		Format selection,
+		Category(org.eclipse.ui.category.edit,Edit,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@17f8764,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.wst.sse.ui.structuredTextEditorScope,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2015-02-02 20:26:50.426
+!MESSAGE A conflict occurred for CTRL+SHIFT+ARROW_DOWN:
+Binding(CTRL+SHIFT+ARROW_DOWN,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.goto.next.member,Go to Next Member,
+		Move the caret to the next member of the compilation unit,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@1db1ad9,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.jdt.ui.javaEditorScope,,,system)
+Binding(CTRL+SHIFT+ARROW_DOWN,
+	ParameterizedCommand(Command(org.eclipse.wst.xml.ui.nextSibling,Next Sibling,
+		Go to Next Sibling,
+		Category(org.eclipse.ui.category.edit,Edit,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@1f91732,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.wst.sse.ui.structuredTextEditorScope,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2015-02-02 20:26:50.426
+!MESSAGE A conflict occurred for ALT+SHIFT+ARROW_LEFT:
+Binding(ALT+SHIFT+ARROW_LEFT,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.select.previous,Select Previous Element,
+		Expand selection to include previous sibling,
+		Category(org.eclipse.ui.category.edit,Edit,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@1bfaad8,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.jdt.ui.javaEditorScope,,,system)
+Binding(ALT+SHIFT+ARROW_LEFT,
+	ParameterizedCommand(Command(org.eclipse.wst.sse.ui.structure.select.previous,Select Previous Element,
+		Expand selection to include previous sibling,
+		Category(org.eclipse.ui.category.edit,Edit,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@128312c,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.wst.sse.ui.structuredTextEditorScope,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2015-02-02 20:26:50.426
+!MESSAGE A conflict occurred for ALT+SHIFT+ARROW_UP:
+Binding(ALT+SHIFT+ARROW_UP,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.select.enclosing,Select Enclosing Element,
+		Expand selection to include enclosing element,
+		Category(org.eclipse.ui.category.edit,Edit,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@6972c8,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.jdt.ui.javaEditorScope,,,system)
+Binding(ALT+SHIFT+ARROW_UP,
+	ParameterizedCommand(Command(org.eclipse.wst.sse.ui.structure.select.enclosing,Select Enclosing Element,
+		Expand selection to include enclosing element,
+		Category(org.eclipse.ui.category.edit,Edit,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@17b56f0,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.wst.sse.ui.structuredTextEditorScope,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2015-02-02 20:26:50.426
+!MESSAGE A conflict occurred for CTRL+SHIFT+P:
+Binding(CTRL+SHIFT+P,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.goto.matching.bracket,Go to Matching Bracket,
+		Moves the cursor to the matching bracket,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@eedaf1,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.jdt.ui.javaEditorScope,,,system)
+Binding(CTRL+SHIFT+P,
+	ParameterizedCommand(Command(org.eclipse.wst.sse.ui.goto.matching.bracket,Matching Character,
+		Go to Matching Character,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@691eb7,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.wst.sse.ui.structuredTextEditorScope,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2015-02-02 20:26:50.426
+!MESSAGE A conflict occurred for CTRL+SHIFT+/:
+Binding(CTRL+SHIFT+/,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.add.block.comment,Add Block Comment,
+		Enclose the selection with a block comment,
+		Category(org.eclipse.jdt.ui.category.source,Source,Java Source Actions,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@168423e,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.jdt.ui.javaEditorScope,,,system)
+Binding(CTRL+SHIFT+/,
+	ParameterizedCommand(Command(org.eclipse.wst.sse.ui.add.block.comment,Add Block Comment,
+		Add Block Comment,
+		Category(org.eclipse.ui.category.edit,Edit,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@1a038ac,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.wst.sse.ui.structuredTextEditorScope,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2015-02-02 20:26:50.426
+!MESSAGE A conflict occurred for CTRL+O:
+Binding(CTRL+O,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.show.outline,Quick Outline,
+		Show the quick outline for the editor input,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@1d4f945,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.jdt.ui.javaEditorScope,,,system)
+Binding(CTRL+O,
+	ParameterizedCommand(Command(org.eclipse.wst.sse.ui.quick_outline,Quick Outline,
+		Show the quick outline for the editor input,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@1392f49,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.wst.sse.ui.structuredTextEditorScope,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2015-02-02 20:26:50.426
+!MESSAGE A conflict occurred for CTRL+SHIFT+ARROW_UP:
+Binding(CTRL+SHIFT+ARROW_UP,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.goto.previous.member,Go to Previous Member,
+		Move the caret to the previous member of the compilation unit,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@14f7fff,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.jdt.ui.javaEditorScope,,,system)
+Binding(CTRL+SHIFT+ARROW_UP,
+	ParameterizedCommand(Command(org.eclipse.wst.xml.ui.previousSibling,Previous Sibling,
+		Go to Previous Sibling,
+		Category(org.eclipse.ui.category.edit,Edit,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@13cb061,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.wst.sse.ui.structuredTextEditorScope,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2015-02-02 20:26:50.426
+!MESSAGE A conflict occurred for ALT+SHIFT+ARROW_DOWN:
+Binding(ALT+SHIFT+ARROW_DOWN,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.select.last,Restore Last Selection,
+		Restore last selection,
+		Category(org.eclipse.ui.category.edit,Edit,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@5c5282,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.jdt.ui.javaEditorScope,,,system)
+Binding(ALT+SHIFT+ARROW_DOWN,
+	ParameterizedCommand(Command(org.eclipse.wst.sse.ui.structure.select.last,Restore Last Selection,
+		Restore last selection,
+		Category(org.eclipse.ui.category.edit,Edit,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@c49d10,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.wst.sse.ui.structuredTextEditorScope,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2015-02-02 20:26:50.426
+!MESSAGE A conflict occurred for CTRL+SHIFT+C:
+Binding(CTRL+SHIFT+C,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.toggle.comment,Toggle Comment,
+		Toggle comment the selected lines,
+		Category(org.eclipse.jdt.ui.category.source,Source,Java Source Actions,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@12d0012,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.jdt.ui.javaEditorScope,,,system)
+Binding(CTRL+SHIFT+C,
+	ParameterizedCommand(Command(org.eclipse.wst.sse.ui.toggle.comment,Toggle Comment,
+		Toggle Comment,
+		Category(org.eclipse.ui.category.edit,Edit,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@c4b69e,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.wst.sse.ui.structuredTextEditorScope,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2015-02-02 20:26:50.426
+!MESSAGE A conflict occurred for ALT+SHIFT+ARROW_RIGHT:
+Binding(ALT+SHIFT+ARROW_RIGHT,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.select.next,Select Next Element,
+		Expand selection to include next sibling,
+		Category(org.eclipse.ui.category.edit,Edit,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@15fdbe4,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.jdt.ui.javaEditorScope,,,system)
+Binding(ALT+SHIFT+ARROW_RIGHT,
+	ParameterizedCommand(Command(org.eclipse.wst.sse.ui.structure.select.next,Select Next Element,
+		Expand selection to include next sibling,
+		Category(org.eclipse.ui.category.edit,Edit,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@9a045f,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.wst.sse.ui.structuredTextEditorScope,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2015-02-02 20:26:50.426
+!MESSAGE A conflict occurred for CTRL+SHIFT+\:
+Binding(CTRL+SHIFT+\,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.remove.block.comment,Remove Block Comment,
+		Remove the block comment enclosing the selection,
+		Category(org.eclipse.jdt.ui.category.source,Source,Java Source Actions,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@5d93fd,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.jdt.ui.javaEditorScope,,,system)
+Binding(CTRL+SHIFT+\,
+	ParameterizedCommand(Command(org.eclipse.wst.sse.ui.remove.block.comment,Remove Block Comment,
+		Remove Block Comment,
+		Category(org.eclipse.ui.category.edit,Edit,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@1a61801,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.wst.sse.ui.structuredTextEditorScope,,,system)
+!SESSION 2015-02-02 20:37:46.872 -----------------------------------------------
+eclipse.buildId=4.3.2.M20140221-1700
+java.version=1.6.0_30
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=linux, ARCH=x86, WS=gtk, NL=es_AR
+Framework arguments:  -product org.eclipse.epp.package.standard.product
+Command-line arguments:  -os linux -ws gtk -arch x86 -product org.eclipse.epp.package.standard.product
 
-!ENTRY org.eclipse.osgi 2 0 2014-11-30 17:54:45.068
-!MESSAGE While loading class "org.eclipse.cdt.core.model.ElementChangedEvent", thread "Thread[Worker-3,5,main]" timed out waiting (5001ms) for thread "Thread[Worker-0,5,main]" to finish starting bundle "org.eclipse.cdt.core_5.6.0.201402142303 [275]". To avoid deadlock, thread "Thread[Worker-3,5,main]" is proceeding but "org.eclipse.cdt.core.model.ElementChangedEvent" may not be fully initialized.
-!STACK 0
-org.osgi.framework.BundleException: State change in progress for bundle "reference:file:plugins/org.eclipse.cdt.core_5.6.0.201402142303.jar" by thread "Worker-0".
-	at org.eclipse.osgi.framework.internal.core.AbstractBundle.beginStateChange(AbstractBundle.java:1088)
-	at org.eclipse.osgi.framework.internal.core.AbstractBundle.start(AbstractBundle.java:298)
-	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:478)
-	at org.eclipse.osgi.internal.loader.BundleLoader.setLazyTrigger(BundleLoader.java:263)
-	at org.eclipse.core.runtime.internal.adaptor.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:109)
-	at org.eclipse.osgi.baseadaptor.loader.ClasspathManager.findLocalClass(ClasspathManager.java:469)
-	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.findLocalClass(DefaultClassLoader.java:216)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findLocalClass(BundleLoader.java:395)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findClassInternal(BundleLoader.java:464)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:421)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:412)
-	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.loadClass(DefaultClassLoader.java:107)
-	at java.lang.ClassLoader.loadClass(ClassLoader.java:268)
-	at org.eclipse.cdt.internal.core.model.CModelManager.notifyListeners(CModelManager.java:1146)
-	at org.eclipse.cdt.internal.core.model.CModelManager.firePostChangeDelta(CModelManager.java:1113)
-	at org.eclipse.cdt.internal.core.model.CModelManager.fire(CModelManager.java:1078)
-	at org.eclipse.cdt.internal.core.model.CModelManager.fire(CModelManager.java:1035)
-	at org.eclipse.cdt.internal.core.model.CModelManager.resourceChanged(CModelManager.java:909)
-	at org.eclipse.core.internal.events.NotificationManager$1.run(NotificationManager.java:291)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
-	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:285)
-	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:149)
-	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:396)
-	at org.eclipse.core.internal.resources.Workspace.endOperation(Workspace.java:1531)
-	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2354)
-	at org.eclipse.core.internal.events.NotificationManager$NotifyJob.run(NotificationManager.java:40)
-	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
-Caused by: org.eclipse.osgi.framework.internal.core.AbstractBundle$BundleStatusException
-	... 27 more
-Root exception:
-org.eclipse.osgi.framework.internal.core.AbstractBundle$BundleStatusException
-	at org.eclipse.osgi.framework.internal.core.AbstractBundle.beginStateChange(AbstractBundle.java:1088)
-	at org.eclipse.osgi.framework.internal.core.AbstractBundle.start(AbstractBundle.java:298)
-	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:478)
-	at org.eclipse.osgi.internal.loader.BundleLoader.setLazyTrigger(BundleLoader.java:263)
-	at org.eclipse.core.runtime.internal.adaptor.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:109)
-	at org.eclipse.osgi.baseadaptor.loader.ClasspathManager.findLocalClass(ClasspathManager.java:469)
-	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.findLocalClass(DefaultClassLoader.java:216)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findLocalClass(BundleLoader.java:395)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findClassInternal(BundleLoader.java:464)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:421)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:412)
-	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.loadClass(DefaultClassLoader.java:107)
-	at java.lang.ClassLoader.loadClass(ClassLoader.java:268)
-	at org.eclipse.cdt.internal.core.model.CModelManager.notifyListeners(CModelManager.java:1146)
-	at org.eclipse.cdt.internal.core.model.CModelManager.firePostChangeDelta(CModelManager.java:1113)
-	at org.eclipse.cdt.internal.core.model.CModelManager.fire(CModelManager.java:1078)
-	at org.eclipse.cdt.internal.core.model.CModelManager.fire(CModelManager.java:1035)
-	at org.eclipse.cdt.internal.core.model.CModelManager.resourceChanged(CModelManager.java:909)
-	at org.eclipse.core.internal.events.NotificationManager$1.run(NotificationManager.java:291)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
-	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:285)
-	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:149)
-	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:396)
-	at org.eclipse.core.internal.resources.Workspace.endOperation(Workspace.java:1531)
-	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2354)
-	at org.eclipse.core.internal.events.NotificationManager$NotifyJob.run(NotificationManager.java:40)
-	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
-
-!ENTRY org.eclipse.osgi 2 0 2014-11-30 17:54:50.071
-!MESSAGE While loading class "org.eclipse.cdt.internal.core.model.CModelManager$2", thread "Thread[Worker-3,5,main]" timed out waiting (5001ms) for thread "Thread[Worker-0,5,main]" to finish starting bundle "org.eclipse.cdt.core_5.6.0.201402142303 [275]". To avoid deadlock, thread "Thread[Worker-3,5,main]" is proceeding but "org.eclipse.cdt.internal.core.model.CModelManager$2" may not be fully initialized.
-!STACK 0
-org.osgi.framework.BundleException: State change in progress for bundle "reference:file:plugins/org.eclipse.cdt.core_5.6.0.201402142303.jar" by thread "Worker-0".
-	at org.eclipse.osgi.framework.internal.core.AbstractBundle.beginStateChange(AbstractBundle.java:1088)
-	at org.eclipse.osgi.framework.internal.core.AbstractBundle.start(AbstractBundle.java:298)
-	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:478)
-	at org.eclipse.osgi.internal.loader.BundleLoader.setLazyTrigger(BundleLoader.java:263)
-	at org.eclipse.core.runtime.internal.adaptor.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:109)
-	at org.eclipse.osgi.baseadaptor.loader.ClasspathManager.findLocalClass(ClasspathManager.java:469)
-	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.findLocalClass(DefaultClassLoader.java:216)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findLocalClass(BundleLoader.java:395)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findClassInternal(BundleLoader.java:464)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:421)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:412)
-	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.loadClass(DefaultClassLoader.java:107)
-	at java.lang.ClassLoader.loadClass(ClassLoader.java:268)
-	at org.eclipse.cdt.internal.core.model.CModelManager.notifyListeners(CModelManager.java:1157)
-	at org.eclipse.cdt.internal.core.model.CModelManager.firePostChangeDelta(CModelManager.java:1113)
-	at org.eclipse.cdt.internal.core.model.CModelManager.fire(CModelManager.java:1078)
-	at org.eclipse.cdt.internal.core.model.CModelManager.fire(CModelManager.java:1035)
-	at org.eclipse.cdt.internal.core.model.CModelManager.resourceChanged(CModelManager.java:909)
-	at org.eclipse.core.internal.events.NotificationManager$1.run(NotificationManager.java:291)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
-	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:285)
-	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:149)
-	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:396)
-	at org.eclipse.core.internal.resources.Workspace.endOperation(Workspace.java:1531)
-	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2354)
-	at org.eclipse.core.internal.events.NotificationManager$NotifyJob.run(NotificationManager.java:40)
-	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
-Caused by: org.eclipse.osgi.framework.internal.core.AbstractBundle$BundleStatusException
-	... 27 more
-Root exception:
-org.eclipse.osgi.framework.internal.core.AbstractBundle$BundleStatusException
-	at org.eclipse.osgi.framework.internal.core.AbstractBundle.beginStateChange(AbstractBundle.java:1088)
-	at org.eclipse.osgi.framework.internal.core.AbstractBundle.start(AbstractBundle.java:298)
-	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:478)
-	at org.eclipse.osgi.internal.loader.BundleLoader.setLazyTrigger(BundleLoader.java:263)
-	at org.eclipse.core.runtime.internal.adaptor.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:109)
-	at org.eclipse.osgi.baseadaptor.loader.ClasspathManager.findLocalClass(ClasspathManager.java:469)
-	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.findLocalClass(DefaultClassLoader.java:216)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findLocalClass(BundleLoader.java:395)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findClassInternal(BundleLoader.java:464)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:421)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:412)
-	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.loadClass(DefaultClassLoader.java:107)
-	at java.lang.ClassLoader.loadClass(ClassLoader.java:268)
-	at org.eclipse.cdt.internal.core.model.CModelManager.notifyListeners(CModelManager.java:1157)
-	at org.eclipse.cdt.internal.core.model.CModelManager.firePostChangeDelta(CModelManager.java:1113)
-	at org.eclipse.cdt.internal.core.model.CModelManager.fire(CModelManager.java:1078)
-	at org.eclipse.cdt.internal.core.model.CModelManager.fire(CModelManager.java:1035)
-	at org.eclipse.cdt.internal.core.model.CModelManager.resourceChanged(CModelManager.java:909)
-	at org.eclipse.core.internal.events.NotificationManager$1.run(NotificationManager.java:291)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
-	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:285)
-	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:149)
-	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:396)
-	at org.eclipse.core.internal.resources.Workspace.endOperation(Workspace.java:1531)
-	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2354)
-	at org.eclipse.core.internal.events.NotificationManager$NotifyJob.run(NotificationManager.java:40)
-	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
-
-!ENTRY org.eclipse.osgi 2 0 2014-11-30 17:54:55.076
-!MESSAGE While loading class "org.eclipse.cdt.internal.core.settings.model.ResourceChangeHandler$RcMoveHandler", thread "Thread[Worker-3,5,main]" timed out waiting (5000ms) for thread "Thread[Worker-0,5,main]" to finish starting bundle "org.eclipse.cdt.core_5.6.0.201402142303 [275]". To avoid deadlock, thread "Thread[Worker-3,5,main]" is proceeding but "org.eclipse.cdt.internal.core.settings.model.ResourceChangeHandler$RcMoveHandler" may not be fully initialized.
-!STACK 0
-org.osgi.framework.BundleException: State change in progress for bundle "reference:file:plugins/org.eclipse.cdt.core_5.6.0.201402142303.jar" by thread "Worker-0".
-	at org.eclipse.osgi.framework.internal.core.AbstractBundle.beginStateChange(AbstractBundle.java:1088)
-	at org.eclipse.osgi.framework.internal.core.AbstractBundle.start(AbstractBundle.java:298)
-	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:478)
-	at org.eclipse.osgi.internal.loader.BundleLoader.setLazyTrigger(BundleLoader.java:263)
-	at org.eclipse.core.runtime.internal.adaptor.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:109)
-	at org.eclipse.osgi.baseadaptor.loader.ClasspathManager.findLocalClass(ClasspathManager.java:469)
-	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.findLocalClass(DefaultClassLoader.java:216)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findLocalClass(BundleLoader.java:395)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findClassInternal(BundleLoader.java:464)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:421)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:412)
-	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.loadClass(DefaultClassLoader.java:107)
-	at java.lang.ClassLoader.loadClass(ClassLoader.java:268)
-	at org.eclipse.cdt.internal.core.settings.model.ResourceChangeHandler.createResourceMoveHandler(ResourceChangeHandler.java:281)
-	at org.eclipse.cdt.core.settings.model.util.ResourceChangeHandlerBase.resourceChanged(ResourceChangeHandlerBase.java:149)
-	at org.eclipse.core.internal.events.NotificationManager$1.run(NotificationManager.java:291)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
-	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:285)
-	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:149)
-	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:396)
-	at org.eclipse.core.internal.resources.Workspace.endOperation(Workspace.java:1531)
-	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2354)
-	at org.eclipse.core.internal.events.NotificationManager$NotifyJob.run(NotificationManager.java:40)
-	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
-Caused by: org.eclipse.osgi.framework.internal.core.AbstractBundle$BundleStatusException
-	... 24 more
-Root exception:
-org.eclipse.osgi.framework.internal.core.AbstractBundle$BundleStatusException
-	at org.eclipse.osgi.framework.internal.core.AbstractBundle.beginStateChange(AbstractBundle.java:1088)
-	at org.eclipse.osgi.framework.internal.core.AbstractBundle.start(AbstractBundle.java:298)
-	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:478)
-	at org.eclipse.osgi.internal.loader.BundleLoader.setLazyTrigger(BundleLoader.java:263)
-	at org.eclipse.core.runtime.internal.adaptor.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:109)
-	at org.eclipse.osgi.baseadaptor.loader.ClasspathManager.findLocalClass(ClasspathManager.java:469)
-	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.findLocalClass(DefaultClassLoader.java:216)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findLocalClass(BundleLoader.java:395)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findClassInternal(BundleLoader.java:464)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:421)
-	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:412)
-	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.loadClass(DefaultClassLoader.java:107)
-	at java.lang.ClassLoader.loadClass(ClassLoader.java:268)
-	at org.eclipse.cdt.internal.core.settings.model.ResourceChangeHandler.createResourceMoveHandler(ResourceChangeHandler.java:281)
-	at org.eclipse.cdt.core.settings.model.util.ResourceChangeHandlerBase.resourceChanged(ResourceChangeHandlerBase.java:149)
-	at org.eclipse.core.internal.events.NotificationManager$1.run(NotificationManager.java:291)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
-	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:285)
-	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:149)
-	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:396)
-	at org.eclipse.core.internal.resources.Workspace.endOperation(Workspace.java:1531)
-	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2354)
-	at org.eclipse.core.internal.events.NotificationManager$NotifyJob.run(NotificationManager.java:40)
-	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+!ENTRY org.eclipse.core.resources 2 10035 2015-02-02 20:37:49.961
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.

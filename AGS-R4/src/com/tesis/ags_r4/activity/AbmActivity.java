@@ -5,9 +5,11 @@ import com.tesis.ags_r4.R;
 import com.tesis.ags_r4.R.id;
 import com.tesis.ags_r4.R.layout;
 import com.tesis.ags_r4.R.string;
+import com.tesis.ags_r4.location.MyLocationListener;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceClickListener;
@@ -20,6 +22,9 @@ public class AbmActivity extends Activity implements OnPreferenceClickListener{
 
 	public static final String APP_EXIT_KEY = "APP_EXIT_KEY";
 	private Preference about;
+	private LocationManager locManager;
+	private MyLocationListener locListener;
+	private SalirActivity s= new SalirActivity();
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -99,6 +104,8 @@ public class AbmActivity extends Activity implements OnPreferenceClickListener{
 	         }
 			
 		});
+		
+	
 		
 	}
 	@Override

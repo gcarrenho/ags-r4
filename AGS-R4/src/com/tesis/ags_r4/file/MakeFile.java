@@ -24,7 +24,13 @@ public class MakeFile {
         String contenido = coord;
         try {
             File tarjeta = Environment.getExternalStorageDirectory();
-            File file = new File(tarjeta.getAbsolutePath(), nomarchivo);
+            File file=new File(tarjeta.getAbsolutePath()+"/Android/data/com.tesis.ags_r4/recorridos");
+            boolean success = true;
+            if (!file.exists()) {
+                //Toast.makeText(MainActivity.this, "Directory Does Not Exist, Create It", Toast.LENGTH_SHORT).show();
+                success = file.mkdir();
+            }
+            file = new File(file+"/", nomarchivo);
             OutputStreamWriter osw = new OutputStreamWriter(new FileOutputStream(file));
             osw.write(contenido);
             osw.flush();
@@ -39,7 +45,7 @@ public class MakeFile {
         String nomarchivo = nom;
         String todo = null ;
         File tarjeta = Environment.getExternalStorageDirectory();
-        File file = new File(tarjeta.getAbsolutePath(), nomarchivo);
+        File file = new File(tarjeta.getAbsolutePath()+"/Android/data/com.tesis.ags_r4/recorridos/", nomarchivo);
         try {
             FileInputStream fIn = new FileInputStream(file);
             InputStreamReader archivo = new InputStreamReader(fIn);

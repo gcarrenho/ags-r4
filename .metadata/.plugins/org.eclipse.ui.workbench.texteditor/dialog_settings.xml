@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item value="303" key="DIALOG_WIDTH"/>
-		<item value="222" key="DIALOG_Y_ORIGIN"/>
-		<item value="900" key="DIALOG_X_ORIGIN"/>
-		<item value="475" key="DIALOG_HEIGHT"/>
+		<item value="353" key="DIALOG_WIDTH"/>
+		<item value="48" key="DIALOG_Y_ORIGIN"/>
+		<item value="695" key="DIALOG_HEIGHT"/>
+		<item value="832" key="DIALOG_X_ORIGIN"/>
 		<item value="1|Sans|10.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="true" key="wrap"/>
-		<item value="false" key="casesensitive"/>
 		<item value="false" key="isRegEx"/>
+		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="dist" key="selection"/>
+		<item value="" key="selection"/>
 		<list key="findhistory">
-			<item value="dist"/>
-			<item value="argentina"/>
-			<item value="canada"/>
-			<item value="ar"/>
-			<item value="toas"/>
-			<item value="cargar"/>
-			<item value="start"/>
-			<item value="onActivityResult"/>
+			<item value="surgio"/>
+			<item value="locManager.removeUpdates(locListener);"/>
+			<item value="bus"/>
+			<item value="gui"/>
+			<item value="GetDirection"/>
+			<item value="GbusDirection"/>
+			<item value="GBusDirection"/>
+			<item value="favorito"/>
 		</list>
 		<list key="replacehistory">
 		</list>

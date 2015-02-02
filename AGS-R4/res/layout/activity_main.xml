@@ -34,7 +34,7 @@ android:layout_width="fill_parent" android:layout_height="fill_parent" android:b
 
                                         <LinearLayout  android:layout_height="wrap_content" android:layout_width="fill_parent" android:gravity="center">
                                                 <TextView android:layout_height="wrap_content" android:layout_width="wrap_content"
-                                                android:layout_gravity="center_horizontal|top" android:textSize="18sp"
+                                                android:layout_gravity="center_horizontal|top" android:textSize="17sp"
                                                 android:text="@string/guiar_Button" android:typeface="serif" android:textColor="#000000"/>
                                         </LinearLayout>
                                 </LinearLayout>
@@ -53,16 +53,23 @@ android:layout_width="fill_parent" android:layout_height="fill_parent" android:b
                                         android:src="@drawable/lugar1" android:scaleType="center" android:layout_gravity="center"
                                         android:layout_weight="1" android:layout_width="wrap_content" android:layout_height="0dp"/>
                                         <LinearLayout  android:layout_height="wrap_content" android:layout_width="fill_parent" android:gravity="center">
-                                                <TextView android:layout_height="wrap_content" android:layout_width="wrap_content"
-                                                android:layout_gravity="center_horizontal|top" android:textSize="18sp"          
-                                                android:text="@string/abm_button" android:typeface="serif" android:textColor="#000000"/>
+
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_gravity="center_horizontal|top"
+                                                    android:text="@string/abm_button"
+                                                    android:textColor="#000000"
+                                                    android:textSize="17sp"
+                                                    android:typeface="serif" />
+
                                         </LinearLayout>
                                 </LinearLayout>
                         </TableRow>
                         <TableRow android:layout_height = "wrap_content" android:layout_marginTop="15dp">
 
                                 <LinearLayout
-                                    android:id="@+id/favoritosButton"
+                                    android:id="@+id/salirButton"
                                     android:layout_height="175dp"
                                     android:layout_weight="3"
                                     android:background="@drawable/bg_leftr"
@@ -71,12 +78,12 @@ android:layout_width="fill_parent" android:layout_height="fill_parent" android:b
                                     android:orientation="vertical" >
 
                                         <ImageView
-                                        android:src="@drawable/favorite" android:scaleType="center" android:layout_gravity="center"
+                                        android:src="@drawable/salir" android:scaleType="center" android:layout_gravity="center"
                                         android:layout_weight="1" android:layout_width="wrap_content" android:layout_height="0dp"/>
                                         <LinearLayout  android:layout_height="wrap_content" android:layout_width="fill_parent" android:gravity="center">
                                                 <TextView android:layout_height="wrap_content" android:layout_width="wrap_content"
-                                                android:layout_gravity="center_horizontal|top" android:textSize="18sp"
-                                                android:text="@string/favoritos_Button" android:typeface="serif" android:textColor="#000000"/>
+                                                android:layout_gravity="center_horizontal|top" android:textSize="17sp"
+                                                android:text="@string/salir_Button" android:typeface="serif" android:textColor="#000000"/>
                                         </LinearLayout>
                                 </LinearLayout>
                                 <LinearLayout android:layout_weight="2" android:layout_height="fill_parent"/>
@@ -95,7 +102,7 @@ android:layout_width="fill_parent" android:layout_height="fill_parent" android:b
                                         android:layout_weight="1" android:layout_width="wrap_content" android:layout_height="0dp"/>
                                         <LinearLayout  android:layout_height="wrap_content" android:layout_width="fill_parent" android:gravity="center">
                                                 <TextView android:layout_height="wrap_content" android:layout_width="wrap_content"
-                                                android:layout_gravity="center_horizontal|top" android:textSize="18sp"
+                                                android:layout_gravity="center_horizontal|top" android:textSize="17sp"
                                                 android:text="@string/information_Button" android:typeface="serif" android:textColor="#000000"/>
                                         </LinearLayout>
                                 </LinearLayout>

@@ -147,6 +147,13 @@ public class CargarActivity extends Activity implements OnInitListener{
 		this.configGps();
 	}
 
+	@Override
+	protected void onStop() {
+		super.onStop();
+		locManager.removeUpdates(locListener);
+	}
+
+	
 
 	/*
 	 *  LLamada cuando el sistema va a empezar una nueva actividad.
@@ -233,10 +240,11 @@ public class CargarActivity extends Activity implements OnInitListener{
 				EditText cat=(EditText)findViewById(R.id.textTipoLugar);
 				lugarBd.setCategoria(cat.getText().toString().toLowerCase());
 				EditText tel=(EditText)findViewById(R.id.textTelLugar);
-				String telefono = tel.getText().toString();//El tel va a ser dictado eliminar espacios en blanco.
+				String telefono = tel.getText().toString().replace(" ", "");//El tel va a ser dictado eliminar espacios en blanco.
 				if (telefono.isEmpty()){
 					telefono="0";
 				}
+				
 				final int telInt = Integer.parseInt(telefono);
 				lugarBd.setTel(telInt);
 				if(latitud==0.0 && longitud==0.0){
@@ -305,7 +313,7 @@ public class CargarActivity extends Activity implements OnInitListener{
 				EditText tel=(EditText)findViewById(R.id.textTelLugar);
 				lugarBd.setLatitud(lat);
 				lugarBd.setLongitud(lon);
-				String telefono = tel.getText().toString();//El tel va a ser dictado eliminar espacios en blanco.
+				String telefono = tel.getText().toString().replace(" ", "");;//El tel va a ser dictado eliminar espacios en blanco.
 				if (telefono.isEmpty()){
 					telefono="0";
 				}
