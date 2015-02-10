@@ -244,25 +244,17 @@ public class GuiarMapa extends FragmentActivity /*implements SensorEventListener
 		    		double currentDist;
 		    		double minDist=10000;
 		    		double minDistDest=10000;
-		    		double minDistDestOrg;
 		    		String[] minCord=null;
 		    		int linea=0;
 		    		while (i<listLine.size()){
-		    			// -33.116864, -64.328614//quirico -33.125940, -64.342047//racedo
-		    			//-33.11872566884502, -64.3260448927967//trece
+		    			//-33.123507, 
 		    			String[] listLatLng=String.valueOf((listLine.get(i)).first).split(",0");  
 		    			mCurrentDist=minDist(mlat,mlng ,listLatLng,1);//mlat mlng mi ubicacion
 		    			currentDist=minDist(lat, lng,listLatLng,2);//lat lng la del lugar
-		    			if (mCurrentDist<currentDist){
-		    				minDistDestOrg=currentDist-mCurrentDist; //Diferencia entre la menor distancia de origen y la mejor de destino
-		    			}else{
-		    				minDistDestOrg=mCurrentDist-currentDist;// la mas chica es la mejor de todas
-		    			}
-		    			if (minDistDestOrg<minDist){//currentDist<minDistDest && mCurrentDist<minDist
-		    				//minDistDest=currentDist;
-		    				//minDist=mCurrentDist;
-		    				minDist=minDistDestOrg;
-		    				
+		
+		    			if (currentDist<minDistDest && mCurrentDist<minDist){
+		    				minDistDest=currentDist;
+		    				minDist=mCurrentDist;
 		    				minCord=listLatLng;
 		    				linea=i; //Aca tengo la linea de colectivo que debera tomarse
 		    				//double latOr=-64.337958;//la de origen es mi ubcacion
@@ -291,7 +283,6 @@ public class GuiarMapa extends FragmentActivity /*implements SensorEventListener
 		    		.show();
 		    		Toast.makeText(getBaseContext(), "Linea a Tomar, "+String.valueOf((listLine.get(linea)).second), Toast.LENGTH_LONG)
 		    		.show();
-		    		
     			}
     	}
     //}
@@ -326,8 +317,6 @@ public class GuiarMapa extends FragmentActivity /*implements SensorEventListener
        inst=listInst;
        fixListInst(inst);
 		Toast.makeText(getBaseContext(),textInst, Toast.LENGTH_LONG)
-		.show();
-		Toast.makeText(getBaseContext(),"Repito "+textInst, Toast.LENGTH_LONG)
 		.show();
     }
     
@@ -407,6 +396,7 @@ public class GuiarMapa extends FragmentActivity /*implements SensorEventListener
 	    		if (this.dist(loc.getLatitude(), loc.getLongitude(),lat,lng)<=30){
 	    			Toast.makeText(getBaseContext(),"Se Encuentra Muy Proximo al destino deseado. Recorrido Finalizado.", Toast.LENGTH_LONG)
 		    		.show();
+	    			//Apagar gps o volver al menu.
 	    		}
 	    		
 	    	}
